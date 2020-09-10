@@ -19,7 +19,7 @@ storyblokToTypescript({
 })
 ```
 
-####Example Custom Parser
+#### Example Custom Parser
 ```js
 function exampleCustomParser (key, obj) {
   switch (obj.field_type) {
