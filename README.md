@@ -1,13 +1,21 @@
-# storyblok-generate-ts
-Generates TypeScript types based on components json file
+# storyblok-generate-ts | NodeJS script to generate TS-Types for Storyblok components
+This plugin uses `json-schema-to-typescript` to generate TS types based on a component schema.
 
-### How to use it:
+### 1. Fetch your schema with Storyblok CLI
+```
+# Make sure storyblok is installed (npm i storyblok -g)
+$ storyblok pull-components --space=xxx
+```
+
+### 2. Create a NodeJS javascript file
+
+#### Example:
 ```js
 const storyblokToTypescript = require('storyblok-generate-ts')
 
 storyblokToTypescript({
   // required
-  componentsJson: require('./components.88723.json'), // pull components with storyblok
+  componentsJson: require('./components.xxx.json'), // pull components with storyblok
   // required
   path: __dirname + '/src/typings/generated/components-schema.ts', // make sure path exists
   // optional type prefix (default: none)
@@ -17,6 +25,11 @@ storyblokToTypescript({
   // optional function for custom types (key, obj) => {}
   // customTypeParser: exampleCustomParser
 })
+```
+
+#### 3. Run your script
+```
+$ node ./YOUR_SCRIPT_NAME.js
 ```
 
 #### Example Custom Parser
