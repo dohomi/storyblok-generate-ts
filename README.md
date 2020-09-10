@@ -1,5 +1,5 @@
-# storyblok-generate-ts | NodeJS script to generate TS-Types for Storyblok components
-This plugin uses `json-schema-to-typescript` to generate TS types based on a component schema.
+# storyblok-generate-ts
+This plugin uses `json-schema-to-typescript` to generate TS types based on `Storyblok` components.
 
 ### 1. Fetch your schema with Storyblok CLI
 ```
