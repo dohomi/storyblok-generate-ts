@@ -148,6 +148,8 @@ module.exports = function storyblokToTypescript ({
         return 'string'
       case 'richtext':
         return 'any'
+      case 'asset':
+        return 'string'
       default:
         return null
     }
