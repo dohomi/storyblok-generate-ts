@@ -77,6 +77,32 @@ module.exports = function storyblokToTypescript ({
             }
           }
         })
+      } else if (type === 'asset') {
+        Object.assign(parseObj, {
+          [key]: {
+            type: 'object',
+            properties: {
+              alt: {
+                type: 'string'
+              },
+              copyright: {
+                type: 'string'
+              },
+              id: {
+                type: 'number'
+              },
+              filename: {
+                type: 'string'
+              },
+              name: {
+                type: 'string'
+              },
+              title: {
+                type: 'string'
+              }
+            }
+          }
+        })
       }
       const schemaType = parseType(type)
       if (!schemaType) {
@@ -148,8 +174,6 @@ module.exports = function storyblokToTypescript ({
         return 'string'
       case 'richtext':
         return 'any'
-      case 'asset':
-        return 'string'
       default:
         return null
     }
