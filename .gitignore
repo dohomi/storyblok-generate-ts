@@ -104,3 +104,6 @@ dist
 .tern-port
 
 .idea
+
+example/components.*.json
+example/component-types-sb.ts

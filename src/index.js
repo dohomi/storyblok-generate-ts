@@ -1,5 +1,6 @@
 const {compile} = require('json-schema-to-typescript')
 const fs = require('fs')
+const camelcase = require('camelcase')
 // const ComponentsJson = require('./components.82895')
 // const {customTypeParser} = require('./generate-ts-schema-custom-types')
 
@@ -13,11 +14,27 @@ module.exports = function storyblokToTypescript ({
 }) {
   let tsString = []
 
+  const getTitle = (t) => titlePrefix + t + titleSuffix
+
+  const groupUuids = {}
+
+  componentsJson.components.forEach(value => {
+    if (value.component_group_uuid) {
+      if (!groupUuids[value.component_group_uuid]) {
+        groupUuids[value.component_group_uuid] = []
+      }
+      groupUuids[value.component_group_uuid].push(camelcase(getTitle(value.name), {
+        pascalCase: true
+      }))
+    }
+  })
+
   async function genTsSchema () {
     for (const values of componentsJson.components) {
       const obj = {}
-      obj.$id = '/' + values.name
-      obj.title = titlePrefix + values.name + titleSuffix
+      obj.$id = '#/' + values.name
+      // obj.$ref = '/' + values.name
+      obj.title = getTitle(values.name)
       obj.type = 'object'
       obj.properties = typeMapper(values.schema, obj.title)
       obj.properties._uid = {
@@ -49,7 +66,7 @@ module.exports = function storyblokToTypescript ({
         })
         tsString.push(ts)
       } catch (e) {
-        console.log(e)
+        console.log('ERROR', e)
       }
     }
   }
@@ -122,29 +139,33 @@ module.exports = function storyblokToTypescript ({
           }
         }
       }
-      if (type === 'bloks' && schemaElement.restrict_components && schemaElement.component_whitelist && schemaElement.component_whitelist.length) {
-        // console.log(obj[key], schemaElement, title)
-        // obj[key].anyOf = schemaElement.component_whitelist.map(item => {
-        //   return {'$ref': '/' + item}
-        // })
-        // obj[key].items = [
-        //   {
-        //     enum: schemaElement.component_whitelist.map((_item, i) => {
-        //       return i
-        //     }),
-        //     title: title,
-        //     tsEnumNames: schemaElement.component_whitelist.map(item => {
-        //       return item
-        //     })
-        //   }
-        // ]
-        // obj[key].items.enum = schemaElement.component_whitelist.map(item => {
-        //   return item
-        // })
-        // obj[key].items.tsEnumNames = schemaElement.component_whitelist.map(item => {
-        //   return item
-        // })
-        // obj.additionalItems = true
+      if (type === 'bloks') {
+        if (schemaElement.restrict_components) {
+          if (schemaElement.restrict_type === 'groups') {
+            if (Array.isArray(schemaElement.component_group_whitelist) && schemaElement.component_group_whitelist.length) {
+              let currentGroupElements = []
+              schemaElement.component_group_whitelist.forEach(groupId => {
+                const currentGroup = groupUuids[groupId]
+                if (Array.isArray(currentGroup)) {
+                  currentGroupElements = [...currentGroupElements, ...currentGroup]
+                } else {
+                  console.log('Group has no members: ', groupId)
+                }
+              })
+              obj[key].tsType = `(${currentGroupElements.join(' | ')})[]`
+            }
+          } else {
+            if (Array.isArray(schemaElement.component_whitelist) && schemaElement.component_whitelist.length) {
+              obj[key].tsType = `(${schemaElement.component_whitelist.map(i => camelcase(getTitle(i), {
+                pascalCase: true
+              })).join(' | ')})[]`
+            } else {
+              console.log('No whitelisted component found')
+            }
+          }
+        } else {
+          console.log('Type: bloks array but not whitelisted (will result in all elements):', title)
+        }
       }
       Object.assign(parseObj, obj)
     })
