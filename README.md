@@ -1,10 +1,16 @@
 # storyblok-generate-ts
 This plugin uses `json-schema-to-typescript` to generate TS types based on `Storyblok` components.
 
-### 1. Fetch your schema with Storyblok CLI
+### 1. Prepare the use of this script
+#### a) Fetch your schema with Storyblok CLI
 ```
 # Make sure storyblok is installed (npm i storyblok -g)
 $ storyblok pull-components --space=xxx
+```
+
+#### b) Install this library as devDependency
+```
+$ npm install -D storyblok-generate-ts
 ```
 
 ### 2. Create a NodeJS javascript file
@@ -66,3 +72,6 @@ function exampleCustomParser (key, obj) {
   }
 }
 ```
+
+#### Inspect your generated file
+You can inspect all interfaces in the generated output of your file. From now on all your components blocks will be type safe (even if you use the custom blocks of Storyblok).
