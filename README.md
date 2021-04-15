@@ -92,6 +92,6 @@ You can inspect all interfaces in the generated output of your file. From now on
 
 ### CHANGELOG
 
-1.0.0 initial version
-1.0.1 Added support for datetime and improved multilink
-1.1.0 CLI support
+* 1.0.0 initial version
+* 1.0.1 Added support for datetime and improved multilink
+* 1.1.0 CLI support, for use check 1 c)
