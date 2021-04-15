@@ -83,15 +83,61 @@ module.exports = function storyblokToTypescript ({
       } else if (type === 'multilink') {
         Object.assign(parseObj, {
           [key]: {
-            type: 'object',
-            properties: {
-              cached_url: {
-                type: 'string'
+            "oneOf": [
+              {
+                type: 'object',
+                properties: {
+                  cached_url: {
+                    type: 'string'
+                  },
+                  linktype: {
+                    type: 'string'
+                  }
+                }
               },
-              linktype: {
-                type: 'string'
-              }
-            }
+              {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'string'
+                  },
+                  cached_url: {
+                    type: 'string'
+                  },
+                  linktype: {
+                    type: 'string',
+                    enum: ['story']
+                  }
+                }
+              },
+              {
+                type: 'object',
+                properties: {
+                  url: {
+                    type: 'string'
+                  },
+                  cached_url: {
+                    type: 'string'
+                  },
+                  linktype: {
+                    type: 'string',
+                    enum: ['asset', 'url']
+                  }
+                }
+              },
+              {
+                type: 'object',
+                properties: {
+                  email: {
+                    type: 'string'
+                  },
+                  linktype: {
+                    type: 'string',
+                    enum: ['email']
+                  }
+                }
+              },
+            ]
           }
         })
       } else if (type === 'asset') {
@@ -195,6 +241,8 @@ module.exports = function storyblokToTypescript ({
         return 'string'
       case 'richtext':
         return 'any'
+      case 'datetime':
+        return 'string'
       default:
         return null
     }
