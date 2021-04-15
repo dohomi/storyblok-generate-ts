@@ -1,11 +1,12 @@
 # storyblok-generate-ts
-This plugin uses `json-schema-to-typescript` to generate TS types based on `Storyblok` components.
+This plugin uses `json-schema-to-typescript` to generate TS types based on `Storyblok` components. 
+You can install and run it as a CLI script
 
 ### 1. Prepare the use of this script
 #### a) Fetch your schema with Storyblok CLI
 ```
 # Make sure storyblok is installed (npm i storyblok -g)
-$ storyblok pull-components --space=xxx
+$ storyblok pull-components --space=[SPACE_ID]
 ```
 
 #### b) Install this library as devDependency
@@ -13,7 +14,20 @@ $ storyblok pull-components --space=xxx
 $ npm install -D storyblok-generate-ts
 ```
 
-### 2. Create a NodeJS javascript file
+#### c) Create node script inside of your package.json scripts 
+```
+"generate-sb-types": "storyblok-generate-ts source=./components.[SPACE_ID].json target=./component-types-sb"
+```
+#### Properties of CLI
+```
+- source *required - path of the components.[SPACE_ID].json
+- target *optional default: storyblok-component-types.d.ts
+- titlePrefix *optional default: '_storyblok' 
+- titleSuffix *optional
+- customTypeParser *optional - path to a custom parser NodeJS file
+```
+
+### Alternative to CLI script: create a NodeJS javascript file
 
 #### Example:
 ```js
@@ -75,3 +89,9 @@ function exampleCustomParser (key, obj) {
 
 #### Inspect your generated file
 You can inspect all interfaces in the generated output of your file. From now on all your components blocks will be type safe (even if you use the custom blocks of Storyblok).
+
+### CHANGELOG
+
+1.0.0 initial version
+1.0.1 Added support for datetime and improved multilink
+1.1.0 CLI support

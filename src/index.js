@@ -1,8 +1,6 @@
 const {compile} = require('json-schema-to-typescript')
 const fs = require('fs')
 const camelcase = require('camelcase')
-// const ComponentsJson = require('./components.82895')
-// const {customTypeParser} = require('./generate-ts-schema-custom-types')
 
 module.exports = function storyblokToTypescript ({
   componentsJson = {components: []},
