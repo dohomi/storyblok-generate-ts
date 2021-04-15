@@ -104,6 +104,7 @@ dist
 .tern-port
 
 .idea
+.vscode
 
 example/components.*.json
 example/component-types-sb.ts
