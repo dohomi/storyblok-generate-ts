@@ -142,6 +142,7 @@ module.exports = function storyblokToTypescript ({
         Object.assign(parseObj, {
           [key]: {
             type: 'object',
+            required: ['id', 'filename', 'name'],
             properties: {
               alt: {
                 type: 'string'
@@ -171,6 +172,7 @@ module.exports = function storyblokToTypescript ({
               type: 'array',
               items: {
                 type: 'object',
+                required: ['id', 'filename', 'name'],
                 properties: {
                   alt: {
                     type: 'string'
