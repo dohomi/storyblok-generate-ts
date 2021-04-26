@@ -81,7 +81,7 @@ module.exports = function storyblokToTypescript ({
       } else if (type === 'multilink') {
         Object.assign(parseObj, {
           [key]: {
-            "oneOf": [
+            'oneOf': [
               {
                 type: 'object',
                 properties: {
@@ -134,7 +134,7 @@ module.exports = function storyblokToTypescript ({
                     enum: ['email']
                   }
                 }
-              },
+              }
             ]
           }
         })
@@ -161,9 +161,41 @@ module.exports = function storyblokToTypescript ({
               title: {
                 type: 'string'
               }
-            }
+            },
+            additionalProperties: false
           }
         })
+      } else if (type === 'multiasset') {
+        Object.assign(parseObj, {
+            [key]: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  alt: {
+                    type: 'string'
+                  },
+                  copyright: {
+                    type: 'string'
+                  },
+                  id: {
+                    type: 'number'
+                  },
+                  filename: {
+                    type: 'string'
+                  },
+                  name: {
+                    type: 'string'
+                  },
+                  title: {
+                    type: 'string'
+                  }
+                },
+                additionalProperties: false
+              }
+            }
+          }
+        )
       }
       const schemaType = parseType(type)
       if (!schemaType) {

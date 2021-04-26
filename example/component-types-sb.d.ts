@@ -336,7 +336,7 @@ export interface CardListStoryblok {
     | "text_align_right"
     | "overlay_content_no_space"
   )[];
-  image_size?: "cover" | "contain" | "initial" | "auto";
+  image_size?: "cover" | "contain" | "initial" | "auto" | "none";
   image_ratio?: "16x9" | "1x1" | "4x3" | "3x2" | "2x3" | "1x3" | "3x1" | "2.85x1";
   hide_image?: boolean;
   border_radius?: "0" | "2" | "4" | "";
@@ -888,7 +888,7 @@ export interface GlobalStoryblok {
   pwa_app_name?: string;
   pwa_app_description?: string;
   toolbar?: (NavMenuStoryblok | ButtonStoryblok | ListSearchAutocompleteStoryblok)[];
-  multi_toolbar?: (ToolbarRowStoryblok | DividerStoryblok)[];
+  multi_toolbar?: ToolbarRowStoryblok[];
   toolbar_variant?: "primary" | "secondary" | "white" | "dark";
   toolbar_config?: ("fixed" | "text_bold" | "fixed_width" | "unelevated" | "scroll_collapse" | "enable_system_bar")[];
   toolbar_progress_color?: string;
@@ -953,6 +953,7 @@ export interface GlobalStoryblok {
     | EcommerceShopifyConfigStoryblok
     | EcommerceSnipcartConfigStoryblok
   )[];
+  custom_css?: string;
   _uid: string;
   component: "global";
   uuid?: string;
@@ -1148,12 +1149,12 @@ export interface ImageListStoryblok {
   enable_lightbox?: boolean;
   masonry?: boolean;
   fit_in_color?: string;
+  label_position?: "top" | "bottom";
   column_gap?: "0" | "2" | "4" | "8" | "16" | "24" | "32";
   column_count?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
   column_count_tablet?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
   column_count_phone?: "1" | "2" | "3" | "4";
   body?: ImageListItemStoryblok[];
-  label_position?: "top" | "bottom";
   _uid: string;
   component: "image_list";
   [k: string]: any;
@@ -1188,6 +1189,7 @@ export interface ImageListItemStoryblok {
   sub_title?: string;
   open_external?: boolean;
   alt?: string;
+  show_text_in_dialog?: boolean;
   _uid: string;
   component: "image_list_item";
   [k: string]: any;
@@ -1590,8 +1592,15 @@ export interface PlayerStoryblok {
     filename?: string;
     name?: string;
     title?: string;
-    [k: string]: any;
   };
+  url_alternatives?: {
+    alt?: string;
+    copyright?: string;
+    id?: number;
+    filename?: string;
+    name?: string;
+    title?: string;
+  }[];
   ratio?: "16x9" | "4x3" | "3x2" | "1x1";
   width?: string;
   height?: string;
@@ -1738,8 +1747,15 @@ export interface SectionVideoBgStoryblok {
     filename?: string;
     name?: string;
     title?: string;
-    [k: string]: any;
   };
+  url_alternatives?: {
+    alt?: string;
+    copyright?: string;
+    id?: number;
+    filename?: string;
+    name?: string;
+    title?: string;
+  }[];
   body?: RowStoryblok[];
   fallback_image?: string;
   property?: ("muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
