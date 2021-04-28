@@ -98,3 +98,4 @@ You can inspect all interfaces in the generated output of your file. From now on
 * 1.1.1 README update
 * 1.2.0 Add types for multiasset
 * 1.2.1 Improve type for asset and multiasset
+* 1.3.0 Default custom map. Support `seo-metatags`

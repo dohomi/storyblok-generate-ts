@@ -1,6 +1,7 @@
 const {compile} = require('json-schema-to-typescript')
 const fs = require('fs')
 const camelcase = require('camelcase')
+const defaultCustomMapper = require('./defaultCustomMapper')
 
 module.exports = function storyblokToTypescript ({
   componentsJson = {components: []},
@@ -76,6 +77,7 @@ module.exports = function storyblokToTypescript ({
       const schemaElement = schema[key]
       const type = schemaElement.type
       if (type === 'custom') {
+        Object.assign(parseObj, defaultCustomMapper(key, schemaElement))
         Object.assign(parseObj, customTypeParser(key, schemaElement))
         return
       } else if (type === 'multilink') {
