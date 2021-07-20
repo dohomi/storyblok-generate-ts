@@ -90,6 +90,18 @@ function exampleCustomParser (key, obj) {
 #### Inspect your generated file
 You can inspect all interfaces in the generated output of your file. From now on all your components blocks will be type safe (even if you use the custom blocks of Storyblok).
 
+#### Resolve relations
+If you use `resolve_relations` you can simply extend your required schema to support fully typed relations.
+
+Example: `resolve_relations: "page.author,page.categories,page.tags"`
+```ts
+type PageWithRelations = PageStoryblok & {
+  author?: StoryData<AuthorStoryblok>
+  categories?: StoryData<CategoryStoryblok>[]
+  tags?: StoryData<TagStoryblok>[]
+}
+``` 
+
 ### CHANGELOG
 
 * 1.0.0 initial version
