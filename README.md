@@ -111,4 +111,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.2.0 Add types for multiasset
 * 1.2.1 Improve type for asset and multiasset
 * 1.3.0 Default custom map. Support `seo-metatags`
-* 1.4.0 Add empty string options
+* 1.4.0 Allow empty string in options type (thanks to @jbeast)

@@ -28,7 +28,7 @@ export interface AccordionItemStoryblok {
 }
 
 export interface AuthContainerStoryblok {
-  display?: "hide_logged_in" | "require_logged_in";
+  display?: "" | "hide_logged_in" | "require_logged_in";
   require_role?: string;
   hide_on_role?: string;
   body?: (
@@ -139,8 +139,8 @@ export interface AuthFormStoryblok {
 }
 
 export interface AvatarStoryblok {
-  variant?: "circle" | "rounded" | "square";
-  size?: "dense" | "large" | "xlarge";
+  variant?: "" | "circle" | "rounded" | "square";
+  size?: "" | "dense" | "large" | "xlarge";
   custom_size?: number;
   image?: string;
   letter?: string;
@@ -154,13 +154,13 @@ export interface BackgroundStoryblok {
   alternative_image?: string;
   priority?: boolean;
   disable_lazy_loading?: boolean;
-  hide_image_on_breakpoint?: "xs" | "sm" | "md";
-  background_size?: "auto" | "contain" | "cover" | "initial" | "inherit";
+  hide_image_on_breakpoint?: "" | "xs" | "sm" | "md";
+  background_size?: "" | "auto" | "contain" | "cover" | "initial" | "inherit";
   image_focal_point?: string;
   background_position?: string;
   disable_smart_crop?: boolean;
   height?: string;
-  shadow_effect?: "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft" | "flowUp";
+  shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft" | "flowUp";
   elevation?: number;
   background_elements?: (
     | BackgroundElementItemStoryblok
@@ -169,7 +169,7 @@ export interface BackgroundStoryblok {
   )[];
   border_size?: number;
   border_radius?: string;
-  border_style?: "solid" | "dashed" | "dotted";
+  border_style?: "" | "solid" | "dashed" | "dotted";
   _uid: string;
   component: "background";
   [k: string]: any;
@@ -190,11 +190,11 @@ export interface BackgroundElementGradientStoryblok {
 
 export interface BackgroundElementItemStoryblok {
   url?: string;
-  size?: "contain" | "cover";
+  size?: "" | "contain" | "cover";
   size_fixed?: string;
-  repeat?: "repeat" | "repeat-x" | "repeat-y" | "round" | "space";
-  position_horizontal?: "left" | "center" | "right";
-  position_vertical?: "top" | "center" | "bottom";
+  repeat?: "" | "repeat" | "repeat-x" | "repeat-y" | "round" | "space";
+  position_horizontal?: "" | "left" | "center" | "right";
+  position_vertical?: "" | "top" | "center" | "bottom";
   _uid: string;
   component: "background_element_item";
   [k: string]: any;
@@ -259,13 +259,13 @@ export interface BottomNavigationItemStoryblok {
 }
 
 export interface ButtonStoryblok {
-  variant?: "outlined" | "raised" | "unelevated" | "fab";
-  size?: "dense" | "lm-button-large" | "lm-button-xlarge";
-  color?: "primary" | "secondary" | "primary_text" | "secondary_text" | "light" | "dark";
-  corners?: "lm-button-shaped" | "lm-button-square";
-  font?: "alt1" | "alt2" | "alt3" | "alt4";
-  align?: "flex-start" | "flex-end";
-  properties?: ("disable-ripple" | "disable-shadow" | "no-linebreak" | "fullWidth")[];
+  variant?: "" | "outlined" | "raised" | "unelevated" | "fab";
+  size?: "" | "dense" | "lm-button-large" | "lm-button-xlarge";
+  color?: "" | "primary" | "secondary" | "primary_text" | "secondary_text" | "light" | "dark";
+  corners?: "" | "lm-button-shaped" | "lm-button-square";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
+  align?: "" | "flex-start" | "flex-end";
+  properties?: ("" | "disable-ripple" | "disable-shadow" | "no-linebreak" | "fullWidth")[];
   label?: string;
   open_external?: boolean;
   image?: string;
@@ -302,7 +302,7 @@ export interface ButtonStoryblok {
 }
 
 export interface ButtonListStoryblok {
-  property?: ("margin_left" | "align_right")[];
+  property?: ("" | "margin_left" | "align_right")[];
   body?: ButtonStoryblok[];
   _uid: string;
   component: "button_list";
@@ -317,13 +317,14 @@ export interface ButtonSpeechTextStoryblok {
 }
 
 export interface CardListStoryblok {
-  column_gap?: "0" | "2" | "4" | "8" | "16" | "24" | "32";
-  column_count?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-  column_count_tablet?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-  column_count_phone?: "1" | "2" | "3" | "4";
+  column_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24" | "32";
+  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+  column_count_phone?: "" | "1" | "2" | "3" | "4";
   description_max_character?: number;
   card_actions_disable_spacing?: boolean;
   variant?: (
+    | ""
     | "over_media"
     | "title_top"
     | "font_white"
@@ -336,13 +337,14 @@ export interface CardListStoryblok {
     | "text_align_right"
     | "overlay_content_no_space"
   )[];
-  image_size?: "cover" | "contain" | "initial" | "auto" | "none";
-  image_ratio?: "16x9" | "1x1" | "4x3" | "3x2" | "2x3" | "1x3" | "3x1" | "2.85x1";
+  image_size?: "" | "cover" | "contain" | "initial" | "auto" | "none";
+  image_ratio?: "" | "16x9" | "1x1" | "4x3" | "3x2" | "2x3" | "1x3" | "3x1" | "2.85x1";
   hide_image?: boolean;
-  border_radius?: "0" | "2" | "4" | "";
-  shadow_effect?: "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft" | "flowUp";
-  elevation?: "0" | "1" | "2" | "4" | "8" | "12" | "16" | "20" | "3" | "5" | "6" | "24" | "22";
+  border_radius?: "" | "0" | "2" | "4";
+  shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft" | "flowUp";
+  elevation?: "" | "0" | "1" | "2" | "4" | "8" | "12" | "16" | "20" | "3" | "5" | "6" | "24" | "22";
   title_typography?:
+    | ""
     | "headline2"
     | "headline3"
     | "headline4"
@@ -353,10 +355,10 @@ export interface CardListStoryblok {
     | "caption"
     | "body1"
     | "body2"
-    | "overline"
-    | "";
-  title_tag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+    | "overline";
+  title_tag?: "" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   subtitle_typography?:
+    | ""
     | "headline1"
     | "headline2"
     | "headline3"
@@ -367,10 +369,9 @@ export interface CardListStoryblok {
     | "subtitle2"
     | "body1"
     | "body2"
-    | "caption"
-    | "";
-  subtitle_tag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p";
-  description_typography?: "headline4" | "headline5" | "headline6" | "body1" | "body2" | "caption" | "overline";
+    | "caption";
+  subtitle_tag?: "" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+  description_typography?: "" | "headline4" | "headline5" | "headline6" | "body1" | "body2" | "caption" | "overline";
   body?: CardListItemStoryblok[];
   _uid: string;
   component: "card_list";
@@ -450,16 +451,32 @@ export interface ChatTawktoStoryblok {
 export interface ChatWhatsappStoryblok {
   phone_number?: string;
   tooltip?: string;
-  size?: "small" | "medium" | "large";
+  size?: "" | "small" | "medium" | "large";
   _uid: string;
   component: "chat_whatsapp";
   [k: string]: any;
 }
 
 export interface ColumnStoryblok {
-  width_general?: "12" | "11" | "10" | "9" | "8" | "7" | "6" | "5" | "4" | "3" | "2" | "1" | "false" | "auto" | "true";
-  width_tablet?: "8" | "7" | "6" | "5" | "4" | "3" | "2" | "1" | "false" | "auto" | "true";
-  width_phone?: "4" | "3" | "2" | "1" | "false" | "auto" | "true";
+  width_general?:
+    | ""
+    | "12"
+    | "11"
+    | "10"
+    | "9"
+    | "8"
+    | "7"
+    | "6"
+    | "5"
+    | "4"
+    | "3"
+    | "2"
+    | "1"
+    | "false"
+    | "auto"
+    | "true";
+  width_tablet?: "" | "8" | "7" | "6" | "5" | "4" | "3" | "2" | "1" | "false" | "auto" | "true";
+  width_phone?: "" | "4" | "3" | "2" | "1" | "false" | "auto" | "true";
   body?: (
     | AccordionStoryblok
     | AuthContainerStoryblok
@@ -508,9 +525,9 @@ export interface ColumnStoryblok {
     | TimelineStoryblok
   )[];
   background?: BackgroundStoryblok[];
-  justify?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
-  align_content?: "flex-start" | "flex-end" | "center" | "space-around" | "space-between" | "stretch";
-  align_items?: "flex-start" | "flex-end" | "center" | "stretch" | "baseline";
+  justify?: "" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+  align_content?: "" | "flex-start" | "flex-end" | "center" | "space-around" | "space-between" | "stretch";
+  align_items?: "" | "flex-start" | "flex-end" | "center" | "stretch" | "baseline";
   styles?: StylesStoryblok[];
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
@@ -525,6 +542,7 @@ export interface DateHeadlineStoryblok {
   line_height?: string;
   letter_spacing?: string;
   typography?:
+    | ""
     | "headline1"
     | "headline2"
     | "headline3"
@@ -538,10 +556,10 @@ export interface DateHeadlineStoryblok {
     | "subtitle1"
     | "subtitle2"
     | "overline";
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-  font?: "alt1" | "alt2" | "alt3" | "alt4";
-  align?: "left" | "center" | "right" | "justify";
-  color?: "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
+  tag?: "" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
+  align?: "" | "left" | "center" | "right" | "justify";
+  color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
   text?: string;
   text_xs?: string;
   _uid: string;
@@ -551,7 +569,7 @@ export interface DateHeadlineStoryblok {
 
 export interface DialogStoryblok {
   title?: string;
-  fullscreen?: "xs" | "sm" | "md" | "lg" | "xl";
+  fullscreen?: "" | "xs" | "sm" | "md" | "lg" | "xl";
   trigger?: (ButtonStoryblok | HeadlineStoryblok | ImageStoryblok | IconStoryblok)[];
   body?: (
     | AccordionStoryblok
@@ -702,19 +720,34 @@ export interface EcommerceShopifyConfigStoryblok {
   product_active_variant?: ButtonStoryblok[];
   product_description_trigger?: (ButtonStoryblok | HeadlineStoryblok | ImageStoryblok | IconStoryblok)[];
   sdk_url?: string;
-  floating_button_color?: "primary" | "secondary" | "success" | "info" | "warning";
+  floating_button_color?: "" | "primary" | "secondary" | "success" | "info" | "warning";
   domain?: string;
   access_token?: string;
   currency_prefix?: string;
-  floating_badge_color?: "primary" | "secondary" | "error" | "success" | "info" | "warning";
-  columns_justify?: "space-between" | "space-around" | "space-evenly" | "center" | "flex-start" | "flex-end";
-  columns_align_items?: "center" | "flex-start" | "flex-end" | "stretch";
+  floating_badge_color?: "" | "primary" | "secondary" | "error" | "success" | "info" | "warning";
+  columns_justify?: "" | "space-between" | "space-around" | "space-evenly" | "center" | "flex-start" | "flex-end";
+  columns_align_items?: "" | "center" | "flex-start" | "flex-end" | "stretch";
   cart_toolbar?: HeadlineStoryblok[];
   cart_footer?: HeadlineStoryblok[];
   cart_checkout?: ButtonStoryblok[];
   cart_footer_additional?: HeadlineStoryblok[];
-  columns_first_width?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "auto" | "true";
-  columns_second_width?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "auto" | "true";
+  columns_first_width?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "auto" | "true";
+  columns_second_width?:
+    | ""
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "auto"
+    | "true";
   carousel_auto_play?: boolean;
   carousel_hide_indicator?: boolean;
   _uid: string;
@@ -724,8 +757,8 @@ export interface EcommerceShopifyConfigStoryblok {
 
 export interface EcommerceShopifyIframeStoryblok {
   product_id?: number;
-  button_destination?: "cart" | "modal" | "checkout";
-  layout?: "vertical" | "horizontal";
+  button_destination?: "" | "cart" | "modal" | "checkout";
+  layout?: "" | "vertical" | "horizontal";
   width?: string;
   is_button?: boolean;
   _uid: string;
@@ -763,9 +796,9 @@ export interface ErrorPageStoryblok {
 export interface FlexRowStoryblok {
   column?: boolean;
   full_height?: boolean;
-  justify?: "space-around" | "center" | "space-between" | "space-evenly" | "flex-start" | "flex-end";
-  align_content?: "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around";
-  align_items?: "center" | "baseline" | "flex-start" | "flex-end" | "stretch";
+  justify?: "" | "space-around" | "center" | "space-between" | "space-evenly" | "flex-start" | "flex-end";
+  align_content?: "" | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around";
+  align_items?: "" | "center" | "baseline" | "flex-start" | "flex-end" | "stretch";
   body?: (
     | AccordionStoryblok
     | AuthContainerStoryblok
@@ -826,9 +859,9 @@ export interface FormStoryblok {
   error_msg_required?: string;
   fields_min_width?: number;
   submit_button: ButtonStoryblok[];
-  fields_border?: "standard" | "filled" | "outlined";
+  fields_border?: "" | "standard" | "filled" | "outlined";
   fields_full_width?: boolean;
-  fields_gap?: "0" | "2" | "4" | "8" | "16" | "24";
+  fields_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24";
   _uid: string;
   component: "form";
   [k: string]: any;
@@ -865,7 +898,7 @@ export interface FormSelectOptionStoryblok {
 export interface FormTextfieldStoryblok {
   name: string;
   label?: string;
-  type?: "email" | "number";
+  type?: "" | "email" | "number";
   textarea?: boolean;
   required?: boolean;
   help_text?: string;
@@ -889,13 +922,21 @@ export interface GlobalStoryblok {
   pwa_app_description?: string;
   toolbar?: (NavMenuStoryblok | ButtonStoryblok | ListSearchAutocompleteStoryblok)[];
   multi_toolbar?: ToolbarRowStoryblok[];
-  toolbar_variant?: "primary" | "secondary" | "white" | "dark";
-  toolbar_config?: ("fixed" | "text_bold" | "fixed_width" | "unelevated" | "scroll_collapse" | "enable_system_bar")[];
+  toolbar_variant?: "" | "primary" | "secondary" | "white" | "dark";
+  toolbar_config?: (
+    | ""
+    | "fixed"
+    | "text_bold"
+    | "fixed_width"
+    | "unelevated"
+    | "scroll_collapse"
+    | "enable_system_bar"
+  )[];
   toolbar_progress_color?: string;
   toolbar_background?: string;
   toolbar_main_height?: number;
   toolbar_font_size?: string;
-  theme_base: "base" | "dark";
+  theme_base: "" | "base" | "dark";
   theme_primary?: string;
   theme_primary_contrast?: string;
   theme_secondary?: string;
@@ -909,7 +950,7 @@ export interface GlobalStoryblok {
   theme_font_alt2?: string;
   theme_font_alt3?: string;
   theme_font_alt4?: string;
-  theme_container_width?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+  theme_container_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
   tawkto?: string;
   chat_button?: (ChatFacebookStoryblok | ChatTawktoStoryblok | ChatWhatsappStoryblok)[];
   setup_favicon?: string;
@@ -927,15 +968,15 @@ export interface GlobalStoryblok {
     | DividerStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
-  drawer_variant?: "persistent" | "temporary";
-  mobile_nav_breakpoint?: "sm" | "md" | "lg" | "xl";
+  drawer_variant?: "" | "persistent" | "temporary";
+  mobile_nav_breakpoint?: "" | "sm" | "md" | "lg" | "xl";
   drawer_width?: number;
   drawer_below_toolbar?: boolean;
   drawer_below_toolbar_xs?: boolean;
   drawer_full_width_mobile?: boolean;
   drawer_background?: BackgroundStoryblok[];
   footer?: (RowStoryblok | SectionStoryblok)[];
-  footer_config?: ("footer-large" | "footer-small")[];
+  footer_config?: ("" | "footer-large" | "footer-small")[];
   seo_title?: string;
   seo_description?: string;
   seo_website_url?: string;
@@ -966,10 +1007,11 @@ export interface HeadlineStoryblok {
   prefix?: string;
   suffix?: string;
   count_duration?: number;
-  animation?: "linear" | "easeInCubic" | "easeOutCubic";
+  animation?: "" | "linear" | "easeInCubic" | "easeOutCubic";
   text?: string;
   text_xs?: string;
   typography?:
+    | ""
     | "headline1"
     | "headline2"
     | "headline3"
@@ -983,10 +1025,10 @@ export interface HeadlineStoryblok {
     | "subtitle1"
     | "subtitle2"
     | "overline";
-  font?: "alt1" | "alt2" | "alt3" | "alt4";
-  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-  color?: "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
-  align?: "left" | "center" | "right" | "justify";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
+  tag?: "" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
+  color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
+  align?: "" | "left" | "center" | "right" | "justify";
   font_size?: string;
   line_height?: string;
   letter_spacing?: string;
@@ -1080,7 +1122,7 @@ export interface HubspotMeetingStoryblok {
 }
 
 export interface IconStoryblok {
-  size?: "xmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge";
+  size?: "" | "xmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge";
   icon_url?: string;
   _uid: string;
   component: "icon";
@@ -1089,12 +1131,12 @@ export interface IconStoryblok {
 
 export interface IframeStoryblok {
   url?: string;
-  responsive_ratio?: "16by9" | "4by3" | "3by2" | "1by1";
+  responsive_ratio?: "" | "16by9" | "4by3" | "3by2" | "1by1";
   height?: string;
   width?: string;
-  display?: "relative" | "absolute";
-  property?: "allow_fullscreen"[];
-  allow?: ("geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
+  display?: "" | "relative" | "absolute";
+  property?: ("" | "allow_fullscreen")[];
+  allow?: ("" | "geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
   full_height?: boolean;
   _uid: string;
   component: "iframe";
@@ -1102,11 +1144,11 @@ export interface IframeStoryblok {
 }
 
 export interface IframeAdvancedStoryblok {
-  display?: "relative" | "absolute";
+  display?: "" | "relative" | "absolute";
   height?: string;
   width?: string;
-  property?: "allow_fullscreen"[];
-  allow?: ("geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
+  property?: ("" | "allow_fullscreen")[];
+  allow?: ("" | "geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
   url?: string;
   post_message_key?: string;
   incoming_message_key?: string;
@@ -1120,9 +1162,9 @@ export interface ImageStoryblok {
   alt?: string;
   priority?: boolean;
   disable_lazy_loading?: boolean;
-  image_crop?: ("image_crop" | "smart_crop")[];
+  image_crop?: ("" | "image_crop" | "smart_crop")[];
   focal_point?: string;
-  property?: ("img-thumbnail" | "rounded" | "rounded-circle" | "square" | "rounded-0")[];
+  property?: ("" | "img-thumbnail" | "rounded" | "rounded-circle" | "square" | "rounded-0")[];
   height?: number;
   height_xs?: number;
   width?: number;
@@ -1144,16 +1186,16 @@ export interface ImageCoreStoryblok {
 }
 
 export interface ImageListStoryblok {
-  aspect_ratio?: "1x1" | "16x9" | "4x3" | "3x4" | "3x2" | "2x3" | "1x2" | "2x1" | "1x3" | "3x1" | "2.85x1";
+  aspect_ratio?: "" | "1x1" | "16x9" | "4x3" | "3x4" | "3x2" | "2x3" | "1x2" | "2x1" | "1x3" | "3x1" | "2.85x1";
   text_protection?: boolean;
   enable_lightbox?: boolean;
   masonry?: boolean;
   fit_in_color?: string;
-  label_position?: "top" | "bottom";
-  column_gap?: "0" | "2" | "4" | "8" | "16" | "24" | "32";
-  column_count?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-  column_count_tablet?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-  column_count_phone?: "1" | "2" | "3" | "4";
+  label_position?: "" | "top" | "bottom";
+  column_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24" | "32";
+  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+  column_count_phone?: "" | "1" | "2" | "3" | "4";
   body?: ImageListItemStoryblok[];
   _uid: string;
   component: "image_list";
@@ -1199,19 +1241,19 @@ export interface InstagramListStoryblok {
   hide_description?: boolean;
   hide_likes?: boolean;
   hide_comments?: boolean;
-  column_gap?: "0" | "2" | "4" | "8" | "12" | "16" | "24" | "32";
-  column_count?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-  column_count_tablet?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-  column_count_phone?: "1" | "2" | "3" | "4";
+  column_gap?: "" | "0" | "2" | "4" | "8" | "12" | "16" | "24" | "32";
+  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+  column_count_phone?: "" | "1" | "2" | "3" | "4";
   height?: number;
   masonry?: boolean;
   username: string;
   max_posts?: number;
-  type?: "iframe" | "image";
+  type?: "" | "iframe" | "image";
   hide_caption?: boolean;
   hide_videos?: boolean;
   hide_images?: boolean;
-  shadow_effect?: "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft";
+  shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft";
   _uid: string;
   component: "instagram_list";
   [k: string]: any;
@@ -1270,17 +1312,17 @@ export interface ListsStoryblok {
   two_line?: boolean;
   hide_subtitle?: boolean;
   hide_image?: boolean;
-  image_size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
+  image_size?: "" | "xsmall" | "small" | "medium" | "large" | "xlarge";
   _uid: string;
   component: "lists";
   [k: string]: any;
 }
 
 export interface ListSearchAutocompleteStoryblok {
-  shape?: "rounded" | "square";
+  shape?: "" | "rounded" | "square";
   large?: boolean;
   height?: number;
-  mobile_breakpoint?: "xs" | "sm" | "md" | "lg";
+  mobile_breakpoint?: "" | "xs" | "sm" | "md" | "lg";
   fullwidth?: boolean;
   outlined?: boolean;
   menu_border_radius?: string;
@@ -1308,7 +1350,7 @@ export interface ListSearchFieldStoryblok {
 export interface ListWidgetStoryblok {
   categories?: any[];
   enable_for_search?: boolean;
-  sort?: "publish" | "updated" | "created" | "title";
+  sort?: "" | "publish" | "updated" | "created" | "title";
   sort_descending?: boolean;
   maximum_items?: number;
   match_all_tags?: boolean;
@@ -1329,10 +1371,10 @@ export interface LogoStoryblok {
 }
 
 export interface MotionStoryblok {
-  type?: "fade" | "grow" | "slide" | "zoom" | "collapse";
+  type?: "" | "fade" | "grow" | "slide" | "zoom" | "collapse";
   duration?: number;
   threshold?: number;
-  slide_direction?: "left" | "right" | "down" | "up";
+  slide_direction?: "" | "left" | "right" | "down" | "up";
   enable_overflow?: boolean;
   body?: (
     | AccordionStoryblok
@@ -1419,7 +1461,7 @@ export interface NavItemStoryblok {
 }
 
 export interface NavListStoryblok {
-  properties?: ("flex-column" | "justify-content-center")[];
+  properties?: ("" | "flex-column" | "justify-content-center")[];
   collapse_on_mobile?: boolean;
   header?: string;
   body?: (NavItemStoryblok | NavMenuStoryblok | ButtonStoryblok)[];
@@ -1432,7 +1474,7 @@ export interface NavMenuStoryblok {
   title?: string;
   title_custom?: (ButtonStoryblok | HeadlineStoryblok | ImageStoryblok)[];
   body?: (NavMenuItemStoryblok | RowStoryblok | NavMenuStoryblok)[];
-  alignment?: "bottomStart" | "bottomEnd" | "bottomCenter";
+  alignment?: "" | "bottomStart" | "bottomEnd" | "bottomCenter";
   border_radius?: string;
   _uid: string;
   component: "nav_menu";
@@ -1487,7 +1529,7 @@ export interface PageStoryblok {
     | SeoCorporateContactStoryblok
   )[];
   meta_robots?: boolean;
-  property?: "has_feature"[];
+  property?: ("" | "has_feature")[];
   body?: (
     | SectionStoryblok
     | SectionVideoBgStoryblok
@@ -1544,7 +1586,7 @@ export interface PageStoryblok {
     | TabsStoryblok
     | TimelineStoryblok
   )[];
-  mobile_breakpoint?: "sm" | "md" | "lg" | "xl";
+  mobile_breakpoint?: "" | "sm" | "md" | "lg" | "xl";
   right_drawer_width?: number;
   _uid: string;
   component: "page";
@@ -1555,6 +1597,7 @@ export interface PageStoryblok {
 export interface ParagraphStoryblok {
   text?: string;
   typography?:
+    | ""
     | "body1"
     | "body2"
     | "subtitle1"
@@ -1567,7 +1610,7 @@ export interface ParagraphStoryblok {
     | "headline4"
     | "headline5"
     | "headline6";
-  font?: "alt1" | "alt2" | "alt3" | "alt4";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   _uid: string;
   component: "paragraph";
   [k: string]: any;
@@ -1601,7 +1644,7 @@ export interface PlayerStoryblok {
     name: string;
     title?: string;
   }[];
-  ratio?: "16x9" | "4x3" | "3x2" | "1x1";
+  ratio?: "" | "16x9" | "4x3" | "3x2" | "1x1";
   width?: string;
   height?: string;
   controls?: boolean;
@@ -1622,7 +1665,7 @@ export interface PricingStoryblok {
   column_count?: number;
   column_count_tablet?: number;
   column_count_phone?: number;
-  column_gap?: "2" | "4" | "8" | "16" | "24" | "32";
+  column_gap?: "" | "2" | "4" | "8" | "16" | "24" | "32";
   _uid: string;
   component: "pricing";
   [k: string]: any;
@@ -1652,8 +1695,15 @@ export interface PromotionStoryblok {
 export interface PromotionItemStoryblok {
   body?: (HeadlineStoryblok | ButtonStoryblok | ButtonListStoryblok | ParagraphStoryblok | HtmlStoryblok)[];
   action?: (ButtonStoryblok | ButtonListStoryblok)[];
-  position?: "top_left" | "top_right" | "bottom_left" | "bottom_right" | "top_left_overlap" | "bottom_left_overlap";
-  variant?: "variant-1" | "variant-2" | "variant-3" | "variant-4";
+  position?:
+    | ""
+    | "top_left"
+    | "top_right"
+    | "bottom_left"
+    | "bottom_right"
+    | "top_left_overlap"
+    | "bottom_left_overlap";
+  variant?: "" | "variant-1" | "variant-2" | "variant-3" | "variant-4";
   _uid: string;
   component: "promotion_item";
   [k: string]: any;
@@ -1664,6 +1714,7 @@ export interface RichTextEditorStoryblok {
   line_height?: string;
   letter_spacing?: string;
   typography?:
+    | ""
     | "body1"
     | "body2"
     | "subtitle1"
@@ -1676,9 +1727,9 @@ export interface RichTextEditorStoryblok {
     | "headline4"
     | "headline5"
     | "headline6";
-  color?: "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
-  align?: "left" | "center" | "right" | "justify";
-  font?: "alt1" | "alt2" | "alt3" | "alt4";
+  color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
+  align?: "" | "left" | "center" | "right" | "justify";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   body?: any;
   styles?: StylesStoryblok[];
   styles_mobile?: StylesStoryblok[];
@@ -1692,11 +1743,11 @@ export interface RichTextEditorStoryblok {
 
 export interface RowStoryblok {
   background?: BackgroundStoryblok[];
-  spacing?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
-  justify?: "flex-start" | "center" | "flex-end" | "space-between" | "space-evenly" | "space-around";
-  align_content?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "stretch";
-  align_items?: "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
-  direction?: "row" | "column" | "row-reverse" | "column-reverse";
+  spacing?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
+  justify?: "" | "flex-start" | "center" | "flex-end" | "space-between" | "space-evenly" | "space-around";
+  align_content?: "" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "stretch";
+  align_items?: "" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+  direction?: "" | "row" | "column" | "row-reverse" | "column-reverse";
   body?: ColumnStoryblok[];
   reverse_on_mobile?: boolean;
   reverse_on_tablet?: boolean;
@@ -1712,12 +1763,12 @@ export interface RowStoryblok {
 export interface SectionStoryblok {
   section_identifier?: string;
   body?: (RowStoryblok | CardListStoryblok | PricingStoryblok | ImageStoryblok)[];
-  variant?: "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
+  variant?: "" | "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
   background?: BackgroundStoryblok[];
-  property?: ("is_full_height" | "allow_overflow")[];
+  property?: ("" | "is_full_height" | "allow_overflow")[];
   padding?: string;
-  max_width?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
-  background_style?: "fixed_image" | "fixed_cover";
+  max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
+  background_style?: "" | "fixed_image" | "fixed_cover";
   styles?: StylesStoryblok[];
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
@@ -1758,10 +1809,10 @@ export interface SectionVideoBgStoryblok {
   }[];
   body?: RowStoryblok[];
   fallback_image?: string;
-  property?: ("muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
-  video_ratio?: "16x9" | "1280x720" | "4x3" | "16x6";
+  property?: ("" | "muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
+  video_ratio?: "" | "16x9" | "1280x720" | "4x3" | "16x6";
   height?: number;
-  max_width?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
+  max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
   _uid: string;
   component: "section_video_bg";
   [k: string]: any;
@@ -1811,6 +1862,7 @@ export interface SeoLocalBusinessOpeningHourStoryblok {
   opens: string;
   closes: string;
   day_of_week: (
+    | ""
     | "Monday"
     | "Tuesday"
     | "Wednesday"
@@ -1858,11 +1910,13 @@ export interface SeoProductOfferStoryblok {
   price_currency: string;
   price_valid_until?: string;
   item_condition?:
+    | ""
     | "https://schema.org/DamagedCondition"
     | "https://schema.org/NewCondition"
     | "https://schema.org/RefurbishedCondition"
     | "https://schema.org/UsedCondition";
   availability?:
+    | ""
     | "https://schema.org/Discontinued"
     | "https://schema.org/InStock"
     | "https://schema.org/InStoreOnly"
@@ -1880,7 +1934,7 @@ export interface SeoProductOfferStoryblok {
 }
 
 export interface SeoSocialProfileStoryblok {
-  type: "Person" | "Organization";
+  type: "" | "Person" | "Organization";
   name: string;
   url: string;
   same_as: string;
@@ -1892,7 +1946,7 @@ export interface SeoSocialProfileStoryblok {
 export interface SeoTwitterStoryblok {
   site?: string;
   handle?: string;
-  card_type?: "summary" | "summary_large_image" | "app" | "player";
+  card_type?: "" | "summary" | "summary_large_image" | "app" | "player";
   _uid: string;
   component: "seo_twitter";
   [k: string]: any;
@@ -1900,6 +1954,7 @@ export interface SeoTwitterStoryblok {
 
 export interface SliderStoryblok {
   property?: (
+    | ""
     | "pagination_dark"
     | "arrows_dark"
     | "hide_pagination"
@@ -1912,7 +1967,7 @@ export interface SliderStoryblok {
   )[];
   slides_per_view?: number;
   disable_transition?: boolean;
-  section_variant?: "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
+  section_variant?: "" | "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
   body?: (SectionStoryblok | PromotionStoryblok | ImageStoryblok | ImageListStoryblok | SectionVideoBgStoryblok)[];
   _uid: string;
   component: "slider";
@@ -1920,11 +1975,11 @@ export interface SliderStoryblok {
 }
 
 export interface SnackbarStoryblok {
-  anchor_horizontal?: "center" | "left" | "right";
-  anchor_vertical?: "top" | "bottom";
+  anchor_horizontal?: "" | "center" | "left" | "right";
+  anchor_vertical?: "" | "top" | "bottom";
   button_top_align?: boolean;
   width?: string;
-  display?: "hide_on_scroll" | "show_on_scroll";
+  display?: "" | "hide_on_scroll" | "show_on_scroll";
   auto_show?: number;
   auto_close?: number;
   square?: boolean;
@@ -1982,7 +2037,7 @@ export interface SnackbarStoryblok {
   cookie_name?: string;
   expire_in_days?: number;
   prevent_click_outside?: boolean;
-  max_width?: "xs" | "sm" | "md" | "lg" | "xl";
+  max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "snackbar";
   [k: string]: any;
@@ -2050,12 +2105,13 @@ export interface StaticSectionStoryblok {
 
 export interface StylesStoryblok {
   border_width?: string;
-  color_theme?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
+  color_theme?: "" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
   background?: string;
-  background_color_theme?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
+  background_color_theme?: "" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
   elevation?: number;
   box_shadow?: string;
   border_style?:
+    | ""
     | "solid"
     | "dashed"
     | "dotted"
@@ -2070,16 +2126,16 @@ export interface StylesStoryblok {
     | "revert"
     | "ridge"
     | "unset";
-  border_color_theme?: "primary" | "secondary" | "error" | "success" | "info" | "warning" | "grey";
+  border_color_theme?: "" | "primary" | "secondary" | "error" | "success" | "info" | "warning" | "grey";
   border_radius?: string;
-  border_position?: ("top" | "left" | "right" | "bottom")[];
+  border_position?: ("" | "top" | "left" | "right" | "bottom")[];
   margin?: string;
   padding?: string;
   width?: string;
   height?: string;
-  display?: "block" | "inline-block" | "inline-flex" | "flex" | "none";
+  display?: "" | "block" | "inline-block" | "inline-flex" | "flex" | "none";
   z_index?: number;
-  position?: "relative" | "absolute" | "fixed" | "static" | "sticky";
+  position?: "" | "relative" | "absolute" | "fixed" | "static" | "sticky";
   top?: string;
   left?: string;
   bottom?: string;
@@ -2101,7 +2157,7 @@ export interface StyleVariantsBgStoryblok {
 }
 
 export interface TableStoryblok {
-  variant?: "comparison" | "bordered" | "bordered-bold" | "boxed" | "price";
+  variant?: "" | "comparison" | "bordered" | "bordered-bold" | "boxed" | "price";
   disable_table_head?: boolean;
   _uid: string;
   component: "table";
@@ -2110,16 +2166,16 @@ export interface TableStoryblok {
 
 export interface TabsStoryblok {
   vertical_tabs?: boolean;
-  mobile_breakpoint?: "xs" | "sm" | "md";
-  tabs_width?: "2" | "3" | "4" | "5" | "6" | "auto";
-  content_width?: "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "auto" | "true";
+  mobile_breakpoint?: "" | "xs" | "sm" | "md";
+  tabs_width?: "" | "2" | "3" | "4" | "5" | "6" | "auto";
+  content_width?: "" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "auto" | "true";
   wrapped?: boolean;
-  variant?: "fullWidth" | "scrollable" | "standard";
+  variant?: "" | "fullWidth" | "scrollable" | "standard";
   centered?: boolean;
   dynamic_height?: boolean;
   body?: TabsItemStoryblok[];
-  text_color?: "secondary" | "primary" | "inherit";
-  indicator_color?: "secondary" | "primary";
+  text_color?: "" | "secondary" | "primary" | "inherit";
+  indicator_color?: "" | "secondary" | "primary";
   _uid: string;
   component: "tabs";
   [k: string]: any;
@@ -2180,8 +2236,8 @@ export interface TabsItemStoryblok {
 }
 
 export interface TimelineStoryblok {
-  align?: "left" | "right";
-  variant?: "outlined" | "naked";
+  align?: "" | "left" | "right";
+  variant?: "" | "outlined" | "naked";
   body?: TimelineItemStoryblok[];
   _uid: string;
   component: "timeline";
@@ -2189,8 +2245,8 @@ export interface TimelineStoryblok {
 }
 
 export interface TimelineItemStoryblok {
-  dot_variant?: "outlined" | "naked";
-  dot_color?: "primary" | "secondary";
+  dot_variant?: "" | "outlined" | "naked";
+  dot_color?: "" | "primary" | "secondary";
   icon?: AvatarStoryblok[];
   title?: string;
   subheader?: string;
@@ -2333,7 +2389,7 @@ export interface ToolbarNaviButtonStoryblok {
 
 export interface ToolbarRowStoryblok {
   body?: ToolbarRowSectionStoryblok[];
-  justify?: "space-between" | "space-around" | "space-evenly" | "flex-start" | "flex-end" | "center";
+  justify?: "" | "space-between" | "space-around" | "space-evenly" | "flex-start" | "flex-end" | "center";
   is_system_bar?: boolean;
   height?: number;
   _uid: string;
@@ -2342,7 +2398,7 @@ export interface ToolbarRowStoryblok {
 }
 
 export interface ToolbarRowSectionStoryblok {
-  align?: "flex-start" | "flex-end" | "center";
+  align?: "" | "flex-start" | "flex-end" | "center";
   use_media_query?: boolean;
   body?: (
     | ToolbarLogoStoryblok
