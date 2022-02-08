@@ -211,6 +211,9 @@ module.exports = function storyblokToTypescript ({
       }
       if (schemaElement.options && schemaElement.options.length) {
         const items = schemaElement.options.map(item => item.value)
+        if (schemaElement.exclude_empty_option !== true) {
+          items.unshift('')
+        }
         if (schemaType === 'string') {
           obj[key].enum = items
         } else {
