@@ -211,7 +211,8 @@ module.exports = function storyblokToTypescript ({
       }
       if (schemaElement.options && schemaElement.options.length) {
         const items = schemaElement.options.map(item => item.value)
-        if (schemaElement.exclude_empty_option !== true) {
+
+        if (type === 'option' && schemaElement.exclude_empty_option !== true) {
           items.unshift('')
         }
         if (schemaType === 'string') {

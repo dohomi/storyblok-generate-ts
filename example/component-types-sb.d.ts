@@ -46,8 +46,12 @@ export interface AuthContainerStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -62,7 +66,9 @@ export interface AuthContainerStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -72,11 +78,13 @@ export interface AuthContainerStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "auth_container";
@@ -99,8 +107,12 @@ export interface AuthFormStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -115,7 +127,9 @@ export interface AuthFormStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -125,11 +139,13 @@ export interface AuthFormStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   account_update_button?: ButtonStoryblok[];
   account_delete_button?: ButtonStoryblok[];
@@ -142,6 +158,7 @@ export interface AvatarStoryblok {
   variant?: "" | "circle" | "rounded" | "square";
   size?: "" | "dense" | "large" | "xlarge";
   custom_size?: number;
+  font_size?: number;
   image?: string;
   letter?: string;
   _uid: string;
@@ -154,6 +171,7 @@ export interface BackgroundStoryblok {
   alternative_image?: string;
   priority?: boolean;
   disable_lazy_loading?: boolean;
+  toggle_image_loading?: boolean;
   hide_image_on_breakpoint?: "" | "xs" | "sm" | "md";
   background_size?: "" | "auto" | "contain" | "cover" | "initial" | "inherit";
   image_focal_point?: string;
@@ -265,7 +283,7 @@ export interface ButtonStoryblok {
   corners?: "" | "lm-button-shaped" | "lm-button-square";
   font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   align?: "" | "flex-start" | "flex-end";
-  properties?: ("" | "disable-ripple" | "disable-shadow" | "no-linebreak" | "fullWidth")[];
+  properties?: ("disable-ripple" | "disable-shadow" | "no-linebreak" | "fullWidth")[];
   label?: string;
   open_external?: boolean;
   image?: string;
@@ -296,13 +314,15 @@ export interface ButtonStoryblok {
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
   styles_hover?: StylesStoryblok[];
+  image_size?: "" | "large" | "xlarge" | "small" | "xsmall" | "medium";
+  on_click_function?: string;
   _uid: string;
   component: "button";
   [k: string]: any;
 }
 
 export interface ButtonListStoryblok {
-  property?: ("" | "margin_left" | "align_right")[];
+  property?: ("margin_left" | "align_right")[];
   body?: ButtonStoryblok[];
   _uid: string;
   component: "button_list";
@@ -311,20 +331,14 @@ export interface ButtonListStoryblok {
 
 export interface ButtonSpeechTextStoryblok {
   trigger?: ButtonStoryblok[];
+  full_page?: boolean;
   _uid: string;
   component: "button_speech_text";
   [k: string]: any;
 }
 
 export interface CardListStoryblok {
-  column_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24" | "32";
-  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-  column_count_phone?: "" | "1" | "2" | "3" | "4";
-  description_max_character?: number;
-  card_actions_disable_spacing?: boolean;
   variant?: (
-    | ""
     | "over_media"
     | "title_top"
     | "font_white"
@@ -336,13 +350,21 @@ export interface CardListStoryblok {
     | "text_align_center"
     | "text_align_right"
     | "overlay_content_no_space"
+    | "equal-heights"
   )[];
-  image_size?: "" | "cover" | "contain" | "initial" | "auto" | "none";
-  image_ratio?: "" | "16x9" | "1x1" | "4x3" | "3x2" | "2x3" | "1x3" | "3x1" | "2.85x1";
-  hide_image?: boolean;
-  border_radius?: "" | "0" | "2" | "4";
+  border_radius?: "0" | "2" | "4" | "";
   shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft" | "flowUp";
   elevation?: "" | "0" | "1" | "2" | "4" | "8" | "12" | "16" | "20" | "3" | "5" | "6" | "24" | "22";
+  body?: CardListItemStoryblok[];
+  image_ratio?: "" | "16x9" | "1x1" | "4x3" | "3x2" | "2x3" | "1x3" | "3x1" | "2.85x1";
+  image_size?: "" | "cover" | "contain" | "initial" | "auto" | "none";
+  hide_image?: boolean;
+  column_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24" | "32";
+  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+  column_count_phone?: "" | "1" | "2" | "3" | "4";
+  description_max_character?: number;
+  card_actions_disable_spacing?: boolean;
   title_typography?:
     | ""
     | "headline2"
@@ -372,7 +394,12 @@ export interface CardListStoryblok {
     | "caption";
   subtitle_tag?: "" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   description_typography?: "" | "headline4" | "headline5" | "headline6" | "body1" | "body2" | "caption" | "overline";
-  body?: CardListItemStoryblok[];
+  title_custom?: HeadlineStoryblok[];
+  subtitle_custom?: HeadlineStoryblok[];
+  description_custom?: HeadlineStoryblok[];
+  date_format?: DateTimeFormatStoryblok[];
+  image_border_radius?: string;
+  image_margin?: string;
   _uid: string;
   component: "card_list";
   [k: string]: any;
@@ -411,6 +438,7 @@ export interface CardListItemStoryblok {
         [k: string]: any;
       };
   open_external?: boolean;
+  on_click_function?: string;
   _uid: string;
   component: "card_list_item";
   [k: string]: any;
@@ -425,8 +453,13 @@ export interface CategoryStoryblok {
 }
 
 export interface CategoryBoxStoryblok {
+  display?: "" | "autocomplete_checkbox";
+  autocomplete_label?: string;
+  autocomplete_placeholder?: string;
+  autocomplete_variant?: "" | "outlined" | "filled" | "standard";
   filter_categories?: any[];
   match_all_tags?: boolean;
+  max_height?: number;
   _uid: string;
   component: "category_box";
   [k: string]: any;
@@ -492,8 +525,12 @@ export interface ColumnStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -508,7 +545,9 @@ export interface ColumnStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -518,11 +557,13 @@ export interface ColumnStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   background?: BackgroundStoryblok[];
   justify?: "" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
@@ -562,14 +603,100 @@ export interface DateHeadlineStoryblok {
   color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
   text?: string;
   text_xs?: string;
+  support_linebreak?: boolean;
   _uid: string;
   component: "date_headline";
   [k: string]: any;
 }
 
+export interface DateTimeFormatStoryblok {
+  year?: "" | "2-digit" | "numeric";
+  month?: "" | "long" | "short" | "narrow" | "numeric" | "2-digit";
+  day?: "" | "2-digit" | "numeric";
+  hour?: "" | "2-digit" | "numeric";
+  minute?: "" | "2-digit" | "numeric";
+  second?: "" | "long";
+  weekday?: "" | "short" | "long" | "narrow";
+  dayPeriod?: "" | "long" | "short" | "narrow";
+  hide_time?: boolean;
+  dateStyle?: "" | "full" | "long" | "medium" | "short";
+  timeStyle?: "" | "full" | "long" | "medium" | "short";
+  _uid: string;
+  component: "date_time_format";
+  [k: string]: any;
+}
+
+export interface DateTimeHeadlineStoryblok {
+  date?: string;
+  headline?: HeadlineStoryblok[];
+  date_format?: DateTimeFormatStoryblok[];
+  _uid: string;
+  component: "date_time_headline";
+  [k: string]: any;
+}
+
 export interface DialogStoryblok {
   title?: string;
+  custom_title?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
   fullscreen?: "" | "xs" | "sm" | "md" | "lg" | "xl";
+  prevent_click_outside?: boolean;
+  slide_up?: boolean;
+  no_padding?: boolean;
+  prevent_close_button?: boolean;
   trigger?: (ButtonStoryblok | HeadlineStoryblok | ImageStoryblok | IconStoryblok)[];
   body?: (
     | AccordionStoryblok
@@ -586,8 +713,12 @@ export interface DialogStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -602,7 +733,9 @@ export interface DialogStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -612,16 +745,14 @@ export interface DialogStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
-  prevent_click_outside?: boolean;
-  slide_up?: boolean;
-  no_padding?: boolean;
-  prevent_close_button?: boolean;
   _uid: string;
   component: "dialog";
   [k: string]: any;
@@ -632,6 +763,30 @@ export interface DividerStoryblok {
   size?: number;
   _uid: string;
   component: "divider";
+  [k: string]: any;
+}
+
+export interface DocumentStoryblok {
+  title?: string;
+  description?: string;
+  file?: {
+    alt?: string;
+    copyright?: string;
+    id: number;
+    filename: string;
+    name: string;
+    title?: string;
+  };
+  categories?: any[];
+  _uid: string;
+  component: "document";
+  [k: string]: any;
+}
+
+export interface DocumentCategoryStoryblok {
+  name?: string;
+  _uid: string;
+  component: "document_category";
   [k: string]: any;
 }
 
@@ -793,12 +948,25 @@ export interface ErrorPageStoryblok {
   [k: string]: any;
 }
 
-export interface FlexRowStoryblok {
-  column?: boolean;
-  full_height?: boolean;
-  justify?: "" | "space-around" | "center" | "space-between" | "space-evenly" | "flex-start" | "flex-end";
-  align_content?: "" | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around";
-  align_items?: "" | "center" | "baseline" | "flex-start" | "flex-end" | "stretch";
+export interface EventStoryblok {
+  title: string;
+  start: string;
+  end?: string;
+  all_day?: boolean;
+  expire_event_date?: string;
+  category?: string;
+  multiple_event_dates?: EventDateStoryblok[];
+  date_format?: DateTimeFormatStoryblok[];
+  image?: {
+    alt?: string;
+    copyright?: string;
+    id: number;
+    filename: string;
+    name: string;
+    title?: string;
+  };
+  description?: string;
+  content?: any;
   body?: (
     | AccordionStoryblok
     | AuthContainerStoryblok
@@ -814,8 +982,12 @@ export interface FlexRowStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -830,7 +1002,9 @@ export interface FlexRowStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -840,12 +1014,120 @@ export interface FlexRowStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
+  _uid: string;
+  component: "event";
+  [k: string]: any;
+}
+
+export interface EventCalendarStoryblok {
+  language?: "" | "de" | "en" | "fr" | "it" | "es";
+  view?: "" | "month" | "week" | "day" | "agenda";
+  views?: ("month" | "week" | "day" | "agenda")[];
+  scroll_to_time?: number;
+  _uid: string;
+  component: "event_calendar";
+  [k: string]: any;
+}
+
+export interface EventCategoryStoryblok {
+  title?: string;
+  _uid: string;
+  component: "event_category";
+  [k: string]: any;
+}
+
+export interface EventDateStoryblok {
+  start?: string;
+  end?: string;
+  all_day?: boolean;
+  title?: string;
+  _uid: string;
+  component: "event_date";
+  [k: string]: any;
+}
+
+export interface FastspringProductStoryblok {
+  data_fsc_item_path?: string;
+  _uid: string;
+  component: "fastspring_product";
+  [k: string]: any;
+}
+
+export interface FlexRowStoryblok {
+  column?: boolean;
+  column_mobile_only?: boolean;
+  full_height?: boolean;
+  justify?: "" | "space-around" | "center" | "space-between" | "space-evenly" | "flex-start" | "flex-end";
+  align_content?: "" | "flex-start" | "flex-end" | "center" | "stretch" | "space-between" | "space-around";
+  align_items?: "" | "center" | "baseline" | "flex-start" | "flex-end" | "stretch";
+  gap?: number;
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  styles?: StylesStoryblok[];
+  styles_mobile?: StylesStoryblok[];
+  styles_tablet?: StylesStoryblok[];
+  styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "flex_row";
   [k: string]: any;
@@ -862,8 +1144,33 @@ export interface FormStoryblok {
   fields_border?: "" | "standard" | "filled" | "outlined";
   fields_full_width?: boolean;
   fields_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24";
+  inline?: boolean;
+  label_as_placeholder?: boolean;
   _uid: string;
   component: "form";
+  [k: string]: any;
+}
+
+export interface FormBuilderStoryblok {
+  endpoint?: string;
+  success_message?: (HeadlineStoryblok | RichTextEditorStoryblok | FlexRowStoryblok)[];
+  fields?: (
+    | FormCheckboxStoryblok
+    | FormSelectStoryblok
+    | FormTextfieldStoryblok
+    | RichTextEditorStoryblok
+    | DividerStoryblok
+    | HeadlineStoryblok
+  )[];
+  submit?: ButtonStoryblok[];
+  variant?: "" | "standard" | "filled" | "outlined";
+  margin?: "" | "dense" | "normal" | "none";
+  full_width?: boolean;
+  spacing?: number;
+  form_inline?: boolean;
+  additional_fields?: FormHiddenFieldStoryblok[];
+  _uid: string;
+  component: "form_builder";
   [k: string]: any;
 }
 
@@ -877,11 +1184,85 @@ export interface FormCheckboxStoryblok {
   [k: string]: any;
 }
 
+export interface FormContainerStoryblok {
+  form?: string;
+  additional_fields?: FormHiddenFieldStoryblok[];
+  success_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  _uid: string;
+  component: "form_container";
+  [k: string]: any;
+}
+
+export interface FormHiddenFieldStoryblok {
+  name: string;
+  value: string;
+  is_number?: boolean;
+  _uid: string;
+  component: "form_hidden_field";
+  [k: string]: any;
+}
+
 export interface FormSelectStoryblok {
+  options?: FormSelectOptionStoryblok[];
   name: string;
   label?: string;
+  placeholder?: string;
   required?: boolean;
-  options?: FormSelectOptionStoryblok[];
+  type?: "" | "multi-select" | "checkbox" | "radio";
   _uid: string;
   component: "form_select";
   [k: string]: any;
@@ -896,19 +1277,47 @@ export interface FormSelectOptionStoryblok {
 }
 
 export interface FormTextfieldStoryblok {
+  textarea?: boolean;
+  rows?: number;
+  max_rows?: number;
   name: string;
   label?: string;
+  placeholder?: string;
   type?: "" | "email" | "number";
-  textarea?: boolean;
   required?: boolean;
   help_text?: string;
-  help_text_persistent?: boolean;
   _uid: string;
   component: "form_textfield";
   [k: string]: any;
 }
 
+export interface GalleryStoryblok {
+  space_between_images?: number;
+  space_between_rows?: number;
+  image_height?: number;
+  content?: GalleryRowStoryblok[];
+  rotate?: number;
+  image_style?: StylesStoryblok[];
+  _uid: string;
+  component: "gallery";
+  [k: string]: any;
+}
+
+export interface GalleryRowStoryblok {
+  content?: ImageCoreStoryblok[];
+  scroll_to_left?: boolean;
+  _uid: string;
+  component: "gallery_row";
+  [k: string]: any;
+}
+
 export interface GlobalStoryblok {
+  setup_favicon?: string;
+  website_logo?: string;
+  website_logo_xs?: string;
+  website_logo_invert_xs?: string;
+  website_logo_invert?: string;
+  image_loading?: ("disable_background" | "disable_image" | "disable_video" | "disable_list")[];
   website_title?: string;
   website_slogan?: string;
   setup_language?: string;
@@ -920,18 +1329,19 @@ export interface GlobalStoryblok {
   setup_ad_roll_pix_id?: string;
   pwa_app_name?: string;
   pwa_app_description?: string;
+  promotion?: (SliderStoryblok | SectionStoryblok | SectionVideoBgStoryblok)[];
+  tawkto?: string;
+  chat_button?: (ChatFacebookStoryblok | ChatTawktoStoryblok | ChatWhatsappStoryblok)[];
+  snackbars?: SnackbarStoryblok[];
+  ecommerce?: (
+    | EcommerceFastspringConfigStoryblok
+    | EcommerceShopifyConfigStoryblok
+    | EcommerceSnipcartConfigStoryblok
+  )[];
   toolbar?: (NavMenuStoryblok | ButtonStoryblok | ListSearchAutocompleteStoryblok)[];
   multi_toolbar?: ToolbarRowStoryblok[];
   toolbar_variant?: "" | "primary" | "secondary" | "white" | "dark";
-  toolbar_config?: (
-    | ""
-    | "fixed"
-    | "text_bold"
-    | "fixed_width"
-    | "unelevated"
-    | "scroll_collapse"
-    | "enable_system_bar"
-  )[];
+  toolbar_config?: ("fixed" | "text_bold" | "fixed_width" | "unelevated" | "scroll_collapse" | "enable_system_bar")[];
   toolbar_progress_color?: string;
   toolbar_background?: string;
   toolbar_main_height?: number;
@@ -951,14 +1361,6 @@ export interface GlobalStoryblok {
   theme_font_alt3?: string;
   theme_font_alt4?: string;
   theme_container_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
-  tawkto?: string;
-  chat_button?: (ChatFacebookStoryblok | ChatTawktoStoryblok | ChatWhatsappStoryblok)[];
-  setup_favicon?: string;
-  website_logo?: string;
-  website_logo_xs?: string;
-  website_logo_invert_xs?: string;
-  website_logo_invert?: string;
-  snackbars?: SnackbarStoryblok[];
   drawer_body?: (
     | ButtonStoryblok
     | NavMenuStoryblok
@@ -967,6 +1369,7 @@ export interface GlobalStoryblok {
     | ImageStoryblok
     | DividerStoryblok
     | ToolbarNaviButtonStoryblok
+    | FlexRowStoryblok
   )[];
   drawer_variant?: "" | "persistent" | "temporary";
   mobile_nav_breakpoint?: "" | "sm" | "md" | "lg" | "xl";
@@ -976,7 +1379,7 @@ export interface GlobalStoryblok {
   drawer_full_width_mobile?: boolean;
   drawer_background?: BackgroundStoryblok[];
   footer?: (RowStoryblok | SectionStoryblok)[];
-  footer_config?: ("" | "footer-large" | "footer-small")[];
+  footer_config?: ("footer-large" | "footer-small")[];
   seo_title?: string;
   seo_description?: string;
   seo_website_url?: string;
@@ -989,12 +1392,9 @@ export interface GlobalStoryblok {
     | SeoSocialProfileStoryblok
     | SeoCorporateContactStoryblok
   )[];
-  ecommerce?: (
-    | EcommerceFastspringConfigStoryblok
-    | EcommerceShopifyConfigStoryblok
-    | EcommerceSnipcartConfigStoryblok
-  )[];
   custom_css?: string;
+  toolbar_elevation?: number;
+  scripts?: ScriptStoryblok[];
   _uid: string;
   component: "global";
   uuid?: string;
@@ -1002,12 +1402,63 @@ export interface GlobalStoryblok {
 }
 
 export interface HeadlineStoryblok {
-  count_start?: number;
-  count_end?: number;
-  prefix?: string;
-  suffix?: string;
-  count_duration?: number;
-  animation?: "" | "linear" | "easeInCubic" | "easeOutCubic";
+  countdown_time?: string;
+  countdown_interval?: number;
+  countdown_finished?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
   text?: string;
   text_xs?: string;
   typography?:
@@ -1029,14 +1480,22 @@ export interface HeadlineStoryblok {
   tag?: "" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
   align?: "" | "left" | "center" | "right" | "justify";
+  enable_speech?: boolean;
+  support_linebreak?: boolean;
+  max_lines?: number;
   font_size?: string;
   line_height?: string;
   letter_spacing?: string;
+  count_start?: number;
+  count_end?: number;
+  prefix?: string;
+  suffix?: string;
+  count_duration?: number;
+  animation?: "" | "linear" | "easeInCubic" | "easeOutCubic";
   styles?: StylesStoryblok[];
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
   styles_hover?: StylesStoryblok[];
-  enable_speech?: boolean;
   _uid: string;
   component: "headline";
   [k: string]: any;
@@ -1060,8 +1519,12 @@ export interface HtmlStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -1076,7 +1539,9 @@ export interface HtmlStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -1086,11 +1551,13 @@ export interface HtmlStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   lazy_load?: boolean;
   styles_mobile?: StylesStoryblok[];
@@ -1135,8 +1602,8 @@ export interface IframeStoryblok {
   height?: string;
   width?: string;
   display?: "" | "relative" | "absolute";
-  property?: ("" | "allow_fullscreen")[];
-  allow?: ("" | "geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
+  property?: "allow_fullscreen"[];
+  allow?: ("geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
   full_height?: boolean;
   _uid: string;
   component: "iframe";
@@ -1147,8 +1614,8 @@ export interface IframeAdvancedStoryblok {
   display?: "" | "relative" | "absolute";
   height?: string;
   width?: string;
-  property?: ("" | "allow_fullscreen")[];
-  allow?: ("" | "geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
+  property?: "allow_fullscreen"[];
+  allow?: ("geolocation" | "microphone" | "camera" | "midi" | "encrypted-media")[];
   url?: string;
   post_message_key?: string;
   incoming_message_key?: string;
@@ -1158,18 +1625,20 @@ export interface IframeAdvancedStoryblok {
 }
 
 export interface ImageStoryblok {
-  source?: string;
-  alt?: string;
-  priority?: boolean;
-  disable_lazy_loading?: boolean;
-  image_crop?: ("" | "image_crop" | "smart_crop")[];
-  focal_point?: string;
-  property?: ("" | "img-thumbnail" | "rounded" | "rounded-circle" | "square" | "rounded-0")[];
+  border_radius?: string;
+  disable_ratio_correction?: boolean;
+  property?: ("rounded" | "rounded-circle" | "square" | "rounded-0")[];
   height?: number;
   height_xs?: number;
   width?: number;
   height_fill?: boolean;
-  disable_ratio_correction?: boolean;
+  source?: string;
+  alt?: string;
+  priority?: boolean;
+  disable_lazy_loading?: boolean;
+  image_crop?: ("image_crop" | "smart_crop")[];
+  focal_point?: string;
+  toggle_image_loading?: boolean;
   _uid: string;
   component: "image";
   [k: string]: any;
@@ -1302,6 +1771,7 @@ export interface LinkStoryblok {
       };
   open_external?: boolean;
   body?: (ImageStoryblok | HeadlineStoryblok | ParagraphStoryblok | IconStoryblok | PromotionStoryblok)[];
+  on_click_function?: string;
   _uid: string;
   component: "link";
   [k: string]: any;
@@ -1340,10 +1810,87 @@ export interface ListSearchAutocompleteStoryblok {
 export interface ListSearchFieldStoryblok {
   label?: string;
   placeholder?: string;
+  variant?: "" | "outlined" | "filled" | "standard";
   fullwidth?: boolean;
-  outlined?: boolean;
+  size?: "" | "small" | "medium";
   _uid: string;
   component: "list_search_field";
+  [k: string]: any;
+}
+
+export interface ListStoriesStoryblok {
+  enable_search?: boolean;
+  view_types?: ("page" | "event" | "news")[];
+  sort?: "" | "publish" | "updated" | "created" | "title";
+  sort_descending?: boolean;
+  max_items?: number;
+  pagination?: PaginationStoryblok[];
+  layout?: (CardListStoryblok | NewsListStoryblok | ListsStoryblok | NavListStoryblok)[];
+  enable_min_height?: boolean;
+  not_found_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  page_categories?: any[];
+  event_categories?: any[];
+  news_categories?: any[];
+  match_all_categories?: boolean;
+  document_categories?: any[];
+  match_all_document_categories?: boolean;
+  toggle_image_loading?: boolean;
+  _uid: string;
+  component: "list_stories";
   [k: string]: any;
 }
 
@@ -1356,6 +1903,7 @@ export interface ListWidgetStoryblok {
   match_all_tags?: boolean;
   only_tagged?: boolean;
   list_options?: (CardListStoryblok | ListsStoryblok | NavListStoryblok)[];
+  not_found_content?: (RichTextEditorStoryblok | HeadlineStoryblok)[];
   _uid: string;
   component: "list_widget";
   [k: string]: any;
@@ -1370,11 +1918,524 @@ export interface LogoStoryblok {
   [k: string]: any;
 }
 
+export interface MoralisStoryblok {
+  body?: (
+    | MoralisButtonStoryblok
+    | MoralisMintStoryblok
+    | MoralisDataStoryblok
+    | MoralisVenlyStoryblok
+    | MoralisAuthContainerStoryblok
+  )[];
+  _uid: string;
+  component: "moralis";
+  [k: string]: any;
+}
+
+export interface MoralisAuthContainerStoryblok {
+  contract_token?: string;
+  chain?: "" | "mainnet" | "rinkeby" | "goerli" | "kovan" | "mumbai" | "polygon" | "ropsten";
+  required_nft?: number;
+  show_only_not_logged_in?: boolean;
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  fallback_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  not_connected_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  _uid: string;
+  component: "moralis_auth_container";
+  [k: string]: any;
+}
+
+export interface MoralisButtonStoryblok {
+  login?: ButtonStoryblok[];
+  login_walletconnect?: ButtonStoryblok[];
+  logout?: (ButtonStoryblok | ImageStoryblok)[];
+  _uid: string;
+  component: "moralis_button";
+  [k: string]: any;
+}
+
+export interface MoralisDataStoryblok {
+  contract_token?: string;
+  chain?: "" | "mainnet" | "goerli" | "kovan" | "rinkeby" | "ropsten" | "polygon" | "mumbai";
+  data_values?: string;
+  richtext?: any;
+  _uid: string;
+  component: "moralis_data";
+  [k: string]: any;
+}
+
+export interface MoralisMintStoryblok {
+  price_fiat?: number;
+  checkout_content?: any;
+  stripe_btn_style?: ButtonStoryblok[];
+  return_url?: string;
+  fallback_insufficient_funds?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  contract_token: string;
+  chain?: "" | "mainnet" | "goerli" | "kovan" | "rinkeby" | "ropsten" | "polygon" | "mumbai";
+  presale_get_param?: string;
+  fallback_not_started?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  price?: string;
+  price_whitelist?: string;
+  sale?: "" | "none" | "whitelist" | "public" | "ended";
+  mint_amount?: number;
+  mint_amount_whitelist?: number;
+  counter_style?: HeadlineStoryblok[];
+  fallback_not_whitelisted?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  fallback_login_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  mint_style?: (ButtonStoryblok | ImageStoryblok)[];
+  mint_flexbox_container?: FlexRowStoryblok[];
+  style_options?: "dark"[];
+  success_message?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  price_in_usd?: number;
+  _uid: string;
+  component: "moralis_mint";
+  [k: string]: any;
+}
+
+export interface MoralisVenlyStoryblok {
+  client_id?: string;
+  _uid: string;
+  component: "moralis_venly";
+  [k: string]: any;
+}
+
 export interface MotionStoryblok {
   type?: "" | "fade" | "grow" | "slide" | "zoom" | "collapse";
+  slide_direction?: "" | "left" | "right" | "down" | "up";
   duration?: number;
   threshold?: number;
-  slide_direction?: "" | "left" | "right" | "down" | "up";
+  delay?: number;
   enable_overflow?: boolean;
   body?: (
     | AccordionStoryblok
@@ -1391,8 +2452,12 @@ export interface MotionStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -1407,7 +2472,9 @@ export interface MotionStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -1417,11 +2484,13 @@ export interface MotionStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "motion";
@@ -1455,13 +2524,14 @@ export interface NavItemStoryblok {
       };
   open_external?: boolean;
   image?: string;
+  on_click_function?: string;
   _uid: string;
   component: "nav_item";
   [k: string]: any;
 }
 
 export interface NavListStoryblok {
-  properties?: ("" | "flex-column" | "justify-content-center")[];
+  properties?: ("flex-column" | "justify-content-center")[];
   collapse_on_mobile?: boolean;
   header?: string;
   body?: (NavItemStoryblok | NavMenuStoryblok | ButtonStoryblok)[];
@@ -1471,11 +2541,16 @@ export interface NavListStoryblok {
 }
 
 export interface NavMenuStoryblok {
+  icon_custom?: IconStoryblok[];
+  icon_collapse_custom?: IconStoryblok[];
+  alignment?: "" | "bottomStart" | "bottomEnd" | "bottomCenter";
+  open_on_hover?: boolean;
+  outlined?: boolean;
+  border_radius?: string;
+  elevation?: number;
   title?: string;
   title_custom?: (ButtonStoryblok | HeadlineStoryblok | ImageStoryblok)[];
   body?: (NavMenuItemStoryblok | RowStoryblok | NavMenuStoryblok)[];
-  alignment?: "" | "bottomStart" | "bottomEnd" | "bottomCenter";
-  border_radius?: string;
   _uid: string;
   component: "nav_menu";
   [k: string]: any;
@@ -1513,12 +2588,46 @@ export interface NavMenuItemStoryblok {
   [k: string]: any;
 }
 
+export interface NewsStoryblok {
+  title?: string;
+  description?: string;
+  content?: any;
+  image?: {
+    alt?: string;
+    copyright?: string;
+    id: number;
+    filename: string;
+    name: string;
+    title?: string;
+  };
+  published?: string;
+  category?: string;
+  date_format?: DateTimeFormatStoryblok[];
+  _uid: string;
+  component: "news";
+  [k: string]: any;
+}
+
+export interface NewsCategoryStoryblok {
+  name?: string;
+  _uid: string;
+  component: "news_category";
+  [k: string]: any;
+}
+
+export interface NewsListStoryblok {
+  hide_category?: boolean;
+  read_more_label?: HeadlineStoryblok[];
+  date_format?: DateTimeFormatStoryblok[];
+  title?: HeadlineStoryblok[];
+  subtitle?: HeadlineStoryblok[];
+  description?: HeadlineStoryblok[];
+  _uid: string;
+  component: "news_list";
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
-  preview_title?: string;
-  preview_subtitle?: string;
-  preview_image?: string;
-  preview_teaser?: string;
-  preview_publish_date?: string;
   meta_title?: string;
   meta_description?: string;
   seo_body?: (
@@ -1528,8 +2637,14 @@ export interface PageStoryblok {
     | SeoLocalBusinessStoryblok
     | SeoCorporateContactStoryblok
   )[];
+  categories?: any[];
   meta_robots?: boolean;
-  property?: ("" | "has_feature")[];
+  preview_title?: string;
+  preview_subtitle?: string;
+  preview_image?: string;
+  preview_teaser?: string;
+  preview_publish_date?: string;
+  property?: ("has_feature" | "disable_promotion")[];
   body?: (
     | SectionStoryblok
     | SectionVideoBgStoryblok
@@ -1554,8 +2669,12 @@ export interface PageStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -1570,7 +2689,9 @@ export interface PageStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -1580,17 +2701,31 @@ export interface PageStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   mobile_breakpoint?: "" | "sm" | "md" | "lg" | "xl";
   right_drawer_width?: number;
   _uid: string;
   component: "page";
   uuid?: string;
+  [k: string]: any;
+}
+
+export interface PaginationStoryblok {
+  items_per_page?: number;
+  variant?: "" | "text" | "outlined";
+  color?: "" | "primary" | "secondary";
+  shape?: "" | "rounded" | "round";
+  size?: "" | "large" | "medium" | "small";
+  position?: "" | "top" | "bottom" | "top_bottom";
+  _uid: string;
+  component: "pagination";
   [k: string]: any;
 }
 
@@ -1655,6 +2790,8 @@ export interface PlayerStoryblok {
   volume?: number;
   light?: boolean;
   fallback_image?: string;
+  border_radius?: string;
+  toggle_image_loading?: boolean;
   _uid: string;
   component: "player";
   [k: string]: any;
@@ -1760,12 +2897,102 @@ export interface RowStoryblok {
   [k: string]: any;
 }
 
+export interface RowNestedStoryblok {
+  body?: ColumnStoryblok[];
+  fluid_width?: boolean;
+  column_gap?: number;
+  grid_gap?: number;
+  align?: "" | "left" | "right";
+  background?: BackgroundStoryblok[];
+  grid_margin_desktop?: string;
+  grid_margin_tablet?: string;
+  grid_margin_phone?: string;
+  grid_gutter_desktop?: string;
+  grid_gutter_tablet?: string;
+  grid_gutter_phone?: string;
+  _uid: string;
+  component: "row_nested";
+  [k: string]: any;
+}
+
+export interface ScriptStoryblok {
+  id?: string;
+  strategy?: "" | "beforeInteractive" | "lazyOnload" | "afterInteractive";
+  attributes?: string;
+  url?: string;
+  script_body?: string;
+  _uid: string;
+  component: "script";
+  [k: string]: any;
+}
+
+export interface SearchStoryStoryblok {
+  type?: "" | "page" | "document" | "event" | "news";
+  _uid: string;
+  component: "search_story";
+  [k: string]: any;
+}
+
 export interface SectionStoryblok {
   section_identifier?: string;
-  body?: (RowStoryblok | CardListStoryblok | PricingStoryblok | ImageStoryblok)[];
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
   variant?: "" | "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
   background?: BackgroundStoryblok[];
-  property?: ("" | "is_full_height" | "allow_overflow")[];
+  property?: ("is_full_height" | "allow_overflow")[];
   padding?: string;
   max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
   background_style?: "" | "fixed_image" | "fixed_cover";
@@ -1783,6 +3010,7 @@ export interface SectionParallaxStoryblok {
   elements?: ParallaxItemStoryblok[];
   height?: number;
   disable_lazy_load?: boolean;
+  toggle_image_loading?: boolean;
   _uid: string;
   component: "section_parallax";
   [k: string]: any;
@@ -1809,10 +3037,11 @@ export interface SectionVideoBgStoryblok {
   }[];
   body?: RowStoryblok[];
   fallback_image?: string;
-  property?: ("" | "muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
+  property?: ("muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
   video_ratio?: "" | "16x9" | "1280x720" | "4x3" | "16x6";
   height?: number;
   max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
+  toggle_image_loading?: boolean;
   _uid: string;
   component: "section_video_bg";
   [k: string]: any;
@@ -1862,7 +3091,6 @@ export interface SeoLocalBusinessOpeningHourStoryblok {
   opens: string;
   closes: string;
   day_of_week: (
-    | ""
     | "Monday"
     | "Tuesday"
     | "Wednesday"
@@ -1954,7 +3182,6 @@ export interface SeoTwitterStoryblok {
 
 export interface SliderStoryblok {
   property?: (
-    | ""
     | "pagination_dark"
     | "arrows_dark"
     | "hide_pagination"
@@ -1968,6 +3195,9 @@ export interface SliderStoryblok {
   slides_per_view?: number;
   disable_transition?: boolean;
   section_variant?: "" | "primary" | "secondary" | "dark" | "light" | "dark_text" | "light_text" | "transparent";
+  autoslide?: number;
+  autoslide_duration?: number;
+  pause_on_hover?: boolean;
   body?: (SectionStoryblok | PromotionStoryblok | ImageStoryblok | ImageListStoryblok | SectionVideoBgStoryblok)[];
   _uid: string;
   component: "slider";
@@ -2000,8 +3230,12 @@ export interface SnackbarStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -2016,7 +3250,9 @@ export interface SnackbarStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -2026,11 +3262,13 @@ export interface SnackbarStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   close_action?: ButtonStoryblok[];
   additional_actions?: ButtonStoryblok[];
@@ -2059,8 +3297,12 @@ export interface StaticContainerStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -2075,7 +3317,9 @@ export interface StaticContainerStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -2085,11 +3329,13 @@ export interface StaticContainerStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "static_container";
@@ -2104,6 +3350,13 @@ export interface StaticSectionStoryblok {
 }
 
 export interface StylesStoryblok {
+  margin?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
+  display?: "" | "block" | "inline-block" | "inline-flex" | "flex" | "none";
+  flex?: "" | "0 1 auto" | "1 auto" | "auto";
+  z_index?: number;
   border_width?: string;
   color_theme?: "" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
   background?: string;
@@ -2128,13 +3381,7 @@ export interface StylesStoryblok {
     | "unset";
   border_color_theme?: "" | "primary" | "secondary" | "error" | "success" | "info" | "warning" | "grey";
   border_radius?: string;
-  border_position?: ("" | "top" | "left" | "right" | "bottom")[];
-  margin?: string;
-  padding?: string;
-  width?: string;
-  height?: string;
-  display?: "" | "block" | "inline-block" | "inline-flex" | "flex" | "none";
-  z_index?: number;
+  border_position?: ("top" | "left" | "right" | "bottom")[];
   position?: "" | "relative" | "absolute" | "fixed" | "static" | "sticky";
   top?: string;
   left?: string;
@@ -2176,6 +3423,7 @@ export interface TabsStoryblok {
   body?: TabsItemStoryblok[];
   text_color?: "" | "secondary" | "primary" | "inherit";
   indicator_color?: "" | "secondary" | "primary";
+  text_style?: HeadlineStoryblok[];
   _uid: string;
   component: "tabs";
   [k: string]: any;
@@ -2198,8 +3446,12 @@ export interface TabsItemStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -2214,7 +3466,9 @@ export interface TabsItemStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -2224,11 +3478,13 @@ export interface TabsItemStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "tabs_item";
@@ -2238,6 +3494,12 @@ export interface TabsItemStoryblok {
 export interface TimelineStoryblok {
   align?: "" | "left" | "right";
   variant?: "" | "outlined" | "naked";
+  connect_separator?: boolean;
+  disable_card?: boolean;
+  card_variant?: "" | "elevation" | "outlined";
+  card_elevation?: number;
+  card_square?: boolean;
+  show_last_line?: boolean;
   body?: TimelineItemStoryblok[];
   _uid: string;
   component: "timeline";
@@ -2265,8 +3527,12 @@ export interface TimelineItemStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -2281,7 +3547,9 @@ export interface TimelineItemStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -2291,11 +3559,13 @@ export interface TimelineItemStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   link?:
     | {
@@ -2336,8 +3606,12 @@ export interface TimelineItemStoryblok {
     | DialogStoryblok
     | DividerStoryblok
     | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
     | FlexRowStoryblok
     | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
     | HeadlineStoryblok
     | HtmlStoryblok
     | HubspotFormStoryblok
@@ -2352,7 +3626,9 @@ export interface TimelineItemStoryblok {
     | LinkStoryblok
     | ListSearchAutocompleteStoryblok
     | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
     | ListWidgetStoryblok
+    | MoralisStoryblok
     | MotionStoryblok
     | NavListStoryblok
     | NavMenuStoryblok
@@ -2362,11 +3638,13 @@ export interface TimelineItemStoryblok {
     | PromotionStoryblok
     | RichTextEditorStoryblok
     | RowStoryblok
+    | SearchStoryStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
     | TableStoryblok
     | TabsStoryblok
     | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "timeline_item";
@@ -2380,6 +3658,7 @@ export interface ToolbarLogoStoryblok {
 }
 
 export interface ToolbarNaviButtonStoryblok {
+  button?: ButtonStoryblok[];
   is_right_drawer?: boolean;
   force_show?: boolean;
   _uid: string;
@@ -2410,6 +3689,7 @@ export interface ToolbarRowSectionStoryblok {
     | HeadlineStoryblok
     | AuthContainerStoryblok
     | ButtonSpeechTextStoryblok
+    | DialogStoryblok
   )[];
   inv_use_media_query?: boolean;
   _uid: string;
