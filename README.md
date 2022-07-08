@@ -96,6 +96,7 @@ Following types are available for convenient reasons (if they are used in your c
 AssetStoryblok
 MultiassetStoryblok
 MultilinkStoryblok
+TableStoryblok
 ```
 
 #### Resolve relations
