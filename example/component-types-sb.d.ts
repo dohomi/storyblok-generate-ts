@@ -243,38 +243,41 @@ export interface BottomNavigationStoryblok {
   [k: string]: any;
 }
 
+export type MultilinkStoryblok =
+  | {
+      cached_url?: string;
+      linktype?: string;
+      [k: string]: any;
+    }
+  | {
+      id?: string;
+      cached_url?: string;
+      linktype?: "story";
+      [k: string]: any;
+    }
+  | {
+      url?: string;
+      cached_url?: string;
+      linktype?: "asset" | "url";
+      [k: string]: any;
+    }
+  | {
+      email?: string;
+      linktype?: "email";
+      [k: string]: any;
+    };
+
 export interface BottomNavigationItemStoryblok {
   label?: HeadlineStoryblok[];
   icon?: IconStoryblok[];
   show_label?: boolean;
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   _uid: string;
   component: "bottom_navigation_item";
   [k: string]: any;
 }
+
 
 export interface ButtonStoryblok {
   variant?: "" | "outlined" | "raised" | "unelevated" | "fab";
@@ -287,29 +290,7 @@ export interface ButtonStoryblok {
   label?: string;
   open_external?: boolean;
   image?: string;
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   styles?: StylesStoryblok[];
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
@@ -405,6 +386,7 @@ export interface CardListStoryblok {
   [k: string]: any;
 }
 
+
 export interface CardListItemStoryblok {
   image?: string;
   action_width?: string;
@@ -414,29 +396,7 @@ export interface CardListItemStoryblok {
   body?: (ParagraphStoryblok | HeadlineStoryblok | RowStoryblok | TableStoryblok | ImageStoryblok | ButtonStoryblok)[];
   action_headline?: HeadlineStoryblok[];
   card_actions_body?: FlexRowStoryblok[];
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   on_click_function?: string;
   _uid: string;
@@ -766,17 +726,20 @@ export interface DividerStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  [k: string]: any;
+}
+
 export interface DocumentStoryblok {
   title?: string;
   description?: string;
-  file?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
+  file?: AssetStoryblok;
   categories?: any[];
   _uid: string;
   component: "document";
@@ -811,32 +774,11 @@ export interface EcommerceFastspringConfigStoryblok {
   [k: string]: any;
 }
 
+
 export interface EcommerceFastspringProductStoryblok {
   path?: string;
   text_only?: boolean;
-  on_successful_redirect?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  on_successful_redirect?: MultilinkStoryblok;
   _uid: string;
   component: "ecommerce_fastspring_product";
   [k: string]: any;
@@ -948,6 +890,7 @@ export interface ErrorPageStoryblok {
   [k: string]: any;
 }
 
+
 export interface EventStoryblok {
   title: string;
   start: string;
@@ -957,14 +900,7 @@ export interface EventStoryblok {
   category?: string;
   multiple_event_dates?: EventDateStoryblok[];
   date_format?: DateTimeFormatStoryblok[];
-  image?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
+  image?: AssetStoryblok;
   description?: string;
   content?: any;
   body?: (
@@ -1671,30 +1607,9 @@ export interface ImageListStoryblok {
   [k: string]: any;
 }
 
+
 export interface ImageListItemStoryblok {
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   source?: string;
   label?: string;
   sub_title?: string;
@@ -1745,30 +1660,9 @@ export interface ItemKeyValueStoryblok {
   [k: string]: any;
 }
 
+
 export interface LinkStoryblok {
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   body?: (ImageStoryblok | HeadlineStoryblok | ParagraphStoryblok | IconStoryblok | PromotionStoryblok)[];
   on_click_function?: string;
@@ -2497,31 +2391,10 @@ export interface MotionStoryblok {
   [k: string]: any;
 }
 
+
 export interface NavItemStoryblok {
   name?: string;
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   image?: string;
   on_click_function?: string;
@@ -2556,30 +2429,9 @@ export interface NavMenuStoryblok {
   [k: string]: any;
 }
 
+
 export interface NavMenuItemStoryblok {
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   label?: string;
   image?: string;
@@ -2588,18 +2440,12 @@ export interface NavMenuItemStoryblok {
   [k: string]: any;
 }
 
+
 export interface NewsStoryblok {
   title?: string;
   description?: string;
   content?: any;
-  image?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
+  image?: AssetStoryblok;
   published?: string;
   category?: string;
   date_format?: DateTimeFormatStoryblok[];
@@ -2761,24 +2607,21 @@ export interface ParallaxItemStoryblok {
   [k: string]: any;
 }
 
+
+export type MultiassetStoryblok = {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  [k: string]: any;
+}[];
+
 export interface PlayerStoryblok {
   url?: string;
-  url_internal?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
-  url_alternatives?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  }[];
+  url_internal?: AssetStoryblok;
+  url_alternatives?: MultiassetStoryblok;
   ratio?: "" | "16x9" | "4x3" | "3x2" | "1x1";
   width?: string;
   height?: string;
@@ -3016,25 +2859,13 @@ export interface SectionParallaxStoryblok {
   [k: string]: any;
 }
 
+
+
 export interface SectionVideoBgStoryblok {
   section_identifier?: string;
   url?: string;
-  url_internal?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  };
-  url_alternatives?: {
-    alt?: string;
-    copyright?: string;
-    id: number;
-    filename: string;
-    name: string;
-    title?: string;
-  }[];
+  url_internal?: AssetStoryblok;
+  url_alternatives?: MultiassetStoryblok;
   body?: RowStoryblok[];
   fallback_image?: string;
   property?: ("muted" | "loop" | "autoplay" | "controls" | "suppress_mouse_events" | "playsinline" | "light")[];
@@ -3506,6 +3337,7 @@ export interface TimelineStoryblok {
   [k: string]: any;
 }
 
+
 export interface TimelineItemStoryblok {
   dot_variant?: "" | "outlined" | "naked";
   dot_color?: "" | "primary" | "secondary";
@@ -3567,29 +3399,7 @@ export interface TimelineItemStoryblok {
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
-  link?:
-    | {
-        cached_url?: string;
-        linktype?: string;
-        [k: string]: any;
-      }
-    | {
-        id?: string;
-        cached_url?: string;
-        linktype?: "story";
-        [k: string]: any;
-      }
-    | {
-        url?: string;
-        cached_url?: string;
-        linktype?: "asset" | "url";
-        [k: string]: any;
-      }
-    | {
-        email?: string;
-        linktype?: "email";
-        [k: string]: any;
-      };
+  link?: MultilinkStoryblok;
   open_external?: boolean;
   opposite_body?: (
     | AccordionStoryblok

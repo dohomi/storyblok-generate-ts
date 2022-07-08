@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "camelcase": "^6.3.0",
-    "json-schema-to-typescript": "^10.1.5"
+    "json-schema-to-typescript": "^11.0.1"
   },
   "bin": "src/cli.js"
 }
