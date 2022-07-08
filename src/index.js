@@ -2,17 +2,17 @@ const {compile} = require('json-schema-to-typescript')
 const fs = require('fs')
 const camelcase = require('camelcase')
 const defaultCustomMapper = require('./defaultCustomMapper')
+const standardTypes = require('./standardTypes')
 
-module.exports = function storyblokToTypescript ({
-  componentsJson = {components: []},
-  customTypeParser = () => {
-  },
-  path = 'src/typings/generated/components-schema.ts',
-  titleSuffix = '_storyblok',
-  titlePrefix = ''
-}) {
+module.exports = function storyblokToTypescript({
+                                                  componentsJson = {components: []},
+                                                  customTypeParser = () => {
+                                                  },
+                                                  path = 'src/typings/generated/components-schema.ts',
+                                                  titleSuffix = '_storyblok',
+                                                  titlePrefix = ''
+                                                }) {
   let tsString = []
-
   const getTitle = (t) => titlePrefix + t + titleSuffix
 
   const groupUuids = {}
@@ -28,14 +28,14 @@ module.exports = function storyblokToTypescript ({
     }
   })
 
-  async function genTsSchema () {
+  async function genTsSchema() {
     for (const values of componentsJson.components) {
       const obj = {}
       obj.$id = '#/' + values.name
       // obj.$ref = '/' + values.name
       obj.title = getTitle(values.name)
       obj.type = 'object'
-      obj.properties = typeMapper(values.schema, obj.title)
+      obj.properties = await typeMapper(values.schema, obj.title)
       obj.properties._uid = {
         type: 'string'
       }
@@ -70,140 +70,24 @@ module.exports = function storyblokToTypescript ({
     }
   }
 
-  function typeMapper (schema = {}, title) {
+  async function typeMapper(schema = {}, title) {
     const parseObj = {}
-    Object.keys(schema).forEach((key) => {
+    for (const key of Object.keys(schema)) {
       const obj = {}
       const schemaElement = schema[key]
       const type = schemaElement.type
-      if (type === 'custom') {
+      if(standardTypes.TYPES.includes(type)){
+        const ts = await standardTypes.generate(type,getTitle(type))
+        tsString.push(ts)
+      }
+      else if (type === 'custom') {
         Object.assign(parseObj, defaultCustomMapper(key, schemaElement))
         Object.assign(parseObj, customTypeParser(key, schemaElement))
-        return
-      } else if (type === 'multilink') {
-        Object.assign(parseObj, {
-          [key]: {
-            'oneOf': [
-              {
-                type: 'object',
-                properties: {
-                  cached_url: {
-                    type: 'string'
-                  },
-                  linktype: {
-                    type: 'string'
-                  }
-                }
-              },
-              {
-                type: 'object',
-                properties: {
-                  id: {
-                    type: 'string'
-                  },
-                  cached_url: {
-                    type: 'string'
-                  },
-                  linktype: {
-                    type: 'string',
-                    enum: ['story']
-                  }
-                }
-              },
-              {
-                type: 'object',
-                properties: {
-                  url: {
-                    type: 'string'
-                  },
-                  cached_url: {
-                    type: 'string'
-                  },
-                  linktype: {
-                    type: 'string',
-                    enum: ['asset', 'url']
-                  }
-                }
-              },
-              {
-                type: 'object',
-                properties: {
-                  email: {
-                    type: 'string'
-                  },
-                  linktype: {
-                    type: 'string',
-                    enum: ['email']
-                  }
-                }
-              }
-            ]
-          }
-        })
-      } else if (type === 'asset') {
-        Object.assign(parseObj, {
-          [key]: {
-            type: 'object',
-            required: ['id', 'filename', 'name'],
-            properties: {
-              alt: {
-                type: 'string'
-              },
-              copyright: {
-                type: 'string'
-              },
-              id: {
-                type: 'number'
-              },
-              filename: {
-                type: 'string'
-              },
-              name: {
-                type: 'string'
-              },
-              title: {
-                type: 'string'
-              }
-            },
-            additionalProperties: false
-          }
-        })
-      } else if (type === 'multiasset') {
-        Object.assign(parseObj, {
-            [key]: {
-              type: 'array',
-              items: {
-                type: 'object',
-                required: ['id', 'filename', 'name'],
-                properties: {
-                  alt: {
-                    type: 'string'
-                  },
-                  copyright: {
-                    type: 'string'
-                  },
-                  id: {
-                    type: 'number'
-                  },
-                  filename: {
-                    type: 'string'
-                  },
-                  name: {
-                    type: 'string'
-                  },
-                  title: {
-                    type: 'string'
-                  }
-                },
-                additionalProperties: false
-              }
-            }
-          }
-        )
+        continue;
       }
       const schemaType = parseType(type)
       if (!schemaType) {
-        return
+        continue;
       }
 
       obj[key] = {
@@ -223,7 +107,11 @@ module.exports = function storyblokToTypescript ({
           }
         }
       }
-      if (type === 'bloks') {
+      if (standardTypes.TYPES.includes(type)) {
+        obj[key].tsType = camelcase(getTitle(type), {
+          pascalCase: true
+        })
+      } else if (type === 'bloks') {
         if (schemaElement.restrict_components) {
           if (schemaElement.restrict_type === 'groups') {
             if (Array.isArray(schemaElement.component_group_whitelist) && schemaElement.component_group_whitelist.length) {
@@ -252,12 +140,13 @@ module.exports = function storyblokToTypescript ({
         }
       }
       Object.assign(parseObj, obj)
-    })
+    }
 
     return parseObj
   }
 
-  function parseType (type) {
+  function parseType(type) {
+    if(standardTypes.TYPES.includes(type)) return type
     switch (type) {
       case 'text':
         return 'string'
@@ -285,7 +174,6 @@ module.exports = function storyblokToTypescript ({
         return null
     }
   }
-
 
   genTsSchema()
     .then(() => {
