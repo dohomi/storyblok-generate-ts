@@ -2,7 +2,8 @@ const {compile} = require("json-schema-to-typescript");
 const typeFuncs = {
   'asset': generateAssetTypeIfNotYetGenerated,
   'multiasset': generateMultiAssetTypeIfNotYetGenerated,
-  'multilink': generateMultiLinkTypeIfNotYetGenerated
+  'multilink': generateMultiLinkTypeIfNotYetGenerated,
+  'table': generateTableTypeIfNotYetGenerated,
 }
 const toGenerateWhitelist = Object.keys(typeFuncs)
 
@@ -150,8 +151,76 @@ async function generateMultiLinkTypeIfNotYetGenerated(title) {
       }
     ]
   }
+  obj.$id = '#/' + 'multilink'
+  obj.title = title
   try {
-    return await compileType(obj, title)
+    return await compileType(obj, "multilink")
+  } catch (e) {
+    console.log('ERROR', e)
+  }
+}
+
+async function generateTableTypeIfNotYetGenerated(title) {
+  if (!toGenerateWhitelist.includes("table")) return;
+  const obj = {}
+  obj.$id = '#/' + 'table'
+  obj.title = title
+  obj.type = 'object'
+  obj.required = ['tbody', 'thead']
+  obj.properties = {
+    thead: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['_uid', 'component'],
+        properties: {
+          _uid: {
+            type: 'string'
+          },
+          value: {
+            type: 'string'
+          },
+          component: {
+            type: 'number'
+          }
+        }
+      }
+    },
+    tbody: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['_uid', 'component', 'body'],
+        properties: {
+          _uid: {
+            type: 'string'
+          },
+          body: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                _uid: {
+                  type: 'string'
+                },
+                value: {
+                  type: 'string'
+                },
+                component: {
+                  type: 'number'
+                }
+              }
+            }
+          },
+          component: {
+            type: 'number'
+          }
+        }
+      }
+    }
+  }
+  try {
+    return await compileType(obj, "table")
   } catch (e) {
     console.log('ERROR', e)
   }
