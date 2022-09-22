@@ -46,6 +46,9 @@ async function generateAssetTypeIfNotYetGenerated(title) {
     },
     title: {
       type: 'string'
+    },
+    focus: {
+      type: 'string'
     }
   }
   try {
