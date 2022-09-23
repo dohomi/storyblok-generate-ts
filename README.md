@@ -123,3 +123,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.4.0 Allow empty string in options type (thanks to @jbeast)
 * 1.5.0 De-Duplicate asset, multiasset and multilink (thanks to @markus-gx)
 * 1.6.0 Add table schema (thanks to @markus-gx)
+* 1.6.1 Add asset focus type (thanks to @markus-gx)
