@@ -1,5 +1,5 @@
 # storyblok-generate-ts
-This plugin uses `json-schema-to-typescript` to generate TS types based on `Storyblok` components. 
+This plugin uses [json-schema-to-typescript](https://github.com/bcherny/json-schema-to-typescript) to generate TS types based on `Storyblok` components. 
 You can install and run it as a CLI script
 
 ### 1. Prepare the use of this script
@@ -24,6 +24,7 @@ $ npm install -D storyblok-generate-ts
 - target *optional default: storyblok-component-types.d.ts
 - titlePrefix *optional default: '_storyblok' 
 - titleSuffix *optional
+- compilerOptions.[property] *optional
 - customTypeParser *optional - path to a custom parser NodeJS file
 ```
 
@@ -42,6 +43,12 @@ storyblokToTypescript({
   titlePrefix: '',
   // optional type name suffix (default: [Name]_Storyblok)
   titleSuffix: '_storyblok',
+  // optional compilerOptions which get passed through to json-schema-to-typescript
+  compilerOptions: {
+    unknownAny: false,
+    bannerComment: '',
+    unreachableDefinitions: true
+  }
   // optional function for custom types (key, obj) => {}
   // customTypeParser: exampleCustomParser
 })
@@ -124,3 +131,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.5.0 De-Duplicate asset, multiasset and multilink (thanks to @markus-gx)
 * 1.6.0 Add table schema (thanks to @markus-gx)
 * 1.6.1 Add asset focus type (thanks to @markus-gx)
+* 1.7.0 Add compilerOptions option (thanks to @SassNinja)
