@@ -7,21 +7,17 @@ const typeFuncs = {
 }
 const toGenerateWhitelist = Object.keys(typeFuncs)
 
-async function compileType(obj, name) {
-  const ts = await compile(obj, name, {
-    unknownAny: false,
-    bannerComment: '',
-    unreachableDefinitions: true
-  })
+async function compileType(obj, name, compilerOptions) {
+  const ts = await compile(obj, name, compilerOptions);
   toGenerateWhitelist.splice(toGenerateWhitelist.indexOf(name), 1)
   return ts
 }
 
-async function generate(type, title){
-  return await typeFuncs[type](title)
+async function generate(type, title, compilerOptions){
+  return await typeFuncs[type](title, compilerOptions)
 }
 
-async function generateAssetTypeIfNotYetGenerated(title) {
+async function generateAssetTypeIfNotYetGenerated(title, compilerOptions) {
   if (!toGenerateWhitelist.includes("asset")) return;
   const obj = {}
   obj.$id = '#/' + 'asset'
@@ -52,13 +48,13 @@ async function generateAssetTypeIfNotYetGenerated(title) {
     }
   }
   try {
-    return await compileType(obj, "asset")
+    return await compileType(obj, "asset", compilerOptions)
   } catch (e) {
     console.log('ERROR', e)
   }
 }
 
-async function generateMultiAssetTypeIfNotYetGenerated(title) {
+async function generateMultiAssetTypeIfNotYetGenerated(title, compilerOptions) {
   if (!toGenerateWhitelist.includes("multiasset")) return;
   const obj = {}
   obj.$id = '#/' + 'multiasset'
@@ -89,13 +85,13 @@ async function generateMultiAssetTypeIfNotYetGenerated(title) {
     }
   }
   try {
-    return await compileType(obj, "multiasset")
+    return await compileType(obj, "multiasset", compilerOptions)
   } catch (e) {
     console.log('ERROR', e)
   }
 }
 
-async function generateMultiLinkTypeIfNotYetGenerated(title) {
+async function generateMultiLinkTypeIfNotYetGenerated(title, compilerOptions) {
   if (!toGenerateWhitelist.includes("multilink")) return;
   const obj = {
     'oneOf': [
@@ -157,13 +153,13 @@ async function generateMultiLinkTypeIfNotYetGenerated(title) {
   obj.$id = '#/' + 'multilink'
   obj.title = title
   try {
-    return await compileType(obj, "multilink")
+    return await compileType(obj, "multilink", compilerOptions)
   } catch (e) {
     console.log('ERROR', e)
   }
 }
 
-async function generateTableTypeIfNotYetGenerated(title) {
+async function generateTableTypeIfNotYetGenerated(title, compilerOptions) {
   if (!toGenerateWhitelist.includes("table")) return;
   const obj = {}
   obj.$id = '#/' + 'table'
@@ -223,7 +219,7 @@ async function generateTableTypeIfNotYetGenerated(title) {
     }
   }
   try {
-    return await compileType(obj, "table")
+    return await compileType(obj, "table", compilerOptions)
   } catch (e) {
     console.log('ERROR', e)
   }

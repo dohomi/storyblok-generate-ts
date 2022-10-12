@@ -8,10 +8,18 @@ module.exports = function storyblokToTypescript({
                                                   componentsJson = {components: []},
                                                   customTypeParser = () => {
                                                   },
+                                                  compilerOptions = {},
                                                   path = 'src/typings/generated/components-schema.ts',
                                                   titleSuffix = '_storyblok',
                                                   titlePrefix = ''
                                                 }) {
+  
+  compilerOptions = Object.assign({
+    unknownAny: false,
+    bannerComment: '',
+    unreachableDefinitions: true
+  }, compilerOptions)
+  
   let tsString = []
   const getTitle = (t) => titlePrefix + t + titleSuffix
 
@@ -58,11 +66,7 @@ module.exports = function storyblokToTypescript({
         obj.required = requiredFields
       }
       try {
-        const ts = await compile(obj, values.name, {
-          unknownAny: false,
-          bannerComment: '',
-          unreachableDefinitions: true
-        })
+        const ts = await compile(obj, values.name, compilerOptions)
         tsString.push(ts)
       } catch (e) {
         console.log('ERROR', e)
@@ -77,7 +81,7 @@ module.exports = function storyblokToTypescript({
       const schemaElement = schema[key]
       const type = schemaElement.type
       if(standardTypes.TYPES.includes(type)){
-        const ts = await standardTypes.generate(type,getTitle(type))
+        const ts = await standardTypes.generate(type,getTitle(type),compilerOptions)
         tsString.push(ts)
       }
       else if (type === 'custom') {
