@@ -1,11 +1,12 @@
 export interface AccordionStoryblok {
+  variant?: "" | "outlined" | "elevation";
   body?: AccordionItemStoryblok[];
   use_plus?: boolean;
   square?: boolean;
   restrict_one?: boolean;
+  styles?: StylesStoryblok[];
   _uid: string;
   component: "accordion";
-  [k: string]: any;
 }
 
 export interface AccordionItemStoryblok {
@@ -24,7 +25,6 @@ export interface AccordionItemStoryblok {
   use_plus_icon?: boolean;
   _uid: string;
   component: "accordion_item";
-  [k: string]: any;
 }
 
 export interface AuthContainerStoryblok {
@@ -40,6 +40,7 @@ export interface AuthContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -79,16 +80,18 @@ export interface AuthContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "auth_container";
-  [k: string]: any;
 }
 
 export interface AuthFormStoryblok {
@@ -101,6 +104,7 @@ export interface AuthFormStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -140,10 +144,13 @@ export interface AuthFormStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -151,7 +158,6 @@ export interface AuthFormStoryblok {
   account_delete_button?: ButtonStoryblok[];
   _uid: string;
   component: "auth_form";
-  [k: string]: any;
 }
 
 export interface AvatarStoryblok {
@@ -163,7 +169,6 @@ export interface AvatarStoryblok {
   letter?: string;
   _uid: string;
   component: "avatar";
-  [k: string]: any;
 }
 
 export interface BackgroundStoryblok {
@@ -190,20 +195,17 @@ export interface BackgroundStoryblok {
   border_style?: "" | "solid" | "dashed" | "dotted";
   _uid: string;
   component: "background";
-  [k: string]: any;
 }
 
 export interface BackgroundElementColorStoryblok {
   _uid: string;
   component: "background_element_color";
-  [k: string]: any;
 }
 
 export interface BackgroundElementGradientStoryblok {
   value?: string;
   _uid: string;
   component: "background_element_gradient";
-  [k: string]: any;
 }
 
 export interface BackgroundElementItemStoryblok {
@@ -215,20 +217,17 @@ export interface BackgroundElementItemStoryblok {
   position_vertical?: "" | "top" | "center" | "bottom";
   _uid: string;
   component: "background_element_item";
-  [k: string]: any;
 }
 
 export interface BookingStoryblok {
   booking?: string;
   _uid: string;
   component: "booking";
-  [k: string]: any;
 }
 
 export interface BookingFormStoryblok {
   _uid: string;
   component: "Booking Form";
-  [k: string]: any;
 }
 
 export interface BottomNavigationStoryblok {
@@ -240,31 +239,26 @@ export interface BottomNavigationStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "bottom_navigation";
-  [k: string]: any;
 }
 
 export type MultilinkStoryblok =
   | {
       cached_url?: string;
       linktype?: string;
-      [k: string]: any;
     }
   | {
       id?: string;
       cached_url?: string;
       linktype?: "story";
-      [k: string]: any;
     }
   | {
       url?: string;
       cached_url?: string;
       linktype?: "asset" | "url";
-      [k: string]: any;
     }
   | {
       email?: string;
       linktype?: "email";
-      [k: string]: any;
     };
 
 export interface BottomNavigationItemStoryblok {
@@ -275,14 +269,23 @@ export interface BottomNavigationItemStoryblok {
   open_external?: boolean;
   _uid: string;
   component: "bottom_navigation_item";
-  [k: string]: any;
 }
 
 
 export interface ButtonStoryblok {
   variant?: "" | "outlined" | "raised" | "unelevated" | "fab";
   size?: "" | "dense" | "lm-button-large" | "lm-button-xlarge";
-  color?: "" | "primary" | "secondary" | "primary_text" | "secondary_text" | "light" | "dark";
+  color?:
+    | ""
+    | "primary"
+    | "secondary"
+    | "primary_text"
+    | "secondary_text"
+    | "light"
+    | "dark"
+    | "success"
+    | "info"
+    | "warning";
   corners?: "" | "lm-button-shaped" | "lm-button-square";
   font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   align?: "" | "flex-start" | "flex-end";
@@ -299,7 +302,6 @@ export interface ButtonStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "button";
-  [k: string]: any;
 }
 
 export interface ButtonListStoryblok {
@@ -307,7 +309,6 @@ export interface ButtonListStoryblok {
   body?: ButtonStoryblok[];
   _uid: string;
   component: "button_list";
-  [k: string]: any;
 }
 
 export interface ButtonSpeechTextStoryblok {
@@ -315,7 +316,218 @@ export interface ButtonSpeechTextStoryblok {
   full_page?: boolean;
   _uid: string;
   component: "button_speech_text";
-  [k: string]: any;
+}
+
+
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+}
+
+export interface CardStoryblok {
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SectionParallaxStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | SwiperStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | ThreeDimensionStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  body_above_media?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SectionParallaxStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | SwiperStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | ThreeDimensionStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  body_actions?: (HeadlineStoryblok | ButtonStoryblok | AvatarStoryblok | FlexRowStoryblok)[];
+  body_on_hover?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SectionParallaxStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | SwiperStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | ThreeDimensionStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  link?: MultilinkStoryblok;
+  open_external?: boolean;
+  elevation?: number;
+  variant?: "" | "elevation" | "outlined";
+  square?: boolean;
+  full_height?: boolean;
+  content_padding?: number;
+  media?: AssetStoryblok;
+  media_aspect_ratio?: string;
+  media_max_width?: number;
+  background?: BackgroundStoryblok[];
+  styles?: StylesStoryblok[];
+  styles_mobile?: StylesStoryblok[];
+  styles_tablet?: StylesStoryblok[];
+  styles_hover?: StylesStoryblok[];
+  object_fit?: "" | "contain" | "cover" | "fill" | "initial";
+  object_position?: "" | "top" | "center" | "bottom";
+  media_margin?: number;
+  _uid: string;
+  component: "card";
 }
 
 export interface CardListStoryblok {
@@ -383,7 +595,6 @@ export interface CardListStoryblok {
   image_margin?: string;
   _uid: string;
   component: "card_list";
-  [k: string]: any;
 }
 
 
@@ -401,7 +612,6 @@ export interface CardListItemStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "card_list_item";
-  [k: string]: any;
 }
 
 export interface CategoryStoryblok {
@@ -409,7 +619,6 @@ export interface CategoryStoryblok {
   image?: string;
   _uid: string;
   component: "category";
-  [k: string]: any;
 }
 
 export interface CategoryBoxStoryblok {
@@ -422,7 +631,6 @@ export interface CategoryBoxStoryblok {
   max_height?: number;
   _uid: string;
   component: "category_box";
-  [k: string]: any;
 }
 
 export interface ChatFacebookStoryblok {
@@ -430,7 +638,6 @@ export interface ChatFacebookStoryblok {
   disable_lazy?: boolean;
   _uid: string;
   component: "chat_facebook";
-  [k: string]: any;
 }
 
 export interface ChatTawktoStoryblok {
@@ -438,7 +645,6 @@ export interface ChatTawktoStoryblok {
   disable_lazy?: boolean;
   _uid: string;
   component: "chat_tawkto";
-  [k: string]: any;
 }
 
 export interface ChatWhatsappStoryblok {
@@ -447,7 +653,6 @@ export interface ChatWhatsappStoryblok {
   size?: "" | "small" | "medium" | "large";
   _uid: string;
   component: "chat_whatsapp";
-  [k: string]: any;
 }
 
 export interface ColumnStoryblok {
@@ -479,6 +684,7 @@ export interface ColumnStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -518,10 +724,13 @@ export interface ColumnStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -535,7 +744,16 @@ export interface ColumnStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "column";
-  [k: string]: any;
+}
+
+export interface ConfettiStoryblok {
+  type?: "" | "balloons" | "emoji" | "confetti";
+  elementCount?: number;
+  lifetime?: number;
+  colors?: string;
+  emojis?: string;
+  _uid: string;
+  component: "confetti";
 }
 
 export interface DateHeadlineStoryblok {
@@ -566,7 +784,6 @@ export interface DateHeadlineStoryblok {
   support_linebreak?: boolean;
   _uid: string;
   component: "date_headline";
-  [k: string]: any;
 }
 
 export interface DateTimeFormatStoryblok {
@@ -583,7 +800,6 @@ export interface DateTimeFormatStoryblok {
   timeStyle?: "" | "full" | "long" | "medium" | "short";
   _uid: string;
   component: "date_time_format";
-  [k: string]: any;
 }
 
 export interface DateTimeHeadlineStoryblok {
@@ -592,7 +808,6 @@ export interface DateTimeHeadlineStoryblok {
   date_format?: DateTimeFormatStoryblok[];
   _uid: string;
   component: "date_time_headline";
-  [k: string]: any;
 }
 
 export interface DialogStoryblok {
@@ -606,6 +821,7 @@ export interface DialogStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -645,10 +861,13 @@ export interface DialogStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -667,6 +886,7 @@ export interface DialogStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -706,35 +926,51 @@ export interface DialogStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "dialog";
-  [k: string]: any;
 }
 
 export interface DividerStoryblok {
+  thickness?: number;
+  alignment?: "" | "center" | "left" | "right";
+  orientation?: "" | "horizontal" | "vertical";
   width?: number;
+  vertical_height?: number;
+  theme_color?:
+    | ""
+    | "primary.main"
+    | "secondary.main"
+    | "grey.main"
+    | "error.main"
+    | "primary.light"
+    | "primary.dark"
+    | "info.main"
+    | "info.light"
+    | "info.dark"
+    | "success.main"
+    | "success.light"
+    | "success.dark"
+    | "warning.main"
+    | "warning.light"
+    | "warning.dark"
+    | "error.light"
+    | "error.dark";
+  body?: (HeadlineStoryblok | AvatarStoryblok | IconStoryblok | ImageStoryblok)[];
   size?: number;
   _uid: string;
   component: "divider";
-  [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  [k: string]: any;
-}
 
 export interface DocumentStoryblok {
   title?: string;
@@ -743,14 +979,12 @@ export interface DocumentStoryblok {
   categories?: any[];
   _uid: string;
   component: "document";
-  [k: string]: any;
 }
 
 export interface DocumentCategoryStoryblok {
   name?: string;
   _uid: string;
   component: "document_category";
-  [k: string]: any;
 }
 
 export interface EcommerceCheckoutStoryblok {
@@ -762,7 +996,6 @@ export interface EcommerceCheckoutStoryblok {
   trigger?: (ButtonStoryblok | ImageStoryblok | IconStoryblok | HeadlineStoryblok)[];
   _uid: string;
   component: "ecommerce_checkout";
-  [k: string]: any;
 }
 
 export interface EcommerceFastspringConfigStoryblok {
@@ -771,7 +1004,6 @@ export interface EcommerceFastspringConfigStoryblok {
   data_accesss_key?: string;
   _uid: string;
   component: "ecommerce_fastspring_config";
-  [k: string]: any;
 }
 
 
@@ -781,28 +1013,24 @@ export interface EcommerceFastspringProductStoryblok {
   on_successful_redirect?: MultilinkStoryblok;
   _uid: string;
   component: "ecommerce_fastspring_product";
-  [k: string]: any;
 }
 
 export interface EcommercePaypalConfigStoryblok {
   sdk_client_id: string;
   _uid: string;
   component: "ecommerce_paypal_config";
-  [k: string]: any;
 }
 
 export interface EcommercePaypalProductStoryblok {
   price?: number;
   _uid: string;
   component: "ecommerce_paypal_product";
-  [k: string]: any;
 }
 
 export interface EcommerceShopifyCheckoutStoryblok {
   handle?: string;
   _uid: string;
   component: "ecommerce_shopify_checkout";
-  [k: string]: any;
 }
 
 export interface EcommerceShopifyConfigStoryblok {
@@ -849,7 +1077,6 @@ export interface EcommerceShopifyConfigStoryblok {
   carousel_hide_indicator?: boolean;
   _uid: string;
   component: "ecommerce_shopify_config";
-  [k: string]: any;
 }
 
 export interface EcommerceShopifyIframeStoryblok {
@@ -860,7 +1087,6 @@ export interface EcommerceShopifyIframeStoryblok {
   is_button?: boolean;
   _uid: string;
   component: "ecommerce_shopify_iframe";
-  [k: string]: any;
 }
 
 export interface EcommerceSnipcartConfigStoryblok {
@@ -868,7 +1094,6 @@ export interface EcommerceSnipcartConfigStoryblok {
   data_api_key?: string;
   _uid: string;
   component: "ecommerce_snipcart_config";
-  [k: string]: any;
 }
 
 export interface EcommerceSnipcartProductStoryblok {
@@ -879,7 +1104,6 @@ export interface EcommerceSnipcartProductStoryblok {
   image_url?: string;
   _uid: string;
   component: "ecommerce_snipcart_product";
-  [k: string]: any;
 }
 
 export interface ErrorPageStoryblok {
@@ -887,7 +1111,6 @@ export interface ErrorPageStoryblok {
   body?: (SectionStoryblok | SectionParallaxStoryblok | SectionVideoBgStoryblok | SliderStoryblok)[];
   _uid: string;
   component: "error_page";
-  [k: string]: any;
 }
 
 
@@ -912,6 +1135,7 @@ export interface EventStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -951,16 +1175,18 @@ export interface EventStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "event";
-  [k: string]: any;
 }
 
 export interface EventCalendarStoryblok {
@@ -970,14 +1196,12 @@ export interface EventCalendarStoryblok {
   scroll_to_time?: number;
   _uid: string;
   component: "event_calendar";
-  [k: string]: any;
 }
 
 export interface EventCategoryStoryblok {
   title?: string;
   _uid: string;
   component: "event_category";
-  [k: string]: any;
 }
 
 export interface EventDateStoryblok {
@@ -987,14 +1211,12 @@ export interface EventDateStoryblok {
   title?: string;
   _uid: string;
   component: "event_date";
-  [k: string]: any;
 }
 
 export interface FastspringProductStoryblok {
   data_fsc_item_path?: string;
   _uid: string;
   component: "fastspring_product";
-  [k: string]: any;
 }
 
 export interface FlexRowStoryblok {
@@ -1014,6 +1236,7 @@ export interface FlexRowStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1053,10 +1276,13 @@ export interface FlexRowStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1064,9 +1290,10 @@ export interface FlexRowStoryblok {
   styles_mobile?: StylesStoryblok[];
   styles_tablet?: StylesStoryblok[];
   styles_hover?: StylesStoryblok[];
+  divider?: DividerStoryblok[];
+  flex_wrap?: "" | "wrap" | "initial" | "inherit" | "nowrap" | "revert";
   _uid: string;
   component: "flex_row";
-  [k: string]: any;
 }
 
 export interface FormStoryblok {
@@ -1084,7 +1311,6 @@ export interface FormStoryblok {
   label_as_placeholder?: boolean;
   _uid: string;
   component: "form";
-  [k: string]: any;
 }
 
 export interface FormBuilderStoryblok {
@@ -1107,7 +1333,6 @@ export interface FormBuilderStoryblok {
   additional_fields?: FormHiddenFieldStoryblok[];
   _uid: string;
   component: "form_builder";
-  [k: string]: any;
 }
 
 export interface FormCheckboxStoryblok {
@@ -1117,7 +1342,6 @@ export interface FormCheckboxStoryblok {
   required?: boolean;
   _uid: string;
   component: "form_checkbox";
-  [k: string]: any;
 }
 
 export interface FormContainerStoryblok {
@@ -1132,6 +1356,7 @@ export interface FormContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1171,16 +1396,18 @@ export interface FormContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "form_container";
-  [k: string]: any;
 }
 
 export interface FormHiddenFieldStoryblok {
@@ -1189,7 +1416,6 @@ export interface FormHiddenFieldStoryblok {
   is_number?: boolean;
   _uid: string;
   component: "form_hidden_field";
-  [k: string]: any;
 }
 
 export interface FormSelectStoryblok {
@@ -1201,7 +1427,6 @@ export interface FormSelectStoryblok {
   type?: "" | "multi-select" | "checkbox" | "radio";
   _uid: string;
   component: "form_select";
-  [k: string]: any;
 }
 
 export interface FormSelectOptionStoryblok {
@@ -1209,7 +1434,6 @@ export interface FormSelectOptionStoryblok {
   label?: string;
   _uid: string;
   component: "form_select_option";
-  [k: string]: any;
 }
 
 export interface FormTextfieldStoryblok {
@@ -1224,7 +1448,6 @@ export interface FormTextfieldStoryblok {
   help_text?: string;
   _uid: string;
   component: "form_textfield";
-  [k: string]: any;
 }
 
 export interface GalleryStoryblok {
@@ -1236,7 +1459,6 @@ export interface GalleryStoryblok {
   image_style?: StylesStoryblok[];
   _uid: string;
   component: "gallery";
-  [k: string]: any;
 }
 
 export interface GalleryRowStoryblok {
@@ -1244,10 +1466,32 @@ export interface GalleryRowStoryblok {
   scroll_to_left?: boolean;
   _uid: string;
   component: "gallery_row";
-  [k: string]: any;
 }
 
 export interface GlobalStoryblok {
+  theme_base: "" | "base" | "dark";
+  default_font_color?: string;
+  theme_primary?: string;
+  theme_primary_contrast?: string;
+  theme_secondary?: string;
+  theme_secondary_contrast?: string;
+  theme_error?: string;
+  theme_error_contrast?: string;
+  theme_link?: string;
+  theme_link_hover?: string;
+  theme_font_default?: string;
+  theme_font_alt1?: string;
+  theme_font_alt2?: string;
+  theme_font_alt3?: string;
+  theme_font_alt4?: string;
+  theme_container_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
+  theme_success?: string;
+  theme_success_contrast?: string;
+  theme_info?: string;
+  theme_info_contrast?: string;
+  theme_warning?: string;
+  theme_warning_contrast?: string;
+  custom_css?: string;
   setup_favicon?: string;
   website_logo?: string;
   website_logo_xs?: string;
@@ -1282,21 +1526,6 @@ export interface GlobalStoryblok {
   toolbar_background?: string;
   toolbar_main_height?: number;
   toolbar_font_size?: string;
-  theme_base: "" | "base" | "dark";
-  theme_primary?: string;
-  theme_primary_contrast?: string;
-  theme_secondary?: string;
-  theme_secondary_contrast?: string;
-  theme_error?: string;
-  theme_error_contrast?: string;
-  theme_link?: string;
-  theme_link_hover?: string;
-  theme_font_default?: string;
-  theme_font_alt1?: string;
-  theme_font_alt2?: string;
-  theme_font_alt3?: string;
-  theme_font_alt4?: string;
-  theme_container_width?: "" | "xs" | "sm" | "md" | "lg" | "xl" | "none";
   drawer_body?: (
     | ButtonStoryblok
     | NavMenuStoryblok
@@ -1328,13 +1557,11 @@ export interface GlobalStoryblok {
     | SeoSocialProfileStoryblok
     | SeoCorporateContactStoryblok
   )[];
-  custom_css?: string;
   toolbar_elevation?: number;
   scripts?: ScriptStoryblok[];
   _uid: string;
   component: "global";
   uuid?: string;
-  [k: string]: any;
 }
 
 export interface HeadlineStoryblok {
@@ -1349,6 +1576,7 @@ export interface HeadlineStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1388,10 +1616,13 @@ export interface HeadlineStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1414,7 +1645,26 @@ export interface HeadlineStoryblok {
     | "overline";
   font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   tag?: "" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-  color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
+  color?:
+    | ""
+    | "primary"
+    | "secondary"
+    | "textPrimary"
+    | "textSecondary"
+    | "error"
+    | "info.main"
+    | "success.main"
+    | "warning.main"
+    | "primary.light"
+    | "primary.dark"
+    | "secondary.light"
+    | "secondary.dark"
+    | "info.light"
+    | "info.dark"
+    | "warning.light"
+    | "warning.dark"
+    | "success.light"
+    | "success.dark";
   align?: "" | "left" | "center" | "right" | "justify";
   enable_speech?: boolean;
   support_linebreak?: boolean;
@@ -1434,7 +1684,6 @@ export interface HeadlineStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "headline";
-  [k: string]: any;
 }
 
 export interface HtmlStoryblok {
@@ -1449,6 +1698,7 @@ export interface HtmlStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1488,10 +1738,13 @@ export interface HtmlStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1501,27 +1754,20 @@ export interface HtmlStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "html";
-  [k: string]: any;
 }
 
 export interface HubspotFormStoryblok {
-  form_id?: string;
-  portal_id?: string;
-  newsletter_subscription?: number;
-  body?: FormStoryblok[];
-  consent_communication?: string;
-  consent_process?: string;
-  legitimate_interest?: ParagraphStoryblok[];
+  form_id: string;
+  portal_id: string;
+  region: string;
   _uid: string;
   component: "hubspot_form";
-  [k: string]: any;
 }
 
 export interface HubspotMeetingStoryblok {
   meeting_name?: string;
   _uid: string;
   component: "hubspot_meeting";
-  [k: string]: any;
 }
 
 export interface IconStoryblok {
@@ -1529,7 +1775,6 @@ export interface IconStoryblok {
   icon_url?: string;
   _uid: string;
   component: "icon";
-  [k: string]: any;
 }
 
 export interface IframeStoryblok {
@@ -1543,7 +1788,6 @@ export interface IframeStoryblok {
   full_height?: boolean;
   _uid: string;
   component: "iframe";
-  [k: string]: any;
 }
 
 export interface IframeAdvancedStoryblok {
@@ -1557,7 +1801,6 @@ export interface IframeAdvancedStoryblok {
   incoming_message_key?: string;
   _uid: string;
   component: "iframe_advanced";
-  [k: string]: any;
 }
 
 export interface ImageStoryblok {
@@ -1577,7 +1820,6 @@ export interface ImageStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "image";
-  [k: string]: any;
 }
 
 export interface ImageCoreStoryblok {
@@ -1587,38 +1829,40 @@ export interface ImageCoreStoryblok {
   height?: number;
   _uid: string;
   component: "image_core";
-  [k: string]: any;
 }
 
 export interface ImageListStoryblok {
   aspect_ratio?: "" | "1x1" | "16x9" | "4x3" | "3x4" | "3x2" | "2x3" | "1x2" | "2x1" | "1x3" | "3x1" | "2.85x1";
+  variant?: "" | "woven" | "quilted" | "masonry";
+  row_height?: number;
   text_protection?: boolean;
   enable_lightbox?: boolean;
-  masonry?: boolean;
   fit_in_color?: string;
-  label_position?: "" | "top" | "bottom";
+  label_position?: "" | "top" | "bottom" | "below";
+  masonry?: boolean;
   column_gap?: "" | "0" | "2" | "4" | "8" | "16" | "24" | "32";
-  column_count?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
-  column_count_tablet?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
-  column_count_phone?: "" | "1" | "2" | "3" | "4";
+  column_count?: number;
+  column_count_tablet?: number;
+  column_count_phone?: number;
   body?: ImageListItemStoryblok[];
   _uid: string;
   component: "image_list";
-  [k: string]: any;
 }
 
 
 export interface ImageListItemStoryblok {
-  link?: MultilinkStoryblok;
   source?: string;
+  alt?: string;
   label?: string;
   sub_title?: string;
-  open_external?: boolean;
-  alt?: string;
+  label_position?: "" | "top" | "bottom" | "below";
   show_text_in_dialog?: boolean;
+  link?: MultilinkStoryblok;
+  open_external?: boolean;
+  cols?: number;
+  rows?: number;
   _uid: string;
   component: "image_list_item";
-  [k: string]: any;
 }
 
 export interface InstagramListStoryblok {
@@ -1640,7 +1884,6 @@ export interface InstagramListStoryblok {
   shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft";
   _uid: string;
   component: "instagram_list";
-  [k: string]: any;
 }
 
 export interface InstagramPostStoryblok {
@@ -1649,7 +1892,6 @@ export interface InstagramPostStoryblok {
   hide_caption?: boolean;
   _uid: string;
   component: "instagram_post";
-  [k: string]: any;
 }
 
 export interface ItemKeyValueStoryblok {
@@ -1657,7 +1899,6 @@ export interface ItemKeyValueStoryblok {
   value?: string;
   _uid: string;
   component: "item_key_value";
-  [k: string]: any;
 }
 
 
@@ -1668,7 +1909,6 @@ export interface LinkStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "link";
-  [k: string]: any;
 }
 
 export interface ListsStoryblok {
@@ -1679,7 +1919,6 @@ export interface ListsStoryblok {
   image_size?: "" | "xsmall" | "small" | "medium" | "large" | "xlarge";
   _uid: string;
   component: "lists";
-  [k: string]: any;
 }
 
 export interface ListSearchAutocompleteStoryblok {
@@ -1698,7 +1937,6 @@ export interface ListSearchAutocompleteStoryblok {
   menu_outlined?: boolean;
   _uid: string;
   component: "list_search_autocomplete";
-  [k: string]: any;
 }
 
 export interface ListSearchFieldStoryblok {
@@ -1709,7 +1947,6 @@ export interface ListSearchFieldStoryblok {
   size?: "" | "small" | "medium";
   _uid: string;
   component: "list_search_field";
-  [k: string]: any;
 }
 
 export interface ListStoriesStoryblok {
@@ -1730,6 +1967,7 @@ export interface ListStoriesStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1769,10 +2007,13 @@ export interface ListStoriesStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1785,7 +2026,6 @@ export interface ListStoriesStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "list_stories";
-  [k: string]: any;
 }
 
 export interface ListWidgetStoryblok {
@@ -1800,7 +2040,6 @@ export interface ListWidgetStoryblok {
   not_found_content?: (RichTextEditorStoryblok | HeadlineStoryblok)[];
   _uid: string;
   component: "list_widget";
-  [k: string]: any;
 }
 
 export interface LogoStoryblok {
@@ -1809,7 +2048,6 @@ export interface LogoStoryblok {
   alt?: string;
   _uid: string;
   component: "logo";
-  [k: string]: any;
 }
 
 export interface MoralisStoryblok {
@@ -1822,7 +2060,6 @@ export interface MoralisStoryblok {
   )[];
   _uid: string;
   component: "moralis";
-  [k: string]: any;
 }
 
 export interface MoralisAuthContainerStoryblok {
@@ -1839,6 +2076,7 @@ export interface MoralisAuthContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1878,10 +2116,13 @@ export interface MoralisAuthContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1894,6 +2135,7 @@ export interface MoralisAuthContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1933,10 +2175,13 @@ export interface MoralisAuthContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -1949,6 +2194,7 @@ export interface MoralisAuthContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -1988,16 +2234,18 @@ export interface MoralisAuthContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "moralis_auth_container";
-  [k: string]: any;
 }
 
 export interface MoralisButtonStoryblok {
@@ -2006,7 +2254,6 @@ export interface MoralisButtonStoryblok {
   logout?: (ButtonStoryblok | ImageStoryblok)[];
   _uid: string;
   component: "moralis_button";
-  [k: string]: any;
 }
 
 export interface MoralisDataStoryblok {
@@ -2016,7 +2263,6 @@ export interface MoralisDataStoryblok {
   richtext?: any;
   _uid: string;
   component: "moralis_data";
-  [k: string]: any;
 }
 
 export interface MoralisMintStoryblok {
@@ -2033,6 +2279,7 @@ export interface MoralisMintStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2072,10 +2319,13 @@ export interface MoralisMintStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -2091,6 +2341,7 @@ export interface MoralisMintStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2130,16 +2381,19 @@ export interface MoralisMintStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   price?: string;
   price_whitelist?: string;
-  sale?: "" | "none" | "whitelist" | "public" | "ended";
+  sale?: "" | "none" | "whitelist" | "public" | "ended" | "code";
   mint_amount?: number;
   mint_amount_whitelist?: number;
   counter_style?: HeadlineStoryblok[];
@@ -2152,6 +2406,7 @@ export interface MoralisMintStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2191,10 +2446,13 @@ export interface MoralisMintStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -2207,6 +2465,7 @@ export interface MoralisMintStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2246,10 +2505,13 @@ export interface MoralisMintStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -2265,6 +2527,7 @@ export interface MoralisMintStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2304,24 +2567,25 @@ export interface MoralisMintStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   price_in_usd?: number;
   _uid: string;
   component: "moralis_mint";
-  [k: string]: any;
 }
 
 export interface MoralisVenlyStoryblok {
   client_id?: string;
   _uid: string;
   component: "moralis_venly";
-  [k: string]: any;
 }
 
 export interface MotionStoryblok {
@@ -2340,6 +2604,7 @@ export interface MotionStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2379,16 +2644,18 @@ export interface MotionStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "motion";
-  [k: string]: any;
 }
 
 
@@ -2400,7 +2667,6 @@ export interface NavItemStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "nav_item";
-  [k: string]: any;
 }
 
 export interface NavListStoryblok {
@@ -2408,9 +2674,10 @@ export interface NavListStoryblok {
   collapse_on_mobile?: boolean;
   header?: string;
   body?: (NavItemStoryblok | NavMenuStoryblok | ButtonStoryblok)[];
+  headline_styles?: HeadlineStoryblok[];
+  navigation_item_styles?: HeadlineStoryblok[];
   _uid: string;
   component: "nav_list";
-  [k: string]: any;
 }
 
 export interface NavMenuStoryblok {
@@ -2426,7 +2693,6 @@ export interface NavMenuStoryblok {
   body?: (NavMenuItemStoryblok | RowStoryblok | NavMenuStoryblok)[];
   _uid: string;
   component: "nav_menu";
-  [k: string]: any;
 }
 
 
@@ -2437,7 +2703,6 @@ export interface NavMenuItemStoryblok {
   image?: string;
   _uid: string;
   component: "nav_menu_item";
-  [k: string]: any;
 }
 
 
@@ -2451,14 +2716,12 @@ export interface NewsStoryblok {
   date_format?: DateTimeFormatStoryblok[];
   _uid: string;
   component: "news";
-  [k: string]: any;
 }
 
 export interface NewsCategoryStoryblok {
   name?: string;
   _uid: string;
   component: "news_category";
-  [k: string]: any;
 }
 
 export interface NewsListStoryblok {
@@ -2470,7 +2733,6 @@ export interface NewsListStoryblok {
   description?: HeadlineStoryblok[];
   _uid: string;
   component: "news_list";
-  [k: string]: any;
 }
 
 export interface PageStoryblok {
@@ -2490,7 +2752,7 @@ export interface PageStoryblok {
   preview_image?: string;
   preview_teaser?: string;
   preview_publish_date?: string;
-  property?: ("has_feature" | "disable_promotion")[];
+  property?: ("has_feature" | "disable_promotion" | "enable_parallax")[];
   body?: (
     | SectionStoryblok
     | SectionVideoBgStoryblok
@@ -2499,6 +2761,7 @@ export interface PageStoryblok {
     | PromotionStoryblok
     | SnackbarStoryblok
     | BottomNavigationStoryblok
+    | SwiperStoryblok
   )[];
   right_body?: (
     | AccordionStoryblok
@@ -2509,6 +2772,7 @@ export interface PageStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2548,10 +2812,13 @@ export interface PageStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -2560,7 +2827,6 @@ export interface PageStoryblok {
   _uid: string;
   component: "page";
   uuid?: string;
-  [k: string]: any;
 }
 
 export interface PaginationStoryblok {
@@ -2572,7 +2838,6 @@ export interface PaginationStoryblok {
   position?: "" | "top" | "bottom" | "top_bottom";
   _uid: string;
   component: "pagination";
-  [k: string]: any;
 }
 
 export interface ParagraphStoryblok {
@@ -2594,191 +2859,11 @@ export interface ParagraphStoryblok {
   font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   _uid: string;
   component: "paragraph";
-  [k: string]: any;
 }
 
 export interface ParallaxItemStoryblok {
   image?: string;
-  amount?: number;
-  image_focal_point?: string;
-  children?: HeadlineStoryblok[];
-  _uid: string;
-  component: "parallax_item";
-  [k: string]: any;
-}
-
-
-export type MultiassetStoryblok = {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  [k: string]: any;
-}[];
-
-export interface PlayerStoryblok {
-  url?: string;
-  url_internal?: AssetStoryblok;
-  url_alternatives?: MultiassetStoryblok;
-  ratio?: "" | "16x9" | "4x3" | "3x2" | "1x1";
-  width?: string;
-  height?: string;
-  controls?: boolean;
-  playing?: boolean;
-  loop?: boolean;
-  muted?: boolean;
-  playsinline?: boolean;
-  volume?: number;
-  light?: boolean;
-  fallback_image?: string;
-  border_radius?: string;
-  toggle_image_loading?: boolean;
-  _uid: string;
-  component: "player";
-  [k: string]: any;
-}
-
-export interface PricingStoryblok {
-  body?: PricingItemStoryblok[];
-  column_count?: number;
-  column_count_tablet?: number;
-  column_count_phone?: number;
-  column_gap?: "" | "2" | "4" | "8" | "16" | "24" | "32";
-  _uid: string;
-  component: "pricing";
-  [k: string]: any;
-}
-
-export interface PricingItemStoryblok {
-  image?: ImageStoryblok[];
-  title?: HeadlineStoryblok[];
-  price?: HeadlineStoryblok[];
-  subtitle?: HeadlineStoryblok[];
-  features?: ParagraphStoryblok[];
-  button?: ButtonStoryblok[];
-  promotion?: HeadlineStoryblok[];
-  _uid: string;
-  component: "pricing_item";
-  [k: string]: any;
-}
-
-export interface PromotionStoryblok {
-  image?: ImageStoryblok[];
-  body?: PromotionItemStoryblok[];
-  _uid: string;
-  component: "promotion";
-  [k: string]: any;
-}
-
-export interface PromotionItemStoryblok {
-  body?: (HeadlineStoryblok | ButtonStoryblok | ButtonListStoryblok | ParagraphStoryblok | HtmlStoryblok)[];
-  action?: (ButtonStoryblok | ButtonListStoryblok)[];
-  position?:
-    | ""
-    | "top_left"
-    | "top_right"
-    | "bottom_left"
-    | "bottom_right"
-    | "top_left_overlap"
-    | "bottom_left_overlap";
-  variant?: "" | "variant-1" | "variant-2" | "variant-3" | "variant-4";
-  _uid: string;
-  component: "promotion_item";
-  [k: string]: any;
-}
-
-export interface RichTextEditorStoryblok {
-  font_size?: string;
-  line_height?: string;
-  letter_spacing?: string;
-  typography?:
-    | ""
-    | "body1"
-    | "body2"
-    | "subtitle1"
-    | "subtitle2"
-    | "caption"
-    | "headline1"
-    | "headline2"
-    | "headline3"
-    | "overline"
-    | "headline4"
-    | "headline5"
-    | "headline6";
-  color?: "" | "primary" | "secondary" | "textPrimary" | "textSecondary" | "error";
-  align?: "" | "left" | "center" | "right" | "justify";
-  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
-  body?: any;
-  styles?: StylesStoryblok[];
-  styles_mobile?: StylesStoryblok[];
-  styles_tablet?: StylesStoryblok[];
-  styles_hover?: StylesStoryblok[];
-  enable_speech?: boolean;
-  _uid: string;
-  component: "rich_text_editor";
-  [k: string]: any;
-}
-
-export interface RowStoryblok {
-  background?: BackgroundStoryblok[];
-  spacing?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
-  justify?: "" | "flex-start" | "center" | "flex-end" | "space-between" | "space-evenly" | "space-around";
-  align_content?: "" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "stretch";
-  align_items?: "" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
-  direction?: "" | "row" | "column" | "row-reverse" | "column-reverse";
-  body?: ColumnStoryblok[];
-  reverse_on_mobile?: boolean;
-  reverse_on_tablet?: boolean;
-  styles?: StylesStoryblok[];
-  styles_mobile?: StylesStoryblok[];
-  styles_tablet?: StylesStoryblok[];
-  styles_hover?: StylesStoryblok[];
-  _uid: string;
-  component: "row";
-  [k: string]: any;
-}
-
-export interface RowNestedStoryblok {
-  body?: ColumnStoryblok[];
-  fluid_width?: boolean;
-  column_gap?: number;
-  grid_gap?: number;
-  align?: "" | "left" | "right";
-  background?: BackgroundStoryblok[];
-  grid_margin_desktop?: string;
-  grid_margin_tablet?: string;
-  grid_margin_phone?: string;
-  grid_gutter_desktop?: string;
-  grid_gutter_tablet?: string;
-  grid_gutter_phone?: string;
-  _uid: string;
-  component: "row_nested";
-  [k: string]: any;
-}
-
-export interface ScriptStoryblok {
-  id?: string;
-  strategy?: "" | "beforeInteractive" | "lazyOnload" | "afterInteractive";
-  attributes?: string;
-  url?: string;
-  script_body?: string;
-  _uid: string;
-  component: "script";
-  [k: string]: any;
-}
-
-export interface SearchStoryStoryblok {
-  type?: "" | "page" | "document" | "event" | "news";
-  _uid: string;
-  component: "search_story";
-  [k: string]: any;
-}
-
-export interface SectionStoryblok {
-  section_identifier?: string;
-  body?: (
+  children?: (
     | AccordionStoryblok
     | AuthContainerStoryblok
     | AuthFormStoryblok
@@ -2787,6 +2872,7 @@ export interface SectionStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -2826,10 +2912,306 @@ export interface SectionStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  image_focal_point?: string;
+  speed?: number;
+  easing?:
+    | ""
+    | "ease"
+    | "easeIn"
+    | "easeOut"
+    | "easeInOut"
+    | "easeInQuad"
+    | "easeInCubic"
+    | "easeInQuart"
+    | "easeInQuint"
+    | "easeInSine"
+    | "easeInExpo"
+    | "easeInCirc"
+    | "easeOutQuad"
+    | "easeOutCubic"
+    | "easeOutQuart"
+    | "easeOutQuint"
+    | "easeOutSine"
+    | "easeOutExpo"
+    | "easeOutCirc"
+    | "easeInOutQuad"
+    | "easeInOutCubic"
+    | "easeInOutQuart"
+    | "easeInOutQuint"
+    | "easeInOutSine"
+    | "easeInOutExpo"
+    | "easeInOutCirc"
+    | "easeInBack"
+    | "easeOutBack"
+    | "easeInOutBack";
+  always_complete_animation?: boolean;
+  expanded?: boolean;
+  translateX?: string;
+  translateY?: string;
+  scale?: string;
+  scaleX?: string;
+  scaleY?: string;
+  scaleZ?: string;
+  rotate?: string;
+  rotateX?: string;
+  rotateY?: string;
+  rotateZ?: string;
+  opacity?: string;
+  _uid: string;
+  component: "parallax_item";
+}
+
+
+export type MultiassetStoryblok = {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+}[];
+
+export interface PlayerStoryblok {
+  url?: string;
+  url_internal?: AssetStoryblok;
+  url_alternatives?: MultiassetStoryblok;
+  ratio?: "16x9" | "4x3" | "3x2" | "1x1";
+  width?: string;
+  height?: string;
+  border_radius?: string;
+  controls?: boolean;
+  playing?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  playsinline?: boolean;
+  volume?: number;
+  light?: boolean;
+  toggle_play_on_hover?: boolean;
+  fallback_image?: string;
+  toggle_image_loading?: boolean;
+  disable_lazy_load?: boolean;
+  _uid: string;
+  component: "player";
+}
+
+export interface PricingStoryblok {
+  body?: PricingItemStoryblok[];
+  column_count?: number;
+  column_count_tablet?: number;
+  column_count_phone?: number;
+  column_gap?: "" | "2" | "4" | "8" | "16" | "24" | "32";
+  _uid: string;
+  component: "pricing";
+}
+
+export interface PricingItemStoryblok {
+  image?: ImageStoryblok[];
+  title?: HeadlineStoryblok[];
+  price?: HeadlineStoryblok[];
+  subtitle?: HeadlineStoryblok[];
+  features?: ParagraphStoryblok[];
+  button?: ButtonStoryblok[];
+  promotion?: HeadlineStoryblok[];
+  _uid: string;
+  component: "pricing_item";
+}
+
+export interface PromotionStoryblok {
+  image?: ImageStoryblok[];
+  body?: PromotionItemStoryblok[];
+  _uid: string;
+  component: "promotion";
+}
+
+export interface PromotionItemStoryblok {
+  body?: (HeadlineStoryblok | ButtonStoryblok | ButtonListStoryblok | ParagraphStoryblok | HtmlStoryblok)[];
+  action?: (ButtonStoryblok | ButtonListStoryblok)[];
+  position?:
+    | ""
+    | "top_left"
+    | "top_right"
+    | "bottom_left"
+    | "bottom_right"
+    | "top_left_overlap"
+    | "bottom_left_overlap";
+  variant?: "" | "variant-1" | "variant-2" | "variant-3" | "variant-4";
+  _uid: string;
+  component: "promotion_item";
+}
+
+export interface RichTextEditorStoryblok {
+  font_size?: string;
+  line_height?: string;
+  letter_spacing?: string;
+  typography?:
+    | ""
+    | "body1"
+    | "body2"
+    | "subtitle1"
+    | "subtitle2"
+    | "caption"
+    | "headline1"
+    | "headline2"
+    | "headline3"
+    | "overline"
+    | "headline4"
+    | "headline5"
+    | "headline6";
+  color?:
+    | ""
+    | "primary.main"
+    | "secondary.main"
+    | "textPrimary"
+    | "textSecondary"
+    | "error.main"
+    | "success.main"
+    | "info.main"
+    | "warning.main"
+    | "primary.light"
+    | "primary.dark"
+    | "info.light"
+    | "info.dark"
+    | "warning.light"
+    | "warning.dark"
+    | "success.light"
+    | "success.dark"
+    | "error.light"
+    | "error.dark"
+    | "secondary.light"
+    | "secondary.dark";
+  align?: "" | "left" | "center" | "right" | "justify";
+  font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
+  body?: any;
+  styles?: StylesStoryblok[];
+  styles_mobile?: StylesStoryblok[];
+  styles_tablet?: StylesStoryblok[];
+  styles_hover?: StylesStoryblok[];
+  enable_speech?: boolean;
+  _uid: string;
+  component: "rich_text_editor";
+}
+
+export interface RowStoryblok {
+  section_identifier?: string;
+  body?: ColumnStoryblok[];
+  spacing?: "" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
+  justify?: "" | "flex-start" | "center" | "flex-end" | "space-between" | "space-evenly" | "space-around";
+  align_content?: "" | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "stretch";
+  align_items?: "" | "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+  direction?: "" | "row" | "column" | "row-reverse" | "column-reverse";
+  flex_wrap?: "" | "wrap" | "nowrap" | "wrap-reverse";
+  reverse_on_mobile?: boolean;
+  reverse_on_tablet?: boolean;
+  background?: BackgroundStoryblok[];
+  styles?: StylesStoryblok[];
+  styles_mobile?: StylesStoryblok[];
+  styles_tablet?: StylesStoryblok[];
+  styles_hover?: StylesStoryblok[];
+  _uid: string;
+  component: "row";
+}
+
+export interface RowNestedStoryblok {
+  body?: ColumnStoryblok[];
+  fluid_width?: boolean;
+  column_gap?: number;
+  grid_gap?: number;
+  align?: "" | "left" | "right";
+  background?: BackgroundStoryblok[];
+  grid_margin_desktop?: string;
+  grid_margin_tablet?: string;
+  grid_margin_phone?: string;
+  grid_gutter_desktop?: string;
+  grid_gutter_tablet?: string;
+  grid_gutter_phone?: string;
+  _uid: string;
+  component: "row_nested";
+}
+
+export interface ScriptStoryblok {
+  id?: string;
+  strategy?: "" | "beforeInteractive" | "lazyOnload" | "afterInteractive";
+  attributes?: string;
+  url?: string;
+  script_body?: string;
+  _uid: string;
+  component: "script";
+}
+
+export interface SearchStoryStoryblok {
+  type?: "" | "page" | "document" | "event" | "news";
+  _uid: string;
+  component: "search_story";
+}
+
+export interface SectionStoryblok {
+  section_identifier?: string;
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SectionParallaxStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | SwiperStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -2845,18 +3227,19 @@ export interface SectionStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "section";
-  [k: string]: any;
 }
 
 export interface SectionParallaxStoryblok {
   body?: (RowStoryblok | CardListStoryblok)[];
   elements?: ParallaxItemStoryblok[];
   height?: number;
+  ratio?: string;
+  max_height_mobile?: number;
   disable_lazy_load?: boolean;
+  allow_overflow?: boolean;
   toggle_image_loading?: boolean;
   _uid: string;
   component: "section_parallax";
-  [k: string]: any;
 }
 
 
@@ -2875,7 +3258,6 @@ export interface SectionVideoBgStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "section_video_bg";
-  [k: string]: any;
 }
 
 export interface SeoCorporateContactStoryblok {
@@ -2884,7 +3266,6 @@ export interface SeoCorporateContactStoryblok {
   contact_point: SeoCorporateContactPointStoryblok[];
   _uid: string;
   component: "seo_corporate_contact";
-  [k: string]: any;
 }
 
 export interface SeoCorporateContactPointStoryblok {
@@ -2894,7 +3275,6 @@ export interface SeoCorporateContactPointStoryblok {
   available_language?: string;
   _uid: string;
   component: "seo_corporate_contact_point";
-  [k: string]: any;
 }
 
 export interface SeoLocalBusinessStoryblok {
@@ -2915,7 +3295,6 @@ export interface SeoLocalBusinessStoryblok {
   opening_hours?: SeoLocalBusinessOpeningHourStoryblok[];
   _uid: string;
   component: "seo_local_business";
-  [k: string]: any;
 }
 
 export interface SeoLocalBusinessOpeningHourStoryblok {
@@ -2935,7 +3314,6 @@ export interface SeoLocalBusinessOpeningHourStoryblok {
   valid_through?: string;
   _uid: string;
   component: "seo_local_business_opening_hour";
-  [k: string]: any;
 }
 
 export interface SeoOpenGraphStoryblok {
@@ -2949,7 +3327,6 @@ export interface SeoOpenGraphStoryblok {
   images?: ImageCoreStoryblok[];
   _uid: string;
   component: "seo_open_graph";
-  [k: string]: any;
 }
 
 export interface SeoProductStoryblok {
@@ -2961,7 +3338,6 @@ export interface SeoProductStoryblok {
   offers: SeoProductOfferStoryblok[];
   _uid: string;
   component: "seo_product";
-  [k: string]: any;
 }
 
 export interface SeoProductOfferStoryblok {
@@ -2989,7 +3365,6 @@ export interface SeoProductOfferStoryblok {
   seller_name: string;
   _uid: string;
   component: "seo_product_offer";
-  [k: string]: any;
 }
 
 export interface SeoSocialProfileStoryblok {
@@ -2999,7 +3374,6 @@ export interface SeoSocialProfileStoryblok {
   same_as: string;
   _uid: string;
   component: "seo_social_profile";
-  [k: string]: any;
 }
 
 export interface SeoTwitterStoryblok {
@@ -3008,7 +3382,6 @@ export interface SeoTwitterStoryblok {
   card_type?: "" | "summary" | "summary_large_image" | "app" | "player";
   _uid: string;
   component: "seo_twitter";
-  [k: string]: any;
 }
 
 export interface SliderStoryblok {
@@ -3032,7 +3405,6 @@ export interface SliderStoryblok {
   body?: (SectionStoryblok | PromotionStoryblok | ImageStoryblok | ImageListStoryblok | SectionVideoBgStoryblok)[];
   _uid: string;
   component: "slider";
-  [k: string]: any;
 }
 
 export interface SnackbarStoryblok {
@@ -3055,6 +3427,7 @@ export interface SnackbarStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -3094,10 +3467,13 @@ export interface SnackbarStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -3109,7 +3485,6 @@ export interface SnackbarStoryblok {
   max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "snackbar";
-  [k: string]: any;
 }
 
 export interface StaticContainerStoryblok {
@@ -3122,6 +3497,7 @@ export interface StaticContainerStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -3161,23 +3537,24 @@ export interface StaticContainerStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "static_container";
-  [k: string]: any;
 }
 
 export interface StaticSectionStoryblok {
   container?: string;
   _uid: string;
   component: "static_section";
-  [k: string]: any;
 }
 
 export interface StylesStoryblok {
@@ -3191,7 +3568,27 @@ export interface StylesStoryblok {
   border_width?: string;
   color_theme?: "" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
   background?: string;
-  background_color_theme?: "" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | "grey";
+  background_color_theme?:
+    | ""
+    | "primary.main"
+    | "secondary.main"
+    | "success"
+    | "info"
+    | "warning"
+    | "error"
+    | "grey"
+    | "primary.light"
+    | "primary.dark"
+    | "secondary.light"
+    | "secondary.dark"
+    | "info.light"
+    | "info.dark"
+    | "success.light"
+    | "success.dark"
+    | "error.light"
+    | "error.dark"
+    | "warning.light"
+    | "warning.dark";
   elevation?: number;
   box_shadow?: string;
   border_style?:
@@ -3223,7 +3620,6 @@ export interface StylesStoryblok {
   css_properties?: ItemKeyValueStoryblok[];
   _uid: string;
   component: "styles";
-  [k: string]: any;
 }
 
 export interface StyleVariantsBgStoryblok {
@@ -3231,37 +3627,39 @@ export interface StyleVariantsBgStoryblok {
   color_opacity?: string;
   _uid: string;
   component: "style_variants_bg";
-  [k: string]: any;
 }
 
-export interface TableStoryblok {
-  variant?: "" | "comparison" | "bordered" | "bordered-bold" | "boxed" | "price";
-  disable_table_head?: boolean;
+export interface SwiperStoryblok {
+  width?: number;
+  height?: number;
+  navigation_size?: number;
+  pagination_bullet_size?: number;
+  space_between_slides?: string;
+  image_object_fit?: "" | "contain" | "cover" | "fill";
+  body?: SwiperItemStoryblok[];
+  theme_color?:
+    | ""
+    | "primary.main"
+    | "secondary.main"
+    | "success.main"
+    | "text.primary"
+    | "text.secondary"
+    | "info.main"
+    | "warning.main"
+    | "error.main";
+  property?: ("hide_pagination" | "hide_arrows" | "free_mode" | "grab_cursor")[];
+  effect?: "" | "cube" | "cards" | "fade" | "flip" | "creative" | "coverflow";
+  slides_per_view?: string;
+  autoslide_duration?: number;
+  pause_on_hover?: boolean;
+  max_pagination_bullets?: number;
   _uid: string;
-  component: "table";
-  [k: string]: any;
+  component: "swiper";
 }
 
-export interface TabsStoryblok {
-  vertical_tabs?: boolean;
-  mobile_breakpoint?: "" | "xs" | "sm" | "md";
-  tabs_width?: "" | "2" | "3" | "4" | "5" | "6" | "auto";
-  content_width?: "" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "auto" | "true";
-  wrapped?: boolean;
-  variant?: "" | "fullWidth" | "scrollable" | "standard";
-  centered?: boolean;
-  dynamic_height?: boolean;
-  body?: TabsItemStoryblok[];
-  text_color?: "" | "secondary" | "primary" | "inherit";
-  indicator_color?: "" | "secondary" | "primary";
-  text_style?: HeadlineStoryblok[];
-  _uid: string;
-  component: "tabs";
-  [k: string]: any;
-}
 
-export interface TabsItemStoryblok {
-  title?: string;
+export interface SwiperItemStoryblok {
+  image?: AssetStoryblok;
   body?: (
     | AccordionStoryblok
     | AuthContainerStoryblok
@@ -3271,6 +3669,7 @@ export interface TabsItemStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -3310,31 +3709,129 @@ export interface TabsItemStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
+    | TimelineStoryblok
+    | ToolbarNaviButtonStoryblok
+  )[];
+  _uid: string;
+  component: "swiper_item";
+}
+
+export interface TableStoryblok {
+  variant?: "" | "comparison" | "bordered" | "bordered-bold" | "boxed" | "price";
+  disable_table_head?: boolean;
+  _uid: string;
+  component: "table";
+}
+
+export interface TabsStoryblok {
+  vertical_tabs?: boolean;
+  mobile_breakpoint?: "" | "xs" | "sm" | "md";
+  tabs_width?: "" | "2" | "3" | "4" | "5" | "6" | "auto";
+  content_width?: "" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "auto" | "true";
+  wrapped?: boolean;
+  variant?: "" | "fullWidth" | "scrollable" | "standard";
+  centered?: boolean;
+  dynamic_height?: boolean;
+  body?: TabsItemStoryblok[];
+  text_color?: "" | "secondary" | "primary" | "inherit";
+  indicator_color?: "" | "secondary" | "primary";
+  text_style?: HeadlineStoryblok[];
+  _uid: string;
+  component: "tabs";
+}
+
+export interface TabsItemStoryblok {
+  title?: string;
+  body?: (
+    | AccordionStoryblok
+    | AuthContainerStoryblok
+    | AuthFormStoryblok
+    | AvatarStoryblok
+    | BottomNavigationStoryblok
+    | ButtonStoryblok
+    | ButtonListStoryblok
+    | ButtonSpeechTextStoryblok
+    | CardStoryblok
+    | CardListStoryblok
+    | CategoryBoxStoryblok
+    | DateHeadlineStoryblok
+    | DialogStoryblok
+    | DividerStoryblok
+    | EcommerceCheckoutStoryblok
+    | EventCalendarStoryblok
+    | FlexRowStoryblok
+    | FormStoryblok
+    | FormBuilderStoryblok
+    | FormContainerStoryblok
+    | GalleryStoryblok
+    | HeadlineStoryblok
+    | HtmlStoryblok
+    | HubspotFormStoryblok
+    | HubspotMeetingStoryblok
+    | IconStoryblok
+    | IframeStoryblok
+    | IframeAdvancedStoryblok
+    | ImageStoryblok
+    | ImageListStoryblok
+    | InstagramListStoryblok
+    | InstagramPostStoryblok
+    | LinkStoryblok
+    | ListSearchAutocompleteStoryblok
+    | ListSearchFieldStoryblok
+    | ListStoriesStoryblok
+    | ListWidgetStoryblok
+    | MoralisStoryblok
+    | MotionStoryblok
+    | NavListStoryblok
+    | NavMenuStoryblok
+    | ParagraphStoryblok
+    | PlayerStoryblok
+    | PricingStoryblok
+    | PromotionStoryblok
+    | RichTextEditorStoryblok
+    | RowStoryblok
+    | SearchStoryStoryblok
+    | SectionParallaxStoryblok
+    | SliderStoryblok
+    | StaticSectionStoryblok
+    | SwiperStoryblok
+    | TableStoryblok
+    | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "tabs_item";
-  [k: string]: any;
+}
+
+
+export interface ThreeDimensionStoryblok {
+  source?: AssetStoryblok;
+  _uid: string;
+  component: "three_dimension";
 }
 
 export interface TimelineStoryblok {
   align?: "" | "left" | "right";
   variant?: "" | "outlined" | "naked";
   connect_separator?: boolean;
-  disable_card?: boolean;
-  card_variant?: "" | "elevation" | "outlined";
-  card_elevation?: number;
-  card_square?: boolean;
   show_last_line?: boolean;
   body?: TimelineItemStoryblok[];
+  disable_card?: boolean;
+  card_variant?: "" | "elevation" | "outlined";
+  card_square?: boolean;
+  card_elevation?: number;
+  confetti?: ConfettiStoryblok[];
   _uid: string;
   component: "timeline";
-  [k: string]: any;
 }
 
 
@@ -3353,6 +3850,7 @@ export interface TimelineItemStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -3392,10 +3890,13 @@ export interface TimelineItemStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
@@ -3410,6 +3911,7 @@ export interface TimelineItemStoryblok {
     | ButtonStoryblok
     | ButtonListStoryblok
     | ButtonSpeechTextStoryblok
+    | CardStoryblok
     | CardListStoryblok
     | CategoryBoxStoryblok
     | DateHeadlineStoryblok
@@ -3449,22 +3951,23 @@ export interface TimelineItemStoryblok {
     | RichTextEditorStoryblok
     | RowStoryblok
     | SearchStoryStoryblok
+    | SectionParallaxStoryblok
     | SliderStoryblok
     | StaticSectionStoryblok
+    | SwiperStoryblok
     | TableStoryblok
     | TabsStoryblok
+    | ThreeDimensionStoryblok
     | TimelineStoryblok
     | ToolbarNaviButtonStoryblok
   )[];
   _uid: string;
   component: "timeline_item";
-  [k: string]: any;
 }
 
 export interface ToolbarLogoStoryblok {
   _uid: string;
   component: "toolbar_logo";
-  [k: string]: any;
 }
 
 export interface ToolbarNaviButtonStoryblok {
@@ -3473,7 +3976,6 @@ export interface ToolbarNaviButtonStoryblok {
   force_show?: boolean;
   _uid: string;
   component: "toolbar_navi_button";
-  [k: string]: any;
 }
 
 export interface ToolbarRowStoryblok {
@@ -3483,7 +3985,6 @@ export interface ToolbarRowStoryblok {
   height?: number;
   _uid: string;
   component: "toolbar_row";
-  [k: string]: any;
 }
 
 export interface ToolbarRowSectionStoryblok {
@@ -3504,7 +4005,6 @@ export interface ToolbarRowSectionStoryblok {
   inv_use_media_query?: boolean;
   _uid: string;
   component: "toolbar_row_section";
-  [k: string]: any;
 }
 
 export interface ToolbarSearchStoryblok {
@@ -3512,5 +4012,4 @@ export interface ToolbarSearchStoryblok {
   placeholder?: string;
   _uid: string;
   component: "toolbar_search";
-  [k: string]: any;
 }

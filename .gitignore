@@ -107,4 +107,5 @@ dist
 .vscode
 
 example/components.*.json
-example/component-types-sb.ts
+example/presets.*.json
+example/component-types-sb.d.ts
