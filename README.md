@@ -132,3 +132,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.6.0 Add table schema (thanks to @markus-gx)
 * 1.6.1 Add asset focus type (thanks to @markus-gx)
 * 1.7.0 Add compilerOptions option (thanks to @SassNinja)
+* 1.8.0 Use never[] on groups that have no members (thanks to @arduano)
