@@ -128,7 +128,11 @@ module.exports = function storyblokToTypescript({
                   console.log('Group has no members: ', groupId)
                 }
               })
-              obj[key].tsType = `(${currentGroupElements.join(' | ')})[]`
+              if (currentGroupElements.length == 0) {
+                obj[key].tsType = `never[]`
+              } else {
+                obj[key].tsType = `(${currentGroupElements.join(' | ')})[]`
+              }
             }
           } else {
             if (Array.isArray(schemaElement.component_whitelist) && schemaElement.component_whitelist.length) {
