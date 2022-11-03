@@ -11,7 +11,9 @@
     "url": "https://github.com/dohomi/storyblok-generate-ts/issues"
   },
   "scripts": {
-    "test": ""
+    "test": "",
+    "lint": "prettier . --check",
+    "lint:fix": "prettier . --write"
   },
   "author": "Dominic Garms",
   "license": "ISC",
@@ -19,5 +21,8 @@
     "camelcase": "^6.3.0",
     "json-schema-to-typescript": "^11.0.1"
   },
-  "bin": "src/cli.js"
+  "bin": "src/cli.js",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
 }

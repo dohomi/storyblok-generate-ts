@@ -1,4 +1,4 @@
-module.exports = function defaultCustomMapper (key, obj) {
+module.exports = function defaultCustomMapper(key, obj) {
   switch (obj.field_type) {
     case 'seo-metatags':
       return {
@@ -6,39 +6,39 @@ module.exports = function defaultCustomMapper (key, obj) {
           type: 'object',
           properties: {
             _uid: {
-              type: 'string'
+              type: 'string',
             },
             title: {
-              type: 'string'
+              type: 'string',
             },
             plugin: {
-              type: 'string'
+              type: 'string',
             },
             og_image: {
-              type: 'string'
+              type: 'string',
             },
             og_title: {
-              type: 'string'
+              type: 'string',
             },
             description: {
-              type: 'string'
+              type: 'string',
             },
             twitter_image: {
-              type: 'string'
+              type: 'string',
             },
             twitter_title: {
-              type: 'string'
+              type: 'string',
             },
             og_description: {
-              type: 'string'
+              type: 'string',
             },
             twitter_description: {
-              type: 'string'
-            }
-          }
-        }
-      }
+              type: 'string',
+            },
+          },
+        },
+      };
     default:
-      return {}
+      return {};
   }
-}
+};
