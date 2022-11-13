@@ -97,6 +97,9 @@ module.exports = function storyblokToTypescript({
       obj[key] = {
         type: schemaType
       }
+      if (schemaElement.type === "option" && schemaElement.source === "internal_stories") {
+        obj[key].type = "any";
+      }
       if (schemaElement.options && schemaElement.options.length) {
         const items = schemaElement.options.map(item => item.value)
 
