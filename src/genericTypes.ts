@@ -1,10 +1,10 @@
 import {compile} from "json-schema-to-typescript"
 import {JSONSchema4} from "json-schema";
-import {CompilerOptions, GenericType} from "./typings";
+import {BasicType, CompilerOptions} from "./typings";
 
 
 const typeFuncs: {
-    [k in GenericType]: (name: string, options: CompilerOptions) => Promise<string | undefined>
+    [k in BasicType]: (name: string, options: CompilerOptions) => Promise<string | undefined>
 } = {
     'asset': generateAssetTypeIfNotYetGenerated,
     'multiasset': generateMultiAssetTypeIfNotYetGenerated,
@@ -14,13 +14,13 @@ const typeFuncs: {
 const toGenerateWhitelist = Object.keys(typeFuncs)
 
 
-async function compileType(obj: JSONSchema4, name: GenericType, compilerOptions: CompilerOptions) {
+async function compileType(obj: JSONSchema4, name: BasicType, compilerOptions: CompilerOptions) {
     const ts = await compile(obj, name, compilerOptions);
     toGenerateWhitelist.splice(toGenerateWhitelist.indexOf(name), 1)
     return ts
 }
 
-export async function generate(type: GenericType, title: string, compilerOptions: CompilerOptions) {
+export async function generate(type: BasicType, title: string, compilerOptions: CompilerOptions) {
     return await typeFuncs[type](title, compilerOptions)
 }
 

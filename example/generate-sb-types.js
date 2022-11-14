@@ -1,4 +1,4 @@
-const storyblokToTypescript = require('../src/index')
+const storyblokToTypescript = require('storyblok-generate-ts')
 storyblokToTypescript({
   // required
   componentsJson: require('./components.82895.json'), // pull components with storyblok

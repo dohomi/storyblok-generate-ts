@@ -7,6 +7,7 @@ export interface AccordionStoryblok {
   styles?: StylesStoryblok[];
   _uid: string;
   component: "accordion";
+  [k: string]: any;
 }
 
 export interface AccordionItemStoryblok {
@@ -25,6 +26,7 @@ export interface AccordionItemStoryblok {
   use_plus_icon?: boolean;
   _uid: string;
   component: "accordion_item";
+  [k: string]: any;
 }
 
 export interface AuthContainerStoryblok {
@@ -92,6 +94,7 @@ export interface AuthContainerStoryblok {
   )[];
   _uid: string;
   component: "auth_container";
+  [k: string]: any;
 }
 
 export interface AuthFormStoryblok {
@@ -158,6 +161,7 @@ export interface AuthFormStoryblok {
   account_delete_button?: ButtonStoryblok[];
   _uid: string;
   component: "auth_form";
+  [k: string]: any;
 }
 
 export interface AvatarStoryblok {
@@ -169,6 +173,7 @@ export interface AvatarStoryblok {
   letter?: string;
   _uid: string;
   component: "avatar";
+  [k: string]: any;
 }
 
 export interface BackgroundStoryblok {
@@ -195,17 +200,20 @@ export interface BackgroundStoryblok {
   border_style?: "" | "solid" | "dashed" | "dotted";
   _uid: string;
   component: "background";
+  [k: string]: any;
 }
 
 export interface BackgroundElementColorStoryblok {
   _uid: string;
   component: "background_element_color";
+  [k: string]: any;
 }
 
 export interface BackgroundElementGradientStoryblok {
   value?: string;
   _uid: string;
   component: "background_element_gradient";
+  [k: string]: any;
 }
 
 export interface BackgroundElementItemStoryblok {
@@ -217,17 +225,20 @@ export interface BackgroundElementItemStoryblok {
   position_vertical?: "" | "top" | "center" | "bottom";
   _uid: string;
   component: "background_element_item";
+  [k: string]: any;
 }
 
 export interface BookingStoryblok {
   booking?: string;
   _uid: string;
   component: "booking";
+  [k: string]: any;
 }
 
 export interface BookingFormStoryblok {
   _uid: string;
   component: "Booking Form";
+  [k: string]: any;
 }
 
 export interface BottomNavigationStoryblok {
@@ -239,26 +250,31 @@ export interface BottomNavigationStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "bottom_navigation";
+  [k: string]: any;
 }
 
 export type MultilinkStoryblok =
   | {
       cached_url?: string;
       linktype?: string;
+      [k: string]: any;
     }
   | {
       id?: string;
       cached_url?: string;
       linktype?: "story";
+      [k: string]: any;
     }
   | {
       url?: string;
       cached_url?: string;
       linktype?: "asset" | "url";
+      [k: string]: any;
     }
   | {
       email?: string;
       linktype?: "email";
+      [k: string]: any;
     };
 
 export interface BottomNavigationItemStoryblok {
@@ -269,8 +285,8 @@ export interface BottomNavigationItemStoryblok {
   open_external?: boolean;
   _uid: string;
   component: "bottom_navigation_item";
+  [k: string]: any;
 }
-
 
 export interface ButtonStoryblok {
   variant?: "" | "outlined" | "raised" | "unelevated" | "fab";
@@ -302,6 +318,7 @@ export interface ButtonStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "button";
+  [k: string]: any;
 }
 
 export interface ButtonListStoryblok {
@@ -309,6 +326,7 @@ export interface ButtonListStoryblok {
   body?: ButtonStoryblok[];
   _uid: string;
   component: "button_list";
+  [k: string]: any;
 }
 
 export interface ButtonSpeechTextStoryblok {
@@ -316,8 +334,8 @@ export interface ButtonSpeechTextStoryblok {
   full_page?: boolean;
   _uid: string;
   component: "button_speech_text";
+  [k: string]: any;
 }
-
 
 export interface AssetStoryblok {
   alt?: string;
@@ -327,6 +345,7 @@ export interface AssetStoryblok {
   name: string;
   title?: string;
   focus?: string;
+  [k: string]: any;
 }
 
 export interface CardStoryblok {
@@ -528,6 +547,7 @@ export interface CardStoryblok {
   media_margin?: number;
   _uid: string;
   component: "card";
+  [k: string]: any;
 }
 
 export interface CardListStoryblok {
@@ -595,8 +615,8 @@ export interface CardListStoryblok {
   image_margin?: string;
   _uid: string;
   component: "card_list";
+  [k: string]: any;
 }
-
 
 export interface CardListItemStoryblok {
   image?: string;
@@ -612,6 +632,7 @@ export interface CardListItemStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "card_list_item";
+  [k: string]: any;
 }
 
 export interface CategoryStoryblok {
@@ -619,6 +640,7 @@ export interface CategoryStoryblok {
   image?: string;
   _uid: string;
   component: "category";
+  [k: string]: any;
 }
 
 export interface CategoryBoxStoryblok {
@@ -631,6 +653,7 @@ export interface CategoryBoxStoryblok {
   max_height?: number;
   _uid: string;
   component: "category_box";
+  [k: string]: any;
 }
 
 export interface ChatFacebookStoryblok {
@@ -638,6 +661,7 @@ export interface ChatFacebookStoryblok {
   disable_lazy?: boolean;
   _uid: string;
   component: "chat_facebook";
+  [k: string]: any;
 }
 
 export interface ChatTawktoStoryblok {
@@ -645,6 +669,7 @@ export interface ChatTawktoStoryblok {
   disable_lazy?: boolean;
   _uid: string;
   component: "chat_tawkto";
+  [k: string]: any;
 }
 
 export interface ChatWhatsappStoryblok {
@@ -653,6 +678,7 @@ export interface ChatWhatsappStoryblok {
   size?: "" | "small" | "medium" | "large";
   _uid: string;
   component: "chat_whatsapp";
+  [k: string]: any;
 }
 
 export interface ColumnStoryblok {
@@ -744,6 +770,7 @@ export interface ColumnStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "column";
+  [k: string]: any;
 }
 
 export interface ConfettiStoryblok {
@@ -754,6 +781,7 @@ export interface ConfettiStoryblok {
   emojis?: string;
   _uid: string;
   component: "confetti";
+  [k: string]: any;
 }
 
 export interface DateHeadlineStoryblok {
@@ -784,6 +812,7 @@ export interface DateHeadlineStoryblok {
   support_linebreak?: boolean;
   _uid: string;
   component: "date_headline";
+  [k: string]: any;
 }
 
 export interface DateTimeFormatStoryblok {
@@ -800,6 +829,7 @@ export interface DateTimeFormatStoryblok {
   timeStyle?: "" | "full" | "long" | "medium" | "short";
   _uid: string;
   component: "date_time_format";
+  [k: string]: any;
 }
 
 export interface DateTimeHeadlineStoryblok {
@@ -808,6 +838,7 @@ export interface DateTimeHeadlineStoryblok {
   date_format?: DateTimeFormatStoryblok[];
   _uid: string;
   component: "date_time_headline";
+  [k: string]: any;
 }
 
 export interface DialogStoryblok {
@@ -938,6 +969,7 @@ export interface DialogStoryblok {
   )[];
   _uid: string;
   component: "dialog";
+  [k: string]: any;
 }
 
 export interface DividerStoryblok {
@@ -969,8 +1001,8 @@ export interface DividerStoryblok {
   size?: number;
   _uid: string;
   component: "divider";
+  [k: string]: any;
 }
-
 
 export interface DocumentStoryblok {
   title?: string;
@@ -979,12 +1011,14 @@ export interface DocumentStoryblok {
   categories?: any[];
   _uid: string;
   component: "document";
+  [k: string]: any;
 }
 
 export interface DocumentCategoryStoryblok {
   name?: string;
   _uid: string;
   component: "document_category";
+  [k: string]: any;
 }
 
 export interface EcommerceCheckoutStoryblok {
@@ -996,6 +1030,7 @@ export interface EcommerceCheckoutStoryblok {
   trigger?: (ButtonStoryblok | ImageStoryblok | IconStoryblok | HeadlineStoryblok)[];
   _uid: string;
   component: "ecommerce_checkout";
+  [k: string]: any;
 }
 
 export interface EcommerceFastspringConfigStoryblok {
@@ -1004,8 +1039,8 @@ export interface EcommerceFastspringConfigStoryblok {
   data_accesss_key?: string;
   _uid: string;
   component: "ecommerce_fastspring_config";
+  [k: string]: any;
 }
-
 
 export interface EcommerceFastspringProductStoryblok {
   path?: string;
@@ -1013,24 +1048,28 @@ export interface EcommerceFastspringProductStoryblok {
   on_successful_redirect?: MultilinkStoryblok;
   _uid: string;
   component: "ecommerce_fastspring_product";
+  [k: string]: any;
 }
 
 export interface EcommercePaypalConfigStoryblok {
   sdk_client_id: string;
   _uid: string;
   component: "ecommerce_paypal_config";
+  [k: string]: any;
 }
 
 export interface EcommercePaypalProductStoryblok {
   price?: number;
   _uid: string;
   component: "ecommerce_paypal_product";
+  [k: string]: any;
 }
 
 export interface EcommerceShopifyCheckoutStoryblok {
   handle?: string;
   _uid: string;
   component: "ecommerce_shopify_checkout";
+  [k: string]: any;
 }
 
 export interface EcommerceShopifyConfigStoryblok {
@@ -1077,6 +1116,7 @@ export interface EcommerceShopifyConfigStoryblok {
   carousel_hide_indicator?: boolean;
   _uid: string;
   component: "ecommerce_shopify_config";
+  [k: string]: any;
 }
 
 export interface EcommerceShopifyIframeStoryblok {
@@ -1087,6 +1127,7 @@ export interface EcommerceShopifyIframeStoryblok {
   is_button?: boolean;
   _uid: string;
   component: "ecommerce_shopify_iframe";
+  [k: string]: any;
 }
 
 export interface EcommerceSnipcartConfigStoryblok {
@@ -1094,6 +1135,7 @@ export interface EcommerceSnipcartConfigStoryblok {
   data_api_key?: string;
   _uid: string;
   component: "ecommerce_snipcart_config";
+  [k: string]: any;
 }
 
 export interface EcommerceSnipcartProductStoryblok {
@@ -1104,6 +1146,7 @@ export interface EcommerceSnipcartProductStoryblok {
   image_url?: string;
   _uid: string;
   component: "ecommerce_snipcart_product";
+  [k: string]: any;
 }
 
 export interface ErrorPageStoryblok {
@@ -1111,8 +1154,8 @@ export interface ErrorPageStoryblok {
   body?: (SectionStoryblok | SectionParallaxStoryblok | SectionVideoBgStoryblok | SliderStoryblok)[];
   _uid: string;
   component: "error_page";
+  [k: string]: any;
 }
-
 
 export interface EventStoryblok {
   title: string;
@@ -1187,6 +1230,7 @@ export interface EventStoryblok {
   )[];
   _uid: string;
   component: "event";
+  [k: string]: any;
 }
 
 export interface EventCalendarStoryblok {
@@ -1196,12 +1240,14 @@ export interface EventCalendarStoryblok {
   scroll_to_time?: number;
   _uid: string;
   component: "event_calendar";
+  [k: string]: any;
 }
 
 export interface EventCategoryStoryblok {
   title?: string;
   _uid: string;
   component: "event_category";
+  [k: string]: any;
 }
 
 export interface EventDateStoryblok {
@@ -1211,12 +1257,14 @@ export interface EventDateStoryblok {
   title?: string;
   _uid: string;
   component: "event_date";
+  [k: string]: any;
 }
 
 export interface FastspringProductStoryblok {
   data_fsc_item_path?: string;
   _uid: string;
   component: "fastspring_product";
+  [k: string]: any;
 }
 
 export interface FlexRowStoryblok {
@@ -1294,6 +1342,7 @@ export interface FlexRowStoryblok {
   flex_wrap?: "" | "wrap" | "initial" | "inherit" | "nowrap" | "revert";
   _uid: string;
   component: "flex_row";
+  [k: string]: any;
 }
 
 export interface FormStoryblok {
@@ -1311,6 +1360,7 @@ export interface FormStoryblok {
   label_as_placeholder?: boolean;
   _uid: string;
   component: "form";
+  [k: string]: any;
 }
 
 export interface FormBuilderStoryblok {
@@ -1333,6 +1383,7 @@ export interface FormBuilderStoryblok {
   additional_fields?: FormHiddenFieldStoryblok[];
   _uid: string;
   component: "form_builder";
+  [k: string]: any;
 }
 
 export interface FormCheckboxStoryblok {
@@ -1342,6 +1393,7 @@ export interface FormCheckboxStoryblok {
   required?: boolean;
   _uid: string;
   component: "form_checkbox";
+  [k: string]: any;
 }
 
 export interface FormContainerStoryblok {
@@ -1408,6 +1460,7 @@ export interface FormContainerStoryblok {
   )[];
   _uid: string;
   component: "form_container";
+  [k: string]: any;
 }
 
 export interface FormHiddenFieldStoryblok {
@@ -1416,6 +1469,7 @@ export interface FormHiddenFieldStoryblok {
   is_number?: boolean;
   _uid: string;
   component: "form_hidden_field";
+  [k: string]: any;
 }
 
 export interface FormSelectStoryblok {
@@ -1427,6 +1481,7 @@ export interface FormSelectStoryblok {
   type?: "" | "multi-select" | "checkbox" | "radio";
   _uid: string;
   component: "form_select";
+  [k: string]: any;
 }
 
 export interface FormSelectOptionStoryblok {
@@ -1434,6 +1489,7 @@ export interface FormSelectOptionStoryblok {
   label?: string;
   _uid: string;
   component: "form_select_option";
+  [k: string]: any;
 }
 
 export interface FormTextfieldStoryblok {
@@ -1448,6 +1504,7 @@ export interface FormTextfieldStoryblok {
   help_text?: string;
   _uid: string;
   component: "form_textfield";
+  [k: string]: any;
 }
 
 export interface GalleryStoryblok {
@@ -1459,6 +1516,7 @@ export interface GalleryStoryblok {
   image_style?: StylesStoryblok[];
   _uid: string;
   component: "gallery";
+  [k: string]: any;
 }
 
 export interface GalleryRowStoryblok {
@@ -1466,6 +1524,7 @@ export interface GalleryRowStoryblok {
   scroll_to_left?: boolean;
   _uid: string;
   component: "gallery_row";
+  [k: string]: any;
 }
 
 export interface GlobalStoryblok {
@@ -1562,6 +1621,7 @@ export interface GlobalStoryblok {
   _uid: string;
   component: "global";
   uuid?: string;
+  [k: string]: any;
 }
 
 export interface HeadlineStoryblok {
@@ -1684,6 +1744,7 @@ export interface HeadlineStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "headline";
+  [k: string]: any;
 }
 
 export interface HtmlStoryblok {
@@ -1754,6 +1815,7 @@ export interface HtmlStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "html";
+  [k: string]: any;
 }
 
 export interface HubspotFormStoryblok {
@@ -1762,12 +1824,14 @@ export interface HubspotFormStoryblok {
   region: string;
   _uid: string;
   component: "hubspot_form";
+  [k: string]: any;
 }
 
 export interface HubspotMeetingStoryblok {
   meeting_name?: string;
   _uid: string;
   component: "hubspot_meeting";
+  [k: string]: any;
 }
 
 export interface IconStoryblok {
@@ -1775,6 +1839,7 @@ export interface IconStoryblok {
   icon_url?: string;
   _uid: string;
   component: "icon";
+  [k: string]: any;
 }
 
 export interface IframeStoryblok {
@@ -1788,6 +1853,7 @@ export interface IframeStoryblok {
   full_height?: boolean;
   _uid: string;
   component: "iframe";
+  [k: string]: any;
 }
 
 export interface IframeAdvancedStoryblok {
@@ -1801,6 +1867,7 @@ export interface IframeAdvancedStoryblok {
   incoming_message_key?: string;
   _uid: string;
   component: "iframe_advanced";
+  [k: string]: any;
 }
 
 export interface ImageStoryblok {
@@ -1820,6 +1887,7 @@ export interface ImageStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "image";
+  [k: string]: any;
 }
 
 export interface ImageCoreStoryblok {
@@ -1829,6 +1897,7 @@ export interface ImageCoreStoryblok {
   height?: number;
   _uid: string;
   component: "image_core";
+  [k: string]: any;
 }
 
 export interface ImageListStoryblok {
@@ -1847,8 +1916,8 @@ export interface ImageListStoryblok {
   body?: ImageListItemStoryblok[];
   _uid: string;
   component: "image_list";
+  [k: string]: any;
 }
-
 
 export interface ImageListItemStoryblok {
   source?: string;
@@ -1863,6 +1932,7 @@ export interface ImageListItemStoryblok {
   rows?: number;
   _uid: string;
   component: "image_list_item";
+  [k: string]: any;
 }
 
 export interface InstagramListStoryblok {
@@ -1884,6 +1954,7 @@ export interface InstagramListStoryblok {
   shadow_effect?: "" | "faded" | "float" | "hover" | "lightTop" | "bouncy" | "soft";
   _uid: string;
   component: "instagram_list";
+  [k: string]: any;
 }
 
 export interface InstagramPostStoryblok {
@@ -1892,6 +1963,7 @@ export interface InstagramPostStoryblok {
   hide_caption?: boolean;
   _uid: string;
   component: "instagram_post";
+  [k: string]: any;
 }
 
 export interface ItemKeyValueStoryblok {
@@ -1899,8 +1971,8 @@ export interface ItemKeyValueStoryblok {
   value?: string;
   _uid: string;
   component: "item_key_value";
+  [k: string]: any;
 }
-
 
 export interface LinkStoryblok {
   link?: MultilinkStoryblok;
@@ -1909,6 +1981,7 @@ export interface LinkStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "link";
+  [k: string]: any;
 }
 
 export interface ListsStoryblok {
@@ -1919,6 +1992,7 @@ export interface ListsStoryblok {
   image_size?: "" | "xsmall" | "small" | "medium" | "large" | "xlarge";
   _uid: string;
   component: "lists";
+  [k: string]: any;
 }
 
 export interface ListSearchAutocompleteStoryblok {
@@ -1937,6 +2011,7 @@ export interface ListSearchAutocompleteStoryblok {
   menu_outlined?: boolean;
   _uid: string;
   component: "list_search_autocomplete";
+  [k: string]: any;
 }
 
 export interface ListSearchFieldStoryblok {
@@ -1947,6 +2022,7 @@ export interface ListSearchFieldStoryblok {
   size?: "" | "small" | "medium";
   _uid: string;
   component: "list_search_field";
+  [k: string]: any;
 }
 
 export interface ListStoriesStoryblok {
@@ -2026,6 +2102,7 @@ export interface ListStoriesStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "list_stories";
+  [k: string]: any;
 }
 
 export interface ListWidgetStoryblok {
@@ -2040,6 +2117,7 @@ export interface ListWidgetStoryblok {
   not_found_content?: (RichTextEditorStoryblok | HeadlineStoryblok)[];
   _uid: string;
   component: "list_widget";
+  [k: string]: any;
 }
 
 export interface LogoStoryblok {
@@ -2048,6 +2126,7 @@ export interface LogoStoryblok {
   alt?: string;
   _uid: string;
   component: "logo";
+  [k: string]: any;
 }
 
 export interface MoralisStoryblok {
@@ -2060,6 +2139,7 @@ export interface MoralisStoryblok {
   )[];
   _uid: string;
   component: "moralis";
+  [k: string]: any;
 }
 
 export interface MoralisAuthContainerStoryblok {
@@ -2246,6 +2326,7 @@ export interface MoralisAuthContainerStoryblok {
   )[];
   _uid: string;
   component: "moralis_auth_container";
+  [k: string]: any;
 }
 
 export interface MoralisButtonStoryblok {
@@ -2254,6 +2335,7 @@ export interface MoralisButtonStoryblok {
   logout?: (ButtonStoryblok | ImageStoryblok)[];
   _uid: string;
   component: "moralis_button";
+  [k: string]: any;
 }
 
 export interface MoralisDataStoryblok {
@@ -2263,6 +2345,7 @@ export interface MoralisDataStoryblok {
   richtext?: any;
   _uid: string;
   component: "moralis_data";
+  [k: string]: any;
 }
 
 export interface MoralisMintStoryblok {
@@ -2580,12 +2663,14 @@ export interface MoralisMintStoryblok {
   price_in_usd?: number;
   _uid: string;
   component: "moralis_mint";
+  [k: string]: any;
 }
 
 export interface MoralisVenlyStoryblok {
   client_id?: string;
   _uid: string;
   component: "moralis_venly";
+  [k: string]: any;
 }
 
 export interface MotionStoryblok {
@@ -2656,8 +2741,8 @@ export interface MotionStoryblok {
   )[];
   _uid: string;
   component: "motion";
+  [k: string]: any;
 }
-
 
 export interface NavItemStoryblok {
   name?: string;
@@ -2667,6 +2752,7 @@ export interface NavItemStoryblok {
   on_click_function?: string;
   _uid: string;
   component: "nav_item";
+  [k: string]: any;
 }
 
 export interface NavListStoryblok {
@@ -2678,6 +2764,7 @@ export interface NavListStoryblok {
   navigation_item_styles?: HeadlineStoryblok[];
   _uid: string;
   component: "nav_list";
+  [k: string]: any;
 }
 
 export interface NavMenuStoryblok {
@@ -2693,8 +2780,8 @@ export interface NavMenuStoryblok {
   body?: (NavMenuItemStoryblok | RowStoryblok | NavMenuStoryblok)[];
   _uid: string;
   component: "nav_menu";
+  [k: string]: any;
 }
-
 
 export interface NavMenuItemStoryblok {
   link?: MultilinkStoryblok;
@@ -2703,8 +2790,8 @@ export interface NavMenuItemStoryblok {
   image?: string;
   _uid: string;
   component: "nav_menu_item";
+  [k: string]: any;
 }
-
 
 export interface NewsStoryblok {
   title?: string;
@@ -2716,12 +2803,14 @@ export interface NewsStoryblok {
   date_format?: DateTimeFormatStoryblok[];
   _uid: string;
   component: "news";
+  [k: string]: any;
 }
 
 export interface NewsCategoryStoryblok {
   name?: string;
   _uid: string;
   component: "news_category";
+  [k: string]: any;
 }
 
 export interface NewsListStoryblok {
@@ -2733,6 +2822,7 @@ export interface NewsListStoryblok {
   description?: HeadlineStoryblok[];
   _uid: string;
   component: "news_list";
+  [k: string]: any;
 }
 
 export interface PageStoryblok {
@@ -2827,6 +2917,7 @@ export interface PageStoryblok {
   _uid: string;
   component: "page";
   uuid?: string;
+  [k: string]: any;
 }
 
 export interface PaginationStoryblok {
@@ -2838,6 +2929,7 @@ export interface PaginationStoryblok {
   position?: "" | "top" | "bottom" | "top_bottom";
   _uid: string;
   component: "pagination";
+  [k: string]: any;
 }
 
 export interface ParagraphStoryblok {
@@ -2859,6 +2951,7 @@ export interface ParagraphStoryblok {
   font?: "" | "alt1" | "alt2" | "alt3" | "alt4";
   _uid: string;
   component: "paragraph";
+  [k: string]: any;
 }
 
 export interface ParallaxItemStoryblok {
@@ -2969,8 +3062,8 @@ export interface ParallaxItemStoryblok {
   opacity?: string;
   _uid: string;
   component: "parallax_item";
+  [k: string]: any;
 }
-
 
 export type MultiassetStoryblok = {
   alt?: string;
@@ -2979,6 +3072,7 @@ export type MultiassetStoryblok = {
   filename: string;
   name: string;
   title?: string;
+  [k: string]: any;
 }[];
 
 export interface PlayerStoryblok {
@@ -3002,6 +3096,7 @@ export interface PlayerStoryblok {
   disable_lazy_load?: boolean;
   _uid: string;
   component: "player";
+  [k: string]: any;
 }
 
 export interface PricingStoryblok {
@@ -3012,6 +3107,7 @@ export interface PricingStoryblok {
   column_gap?: "" | "2" | "4" | "8" | "16" | "24" | "32";
   _uid: string;
   component: "pricing";
+  [k: string]: any;
 }
 
 export interface PricingItemStoryblok {
@@ -3024,6 +3120,7 @@ export interface PricingItemStoryblok {
   promotion?: HeadlineStoryblok[];
   _uid: string;
   component: "pricing_item";
+  [k: string]: any;
 }
 
 export interface PromotionStoryblok {
@@ -3031,6 +3128,7 @@ export interface PromotionStoryblok {
   body?: PromotionItemStoryblok[];
   _uid: string;
   component: "promotion";
+  [k: string]: any;
 }
 
 export interface PromotionItemStoryblok {
@@ -3047,6 +3145,7 @@ export interface PromotionItemStoryblok {
   variant?: "" | "variant-1" | "variant-2" | "variant-3" | "variant-4";
   _uid: string;
   component: "promotion_item";
+  [k: string]: any;
 }
 
 export interface RichTextEditorStoryblok {
@@ -3099,6 +3198,7 @@ export interface RichTextEditorStoryblok {
   enable_speech?: boolean;
   _uid: string;
   component: "rich_text_editor";
+  [k: string]: any;
 }
 
 export interface RowStoryblok {
@@ -3119,6 +3219,7 @@ export interface RowStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "row";
+  [k: string]: any;
 }
 
 export interface RowNestedStoryblok {
@@ -3136,6 +3237,7 @@ export interface RowNestedStoryblok {
   grid_gutter_phone?: string;
   _uid: string;
   component: "row_nested";
+  [k: string]: any;
 }
 
 export interface ScriptStoryblok {
@@ -3146,12 +3248,14 @@ export interface ScriptStoryblok {
   script_body?: string;
   _uid: string;
   component: "script";
+  [k: string]: any;
 }
 
 export interface SearchStoryStoryblok {
   type?: "" | "page" | "document" | "event" | "news";
   _uid: string;
   component: "search_story";
+  [k: string]: any;
 }
 
 export interface SectionStoryblok {
@@ -3227,6 +3331,7 @@ export interface SectionStoryblok {
   styles_hover?: StylesStoryblok[];
   _uid: string;
   component: "section";
+  [k: string]: any;
 }
 
 export interface SectionParallaxStoryblok {
@@ -3240,9 +3345,8 @@ export interface SectionParallaxStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "section_parallax";
+  [k: string]: any;
 }
-
-
 
 export interface SectionVideoBgStoryblok {
   section_identifier?: string;
@@ -3258,6 +3362,7 @@ export interface SectionVideoBgStoryblok {
   toggle_image_loading?: boolean;
   _uid: string;
   component: "section_video_bg";
+  [k: string]: any;
 }
 
 export interface SeoCorporateContactStoryblok {
@@ -3266,6 +3371,7 @@ export interface SeoCorporateContactStoryblok {
   contact_point: SeoCorporateContactPointStoryblok[];
   _uid: string;
   component: "seo_corporate_contact";
+  [k: string]: any;
 }
 
 export interface SeoCorporateContactPointStoryblok {
@@ -3275,6 +3381,7 @@ export interface SeoCorporateContactPointStoryblok {
   available_language?: string;
   _uid: string;
   component: "seo_corporate_contact_point";
+  [k: string]: any;
 }
 
 export interface SeoLocalBusinessStoryblok {
@@ -3295,6 +3402,7 @@ export interface SeoLocalBusinessStoryblok {
   opening_hours?: SeoLocalBusinessOpeningHourStoryblok[];
   _uid: string;
   component: "seo_local_business";
+  [k: string]: any;
 }
 
 export interface SeoLocalBusinessOpeningHourStoryblok {
@@ -3314,6 +3422,7 @@ export interface SeoLocalBusinessOpeningHourStoryblok {
   valid_through?: string;
   _uid: string;
   component: "seo_local_business_opening_hour";
+  [k: string]: any;
 }
 
 export interface SeoOpenGraphStoryblok {
@@ -3327,6 +3436,7 @@ export interface SeoOpenGraphStoryblok {
   images?: ImageCoreStoryblok[];
   _uid: string;
   component: "seo_open_graph";
+  [k: string]: any;
 }
 
 export interface SeoProductStoryblok {
@@ -3338,6 +3448,7 @@ export interface SeoProductStoryblok {
   offers: SeoProductOfferStoryblok[];
   _uid: string;
   component: "seo_product";
+  [k: string]: any;
 }
 
 export interface SeoProductOfferStoryblok {
@@ -3365,6 +3476,7 @@ export interface SeoProductOfferStoryblok {
   seller_name: string;
   _uid: string;
   component: "seo_product_offer";
+  [k: string]: any;
 }
 
 export interface SeoSocialProfileStoryblok {
@@ -3374,6 +3486,7 @@ export interface SeoSocialProfileStoryblok {
   same_as: string;
   _uid: string;
   component: "seo_social_profile";
+  [k: string]: any;
 }
 
 export interface SeoTwitterStoryblok {
@@ -3382,6 +3495,7 @@ export interface SeoTwitterStoryblok {
   card_type?: "" | "summary" | "summary_large_image" | "app" | "player";
   _uid: string;
   component: "seo_twitter";
+  [k: string]: any;
 }
 
 export interface SliderStoryblok {
@@ -3405,6 +3519,7 @@ export interface SliderStoryblok {
   body?: (SectionStoryblok | PromotionStoryblok | ImageStoryblok | ImageListStoryblok | SectionVideoBgStoryblok)[];
   _uid: string;
   component: "slider";
+  [k: string]: any;
 }
 
 export interface SnackbarStoryblok {
@@ -3485,6 +3600,7 @@ export interface SnackbarStoryblok {
   max_width?: "" | "xs" | "sm" | "md" | "lg" | "xl";
   _uid: string;
   component: "snackbar";
+  [k: string]: any;
 }
 
 export interface StaticContainerStoryblok {
@@ -3549,12 +3665,14 @@ export interface StaticContainerStoryblok {
   )[];
   _uid: string;
   component: "static_container";
+  [k: string]: any;
 }
 
 export interface StaticSectionStoryblok {
   container?: string;
   _uid: string;
   component: "static_section";
+  [k: string]: any;
 }
 
 export interface StylesStoryblok {
@@ -3620,6 +3738,7 @@ export interface StylesStoryblok {
   css_properties?: ItemKeyValueStoryblok[];
   _uid: string;
   component: "styles";
+  [k: string]: any;
 }
 
 export interface StyleVariantsBgStoryblok {
@@ -3627,6 +3746,7 @@ export interface StyleVariantsBgStoryblok {
   color_opacity?: string;
   _uid: string;
   component: "style_variants_bg";
+  [k: string]: any;
 }
 
 export interface SwiperStoryblok {
@@ -3655,8 +3775,8 @@ export interface SwiperStoryblok {
   max_pagination_bullets?: number;
   _uid: string;
   component: "swiper";
+  [k: string]: any;
 }
-
 
 export interface SwiperItemStoryblok {
   image?: AssetStoryblok;
@@ -3721,6 +3841,7 @@ export interface SwiperItemStoryblok {
   )[];
   _uid: string;
   component: "swiper_item";
+  [k: string]: any;
 }
 
 export interface TableStoryblok {
@@ -3728,6 +3849,7 @@ export interface TableStoryblok {
   disable_table_head?: boolean;
   _uid: string;
   component: "table";
+  [k: string]: any;
 }
 
 export interface TabsStoryblok {
@@ -3745,6 +3867,7 @@ export interface TabsStoryblok {
   text_style?: HeadlineStoryblok[];
   _uid: string;
   component: "tabs";
+  [k: string]: any;
 }
 
 export interface TabsItemStoryblok {
@@ -3810,13 +3933,14 @@ export interface TabsItemStoryblok {
   )[];
   _uid: string;
   component: "tabs_item";
+  [k: string]: any;
 }
-
 
 export interface ThreeDimensionStoryblok {
   source?: AssetStoryblok;
   _uid: string;
   component: "three_dimension";
+  [k: string]: any;
 }
 
 export interface TimelineStoryblok {
@@ -3832,8 +3956,8 @@ export interface TimelineStoryblok {
   confetti?: ConfettiStoryblok[];
   _uid: string;
   component: "timeline";
+  [k: string]: any;
 }
-
 
 export interface TimelineItemStoryblok {
   dot_variant?: "" | "outlined" | "naked";
@@ -3963,11 +4087,13 @@ export interface TimelineItemStoryblok {
   )[];
   _uid: string;
   component: "timeline_item";
+  [k: string]: any;
 }
 
 export interface ToolbarLogoStoryblok {
   _uid: string;
   component: "toolbar_logo";
+  [k: string]: any;
 }
 
 export interface ToolbarNaviButtonStoryblok {
@@ -3976,6 +4102,7 @@ export interface ToolbarNaviButtonStoryblok {
   force_show?: boolean;
   _uid: string;
   component: "toolbar_navi_button";
+  [k: string]: any;
 }
 
 export interface ToolbarRowStoryblok {
@@ -3985,6 +4112,7 @@ export interface ToolbarRowStoryblok {
   height?: number;
   _uid: string;
   component: "toolbar_row";
+  [k: string]: any;
 }
 
 export interface ToolbarRowSectionStoryblok {
@@ -4005,6 +4133,7 @@ export interface ToolbarRowSectionStoryblok {
   inv_use_media_query?: boolean;
   _uid: string;
   component: "toolbar_row_section";
+  [k: string]: any;
 }
 
 export interface ToolbarSearchStoryblok {
@@ -4012,4 +4141,5 @@ export interface ToolbarSearchStoryblok {
   placeholder?: string;
   _uid: string;
   component: "toolbar_search";
+  [k: string]: any;
 }

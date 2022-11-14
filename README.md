@@ -31,26 +31,27 @@ $ npm install -D storyblok-generate-ts
 ### Alternative to CLI script: create a NodeJS javascript file
 
 #### Example:
+
 ```js
-const storyblokToTypescript = require('storyblok-generate-ts')
+const storyblokToTypescript = require('src/index')
 
 storyblokToTypescript({
-  // required
-  componentsJson: require('./components.xxx.json'), // pull components with storyblok
-  // required
-  path: __dirname + '/src/typings/generated/components-schema.ts', // make sure path exists
-  // optional type prefix (default: none)
-  titlePrefix: '',
-  // optional type name suffix (default: [Name]_Storyblok)
-  titleSuffix: '_storyblok',
-  // optional compilerOptions which get passed through to json-schema-to-typescript
-  compilerOptions: {
-    unknownAny: false,
-    bannerComment: '',
-    unreachableDefinitions: true
-  }
-  // optional function for custom types (key, obj) => {}
-  // customTypeParser: exampleCustomParser
+    // required
+    componentsJson: require('./components.xxx.json'), // pull components with storyblok
+    // required
+    path: __dirname + '/src/typings/generated/components-schema.ts', // make sure path exists
+    // optional type prefix (default: none)
+    titlePrefix: '',
+    // optional type name suffix (default: [Name]_Storyblok)
+    titleSuffix: '_storyblok',
+    // optional compilerOptions which get passed through to json-schema-to-typescript
+    compilerOptions: {
+        unknownAny: false,
+        bannerComment: '',
+        unreachableDefinitions: true
+    }
+    // optional function for custom types (key, obj) => {}
+    // customTypeParser: exampleCustomParser
 })
 ```
 

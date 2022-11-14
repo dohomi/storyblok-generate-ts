@@ -1,4 +1,6 @@
-module.exports = function defaultCustomMapper (key, obj) {
+import {JSONSchema4} from "json-schema";
+
+export default function defaultCustomMapper (key: string, obj: JSONSchema4) {
   switch (obj.field_type) {
     case 'seo-metatags':
       return {

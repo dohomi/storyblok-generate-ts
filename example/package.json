@@ -6,7 +6,8 @@
   "scripts": {
     "test": "storyblok-generate-ts source=./components.82895.json target=./component-types-sb",
     "test2": "storyblok-generate-ts compilerOptions.additionalProperties=false source=./components.82895.json target=./component-types-sb",
-    "getComponents": "storyblok pull-components --space 82895"
+    "getComponents": "storyblok pull-components --space 82895",
+    "test3": "node ./generate-sb-types.js"
   },
   "author": "Dominic Garms",
   "license": "ISC",
