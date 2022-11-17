@@ -3,7 +3,10 @@ import fs from 'fs'
 import camelcase from 'camelcase'
 import defaultCustomMapper from './defaultCustomMapper'
 import {TYPES, generate} from './genericTypes'
-import {GenericType, StoryblokTsOptions} from "./typings";
+import {
+    StoryblokSchemaElement,
+    StoryblokTsOptions
+} from "./typings";
 import {JSONSchema4} from "json-schema";
 
 
@@ -79,44 +82,36 @@ export default function storyblokToTypescript({
 
     async function typeMapper(schema: JSONSchema4 = {}, title: string) {
         const parseObj = {}
+
         for (const key of Object.keys(schema)) {
             const obj: JSONSchema4 = {}
             const schemaElement = schema[key]
             const type = schemaElement.type
+
             if (TYPES.includes(type)) {
                 const ts = await generate(type, getTitle(type), compilerOptions)
+
                 if (ts) {
                     tsString.push(ts)
                 }
             } else if (type === 'custom') {
                 Object.assign(parseObj, defaultCustomMapper(key, schemaElement))
+
                 if (typeof customTypeParser === 'function') {
                     Object.assign(parseObj, customTypeParser(key, schemaElement))
                 }
-                continue;
-            }
-            const schemaType = parseType(type)
-            if (!schemaType) {
+
                 continue;
             }
 
-            obj[key] = {
-                type: schemaType
-            }
-            if (Array.isArray(schemaElement.options) && schemaElement.options.length) {
-                const items = schemaElement.options.map((item: { value: JSONSchema4 }) => item.value)
+            const element = parseSchema(schemaElement)
 
-                if (type === 'option' && schemaElement.exclude_empty_option !== true) {
-                    items.unshift('')
-                }
-                if (schemaType === 'string') {
-                    obj[key].enum = items
-                } else {
-                    obj[key].items = {
-                        enum: items
-                    }
-                }
+            if (!element) {
+                continue;
             }
+
+            obj[key] = element
+
             if (TYPES.includes(type)) {
                 obj[key].tsType = camelcase(getTitle(type), {
                     pascalCase: true
@@ -159,33 +154,119 @@ export default function storyblokToTypescript({
         return parseObj
     }
 
-    function parseType(type: GenericType) {
-        if (TYPES.includes(type)) return type
-        switch (type) {
+    function parseSchema(element: StoryblokSchemaElement): {
+        type?: string | string[],
+        tsType?: string
+        [key: string]: any
+    } {
+        if (TYPES.includes(element.type)) {
+            return {
+                type: element.type
+            }
+        }
+
+        let type: string | string[] = "any";
+        let options: string[] = [];
+
+        if (Array.isArray(element.options) && element.options.length) {
+            options = element.options.map(item => item.value);
+        }
+
+        if (options.length && element.exclude_empty_option !== true) {
+            options.unshift('')
+        }
+
+        // option types with source self do not have a source field but the options as array
+        if (!element.source && element.options !== undefined) {
+            type = "string"
+        }
+
+        // if source to internal stories is not restricted we cannot know about the type contained
+        if (element.source === "internal_stories" && element.filter_content_type === undefined) {
+            type = "any"
+        }
+
+        if (element.source === "internal_stories" && element.filter_content_type) {
+            if (element.type === "option") {
+                return {
+                    tsType: `(${camelcase(getTitle(element.filter_content_type[0]), {pascalCase: true})} | string )`,
+                }
+            }
+
+            if (element.type === "options") {
+                return {
+                    tsType: `(${element.filter_content_type.map(type => {
+                        return camelcase(getTitle(type), {pascalCase: true})
+                    }).join(" | ")} | string )[]`
+                }
+            }
+
+        }
+
+        // datasource and language options are always returned as string
+        if (element.source === "internal_languages") {
+            type = "string"
+        }
+
+        if (element.source === "internal") {
+            type = ["number", "string"];
+        }
+
+        if (element.source === "external") {
+            type = "string";
+        }
+
+
+        if (element.type === "option") {
+            if (options.length) {
+                return {
+                    type,
+                    enum: options
+                }
+            }
+
+            return {
+                type
+            }
+        }
+
+        if (element.type === "options") {
+            if (options.length) {
+                return {
+                    type: "array",
+                    items: {
+                        enum: options
+                    }
+                }
+            }
+
+            return {
+                type: "array",
+                items: {type: type}
+            }
+        }
+
+        switch (element.type) {
             case 'text':
-                return 'string'
+                return {type: 'string'}
             case 'bloks':
-                return 'array'
-            case 'option':
-                return 'string'
-            case 'options':
-                return 'array'
+                return {type: 'array'}
             case 'number':
-                return 'number'
+                return {type: 'number'}
             case 'image':
-                return 'string'
+                return {type: 'string'}
             case 'boolean':
-                return 'boolean'
+                return {type: "boolean"}
             case 'textarea':
-                return 'string'
+                return {type: 'string'}
             case 'markdown':
-                return 'string'
+                return {type: 'string'}
             case 'richtext':
-                return 'any'
+                return {type: "any"}
             case 'datetime':
-                return 'string'
+                return {type: 'string'}
             default:
-                return null
+                return {type: 'any'}
         }
     }
 
