@@ -84,6 +84,11 @@ export default function storyblokToTypescript({
         const parseObj = {}
 
         for (const key of Object.keys(schema)) {
+            // exclude tab-* elements as they are used in storybloks ui and do not affect the data structure
+            if (key.startsWith("tab-")) {
+                continue;
+            }
+
             const obj: JSONSchema4 = {}
             const schemaElement = schema[key]
             const type = schemaElement.type
@@ -104,7 +109,7 @@ export default function storyblokToTypescript({
                 continue;
             }
 
-            const element = parseSchema(schemaElement)
+            const element = parseSchema(schemaElement);
 
             if (!element) {
                 continue;
