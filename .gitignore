@@ -108,4 +108,4 @@ dist
 
 example/components.*.json
 example/presets.*.json
-example/component-types-sb.d.ts
+example/component-types-sb-backup.d.ts
