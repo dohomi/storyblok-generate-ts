@@ -135,3 +135,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.7.0 Add compilerOptions option (thanks to @SassNinja)
 * 1.8.0 Use never[] on groups that have no members (thanks to @arduano)
 * 1.9.0 Convert all files to TypeScript and add TypeScript declaration 
+* 1.10.0 Resolve typings of internal stories (thanks to @schaschjan) 
