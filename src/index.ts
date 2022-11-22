@@ -5,10 +5,10 @@ import defaultCustomMapper from './defaultCustomMapper'
 import {TYPES, generate} from './genericTypes'
 import {
     StoryblokSchemaElement,
-    StoryblokTsOptions
+    StoryblokTsOptions,
+    StoryblokStory
 } from "./typings";
 import {JSONSchema4} from "json-schema";
-
 
 export default function storyblokToTypescript({
                                                   componentsJson = {components: []},
@@ -26,9 +26,9 @@ export default function storyblokToTypescript({
         ...compilerOptions
     }
 
-    const tsString: string[] = [`import {ISbStoryData} from "storyblok-js-client/types/interfaces";`, ``]
+    const tsString: string[] = [`import {StoryblokStory} from 'storyblok-generate-ts'`, ``]
     const getTitle = (t: string) => titlePrefix + t + titleSuffix
-    const getStoryTypeTitle = (t: string) => `ISbStoryData<${camelcase(getTitle(t), {pascalCase: true})}>`
+    const getStoryTypeTitle = (t: string) => `StoryblokStory<${camelcase(getTitle(t), {pascalCase: true})}>`
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
 
@@ -279,3 +279,5 @@ export default function storyblokToTypescript({
             fs.writeFileSync(path, tsString.join('\n'))
         })
 }
+
+export {StoryblokStory}

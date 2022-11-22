@@ -19,7 +19,6 @@
   "dependencies": {
     "camelcase": "^6.3.0",
     "json-schema-to-typescript": "^11.0.1",
-    "storyblok-js-client": "^5.0.9",
     "ts-command-line-args": "^2.3.1",
     "tsup": "^6.4.0"
   },
