@@ -5,10 +5,10 @@ import defaultCustomMapper from './defaultCustomMapper'
 import {TYPES, generate} from './genericTypes'
 import {
     StoryblokSchemaElement,
-    StoryblokTsOptions
+    StoryblokTsOptions,
+    StoryblokStory
 } from "./typings";
 import {JSONSchema4} from "json-schema";
-
 
 export default function storyblokToTypescript({
                                                   componentsJson = {components: []},
@@ -26,8 +26,9 @@ export default function storyblokToTypescript({
         ...compilerOptions
     }
 
-    const tsString: string[] = []
+    const tsString: string[] = [`import {StoryblokStory} from 'storyblok-generate-ts'`, ``]
     const getTitle = (t: string) => titlePrefix + t + titleSuffix
+    const getStoryTypeTitle = (t: string) => `StoryblokStory<${camelcase(getTitle(t), {pascalCase: true})}>`
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
 
@@ -194,15 +195,13 @@ export default function storyblokToTypescript({
         if (element.source === "internal_stories" && element.filter_content_type) {
             if (element.type === "option") {
                 return {
-                    tsType: `(${camelcase(getTitle(element.filter_content_type[0]), {pascalCase: true})} | string )`,
+                    tsType: `(${getStoryTypeTitle(element.filter_content_type[0])} | string )`,
                 }
             }
 
             if (element.type === "options") {
                 return {
-                    tsType: `(${element.filter_content_type.map(type => {
-                        return camelcase(getTitle(type), {pascalCase: true})
-                    }).join(" | ")} | string )[]`
+                    tsType: `(${element.filter_content_type.map(type => getStoryTypeTitle(type)).join(" | ")} | string )[]`
                 }
             }
 
@@ -280,3 +279,5 @@ export default function storyblokToTypescript({
             fs.writeFileSync(path, tsString.join('\n'))
         })
 }
+
+export {StoryblokStory}
