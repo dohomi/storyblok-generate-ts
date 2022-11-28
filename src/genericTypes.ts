@@ -128,6 +128,9 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                     cached_url: {
                         type: 'string'
                     },
+                    anchor:{
+                        type: 'string'
+                    },
                     linktype: {
                         type: 'string',
                         enum: ['story']
@@ -141,6 +144,9 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                         type: 'string'
                     },
                     cached_url: {
+                        type: 'string'
+                    },
+                    anchor:{
                         type: 'string'
                     },
                     linktype: {
