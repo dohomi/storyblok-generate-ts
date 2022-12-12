@@ -10,7 +10,7 @@ import {
 } from "./typings";
 import {JSONSchema4} from "json-schema";
 
-export default function storyblokToTypescript({
+export default async function storyblokToTypescript({
                                                   componentsJson = {components: []},
                                                   compilerOptions = {},
                                                   customTypeParser,
@@ -274,10 +274,11 @@ export default function storyblokToTypescript({
         }
     }
 
-    genTsSchema()
-        .then(() => {
-            fs.writeFileSync(path, tsString.join('\n'))
-        })
+    await genTsSchema()
+
+    if (path) fs.writeFileSync(path, tsString.join('\n'))
+
+    return tsString
 }
 
 export {StoryblokStory}
