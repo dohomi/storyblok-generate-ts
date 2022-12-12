@@ -276,7 +276,7 @@ export default async function storyblokToTypescript({
 
     await genTsSchema()
 
-    fs.writeFileSync(path, tsString.join('\n'))
+    if (path) fs.writeFileSync(path, tsString.join('\n'))
 
     return tsString
 }
