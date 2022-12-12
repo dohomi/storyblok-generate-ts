@@ -11,13 +11,13 @@ import {
 import {JSONSchema4} from "json-schema";
 
 export default async function storyblokToTypescript({
-                                                  componentsJson = {components: []},
-                                                  compilerOptions = {},
-                                                  customTypeParser,
-                                                  path = 'src/typings/generated/components-schema.ts',
-                                                  titleSuffix = '_storyblok',
-                                                  titlePrefix = ''
-                                              }: StoryblokTsOptions) {
+                                                        componentsJson = {components: []},
+                                                        compilerOptions = {},
+                                                        customTypeParser,
+                                                        path = 'src/typings/generated/components-schema.ts',
+                                                        titleSuffix = '_storyblok',
+                                                        titlePrefix = ''
+                                                    }: StoryblokTsOptions) {
 
     compilerOptions = {
         unknownAny: false,
@@ -276,7 +276,10 @@ export default async function storyblokToTypescript({
 
     await genTsSchema()
 
-    if (path) fs.writeFileSync(path, tsString.join('\n'))
+    if (path) {
+        fs.writeFileSync(path, tsString.join('\n'))
+    }
+
 
     return tsString
 }
