@@ -137,3 +137,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.9.0 Convert all files to TypeScript and add TypeScript declaration 
 * 1.10.0 Resolve typings of internal stories (thanks to @schaschjan) 
 * 1.10.2 Minor type adjustment for internal stories
+* 1.11.0 Improve Payload of main script (thanks to @scmx)
