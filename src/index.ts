@@ -274,7 +274,7 @@ export default function storyblokToTypescript({
         }
     }
 
-    genTsSchema()
+    return genTsSchema()
         .then(() => {
             fs.writeFileSync(path, tsString.join('\n'))
         })
