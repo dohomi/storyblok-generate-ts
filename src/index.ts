@@ -200,8 +200,14 @@ export default async function storyblokToTypescript({
             }
 
             if (element.type === "options") {
-                return {
-                    tsType: `(${element.filter_content_type.map(type => getStoryTypeTitle(type)).join(" | ")} | string )[]`
+                if(Array.isArray(element.filter_content_type)){
+                    return {
+                        tsType: `(${element.filter_content_type.map((type2) => getStoryTypeTitle(type2)).join(" | ")} | string )[]`
+                    };
+                } else {
+                    return {
+                        tsType: `(${getStoryTypeTitle(element.filter_content_type)} | string )[]`
+                    }
                 }
             }
 
