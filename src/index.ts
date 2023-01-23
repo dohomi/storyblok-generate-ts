@@ -194,14 +194,26 @@ export default async function storyblokToTypescript({
 
         if (element.source === "internal_stories" && element.filter_content_type) {
             if (element.type === "option") {
-                return {
-                    tsType: `(${getStoryTypeTitle(element.filter_content_type[0])} | string )`,
+                if(Array.isArray(element.filter_content_type)){
+                    return {
+                        tsType: `(${getStoryTypeTitle(element.filter_content_type[0])} | string )`,
+                    }
+                } else {
+                    return {
+                        tsType: `(${getStoryTypeTitle(element.filter_content_type)} | string )`,
+                    }
                 }
             }
 
             if (element.type === "options") {
-                return {
-                    tsType: `(${element.filter_content_type.map(type => getStoryTypeTitle(type)).join(" | ")} | string )[]`
+                if(Array.isArray(element.filter_content_type)){
+                    return {
+                        tsType: `(${element.filter_content_type.map((type2) => getStoryTypeTitle(type2)).join(" | ")} | string )[]`
+                    };
+                } else {
+                    return {
+                        tsType: `(${getStoryTypeTitle(element.filter_content_type)} | string )[]`
+                    }
                 }
             }
 
