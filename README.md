@@ -138,3 +138,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.10.0 Resolve typings of internal stories (thanks to @schaschjan) 
 * 1.10.2 Minor type adjustment for internal stories
 * 1.11.0 Improve Payload of main script (thanks to @scmx)
+* 1.12.0 Fixes an error when filter_content_type is not an array (thanks to @juanpasolano)
