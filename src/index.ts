@@ -196,7 +196,7 @@ export default async function storyblokToTypescript({
             if (element.type === "option") {
                 if(Array.isArray(element.filter_content_type)){
                     return {
-                        tsType: `(${getStoryTypeTitle(element.filter_content_type[0])} | string )`,
+                        tsType: `(${element.filter_content_type.map((type2) => getStoryTypeTitle(type2)).join(" | ")} | string )[]`
                     }
                 } else {
                     return {
