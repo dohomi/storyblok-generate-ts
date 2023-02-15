@@ -1,0 +1,387 @@
+import { describe, expect, jest, test } from "@jest/globals";
+import { JSONSchema } from "json-schema-to-typescript";
+// import fs from "fs";
+import storyblokToTypescript from "./index";
+
+jest.mock("fs");
+
+const makeSBComponent = (schema: Record<string, any>) => ({
+  components: [
+    {
+      name: "ResourceName",
+      schema,
+    },
+  ],
+});
+
+const prepareString = (str: string) => str.replace(/\s/g, "").trim();
+
+const makeExpectString = (str: string) =>
+  prepareString(`export interface ResourceNameStoryblok { 
+  ${str}
+  _uid: string;
+  component: "ResourceName";
+  [k: string]: any;
+}`);
+
+describe("storyblokToTypescript", () => {
+  test("Should parse text fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        title: { type: "text" },
+        requiredTitle: { type: "text", required: true },
+        myBoolean: { type: "boolean" },
+        myRequiredBoolean: { type: "boolean", required: true },
+        myTextArea: { type: "textarea" },
+        myBlock: { type: "bloks" },
+        myNumber: { type: "number" },
+        myImage: { type: "image" },
+        myMarkdown: { type: "markdown" },
+        myRichText: { type: "richtext" },
+        myDateTime: { type: "datetime" },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      title?: string;
+      requiredTitle: string;
+      myBoolean?: boolean;
+      myRequiredBoolean: boolean;
+      myTextArea?:string;
+      myBlock?:any[];
+      myNumber?:number;
+      myImage?:string;
+      myMarkdown?:string;
+      myRichText?:any;
+      myDateTime?:string;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse boolean fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "boolean" },
+        myRequiredField: { type: "boolean", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?: boolean;
+      myRequiredField: boolean;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse textarea fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "textarea" },
+        myRequiredField: { type: "textarea", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:string;
+      myRequiredField:string;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse blok fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "bloks" },
+        myRequiredField: { type: "bloks", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:any[];
+      myRequiredField:any[];
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse number fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "number" },
+        myRequiredField: { type: "number", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:number;
+      myRequiredField:number;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse image fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "image" },
+        myRequiredField: { type: "image", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:string;
+      myRequiredField:string;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse markdown fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "markdown" },
+        myRequiredField: { type: "markdown", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:string;
+      myRequiredField:string;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse richtext fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "richtext" },
+        myRequiredField: { type: "richtext", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:any;
+      myRequiredField:any;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse datetime fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        myField: { type: "datetime" },
+        myRequiredField: { type: "datetime", required: true },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = makeExpectString(`
+      myField?:string;
+      myRequiredField:string;
+    `);
+
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse asset fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        main_image: {
+          type: "asset",
+          filetypes: ["images"],
+          required: false,
+          pos: 2,
+        },
+      }),
+    });
+    const assetType = types[2].replace(/\s/g, "").trim();
+    const mainType = types[3].replace(/\s/g, "").trim();
+
+    const assetTypeExpect = prepareString(`export interface AssetStoryblok {
+      alt?: string;
+      copyright?: string;
+      id: number;
+      filename: string;
+      name: string;
+      title?: string;
+      focus?: string;
+      [k: string]: any;
+    }`);
+
+    const mainTypeExpect =
+      prepareString(`export interface ResourceNameStoryblok {
+      main_image?: AssetStoryblok;
+      _uid: string;
+      component: "ResourceName";
+      [k: string]: any;
+    }`);
+    expect(assetType).toBe(assetTypeExpect);
+    expect(mainType).toBe(mainTypeExpect);
+  });
+
+  test("Should parse option fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        optionsField: {
+          type: "option",
+          required: true,
+          source: "internal_stories",
+          filter_content_type: ["foo", "bar"],
+          pos: 0,
+        },
+        singleOptionsField: {
+          type: "option",
+          source: "internal_stories",
+          filter_content_type: "foo",
+          pos: 0,
+        },
+        optionsField2: {
+          type: "options",
+          required: true,
+          source: "internal_stories",
+          filter_content_type: ["foo", "bar"],
+          pos: 0,
+        },
+        singleOptionsField2: {
+          type: "options",
+          source: "internal_stories",
+          filter_content_type: "foo",
+          pos: 0,
+        },
+        manualOptions: {
+          type: "option",
+          options: [
+            {
+              name: "Option Value 1",
+              value: "optionValue1",
+            },
+            {
+              name: "Option Value 2",
+              value: "optionValue2",
+            },
+          ],
+          default_value: "optionValue1",
+        },
+        noSourceOptions: {
+          type: "options",
+        },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = prepareString(`export interface ResourceNameStoryblok {
+      optionsField: StoryblokStory<FooStoryblok> | StoryblokStory<BarStoryblok> | string;
+      singleOptionsField?: StoryblokStory<FooStoryblok> | string;
+      optionsField2: (StoryblokStory<FooStoryblok> | StoryblokStory<BarStoryblok> | string)[];
+      singleOptionsField2?: (StoryblokStory<FooStoryblok> | string)[];
+      manualOptions?: "" | "optionValue1" | "optionValue2";
+      noSourceOptions?: any[];
+      _uid: string;
+      component: "ResourceName";
+      [k: string]: any;
+    }`);
+    expect(mainType).toBe(expectation);
+  });
+
+  test("should parse section fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        section: {
+          //a section is not a field, but a grouping of fields @see https://www.storyblok.com/docs/guide/essentials/content-structures#field
+          type: "section",
+          keys: ["section1", "section2"],
+        },
+      }),
+    });
+    const mainType = prepareString(types[2]);
+    const expectation = prepareString(`export interface ResourceNameStoryblok {
+      section?: any;
+      _uid: string;
+      component: "ResourceName";
+      [k: string]: any;
+    }`);
+    expect(mainType).toBe(expectation);
+  });
+
+  test("Should parse multiasset fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        multiAssetField: {
+          type: "multiasset",
+          display_name: "Image Assets",
+        },
+      }),
+    });
+
+    const assetType = types[2].replace(/\s/g, "").trim();
+    const mainType = types[3].replace(/\s/g, "").trim();
+
+    const assetTypeExpect = prepareString(`export type MultiassetStoryblok = {
+      alt?: string;
+      copyright?: string;
+      id: number;
+      filename: string;
+      name: string;
+      title?: string;
+      [k: string]: any;
+    }[];`);
+
+    const mainTypeExpect =
+      prepareString(`export interface ResourceNameStoryblok {
+      multiAssetField?: MultiassetStoryblok;
+      _uid: string;
+      component: "ResourceName";
+      [k: string]: any;
+    }`);
+    expect(assetType).toBe(assetTypeExpect);
+    expect(mainType).toBe(mainTypeExpect);
+  });
+
+  test("Should parse table fields", async () => {
+    const types = await storyblokToTypescript({
+      componentsJson: makeSBComponent({
+        tableField: {
+          type: "table",
+        },
+      }),
+    });
+
+    const tableType = types[2].replace(/\s/g, "").trim();
+    const mainType = types[3].replace(/\s/g, "").trim();
+
+    const tableTypeExpect = prepareString(`export interface TableStoryblok {
+      thead: {
+        _uid: string;
+        value?: string;
+        component: number;
+        [k: string]: any;
+      }[];
+      tbody: {
+        _uid: string;
+        body: {
+          _uid?: string;
+          value?: string;
+          component?: number;
+          [k: string]: any;
+        }[];
+        component: number;
+        [k: string]: any;
+      }[];
+      [k: string]: any;
+    }
+    `);
+
+    const mainTypeExpect =
+      prepareString(`export interface ResourceNameStoryblok {
+      tableField?: TableStoryblok;
+      _uid: string;
+      component: "ResourceName";
+      [k: string]: any;
+    }`);
+    expect(tableType).toBe(tableTypeExpect);
+    expect(mainType).toBe(mainTypeExpect);
+  });
+});
