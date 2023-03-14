@@ -74,13 +74,13 @@ export interface StoryblokStory<TContent> {
     position: number
     tag_list: string[]
     is_startpage: boolean;
-    parent_id: string
+    parent_id: number;
     meta_data: any;
     group_id: string
     first_published_at: string | null;
     release_id?: number | null;
     lang: string;
-    path: string | null
+    path?: string;
     alternates: {
         id: number;
         name: string;
