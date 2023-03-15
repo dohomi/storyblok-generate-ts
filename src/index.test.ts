@@ -80,8 +80,8 @@ describe("storyblokToTypescript", () => {
         });
         const mainType = prepareString(types[2]);
         const expectation = makeExpectString(`
-            myField?:any[];
-            myRequiredField:any[];
+            myField?:ResourceNameStoryblok[];
+            myRequiredField:ResourceNameStoryblok[];
         `);
 
         expect(mainType).toBe(expectation);
