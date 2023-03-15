@@ -148,17 +148,6 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
             {
                 type: 'object',
                 properties: {
-                    cached_url: {
-                        type: 'string'
-                    },
-                    linktype: {
-                        type: 'string'
-                    }
-                }
-            },
-            {
-                type: 'object',
-                properties: {
                     id: {
                         type: 'string'
                     },
