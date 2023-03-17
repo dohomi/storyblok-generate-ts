@@ -141,3 +141,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.12.0 Fixes an error when filter_content_type is not an array (thanks to @juanpasolano)
 * 1.13.0 Merged multilink story fieldtype and single options (credits to @juanpasolano and @markus-gx)
 * 1.13.1 Added tests and fix minor typing error (credits to @juanpasolano)
+* 1.13.2 Fixed types
