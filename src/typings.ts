@@ -21,9 +21,7 @@ export type BasicType = 'asset' | 'multiasset' | 'multilink' | 'table'
 export type CompilerOptions = Partial<Options>;
 
 export interface StoryblokTsOptions {
-    componentsJson: {
-        components: JSONSchema4[]
-    },
+    components: JSONSchema4[]
     customTypeParser?: (key: string, options: JSONSchema4) => void
     compilerOptions?: CompilerOptions
     path?: string

@@ -11,7 +11,7 @@ import {
 import {JSONSchema4} from "json-schema";
 
 export default async function storyblokToTypescript({
-                                                        componentsJson = {components: []},
+                                                        components = [],
                                                         compilerOptions = {},
                                                         customTypeParser,
                                                         path = 'src/typings/generated/components-schema.ts',
@@ -32,7 +32,7 @@ export default async function storyblokToTypescript({
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
 
-    componentsJson.components.forEach(value => {
+    components.forEach(value => {
         if (value.component_group_uuid) {
             if (!groupUuids[value.component_group_uuid]) {
                 groupUuids[value.component_group_uuid] = []
@@ -44,7 +44,7 @@ export default async function storyblokToTypescript({
     })
 
     async function genTsSchema() {
-        for (const values of componentsJson.components) {
+        for (const values of components) {
             const obj: JSONSchema4 = {
                 '$id': '#/' + values.name,
                 title: getTitle(values.name),
