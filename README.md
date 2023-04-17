@@ -18,9 +18,16 @@ $ npm install -D storyblok-generate-ts
 ```
 "generate-sb-types": "storyblok-generate-ts source=./components.[SPACE_ID].json target=./component-types-sb"
 ```
+
+You can also provide multiple files as source in case you used the `--separate-files` flag with the `pull-components` command:
+
+```
+"generate-sb-types": "storyblok-generate-ts source=string hero-[SPACE_ID].json,footer-[SPACE_ID].json target=./component-types-sb"
+```
+
 #### Properties of CLI
 ```
-- source *required - path of the components.[SPACE_ID].json
+- source *required - path of the components.[SPACE_ID].json or multiple files as comma-separated string hero-[SPACE_ID].json,footer-[SPACE_ID].json
 - target *optional default: storyblok-component-types.d.ts
 - titlePrefix *optional default: '_storyblok' 
 - titleSuffix *optional
