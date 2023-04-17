@@ -79,7 +79,7 @@ getDataFromPath(props.source).then((rawComponents) => {
     const components = createContentList(rawComponents, 'components')
 
     const options: StoryblokTsOptions = {
-        components,
+        componentsJson: {components},
         compilerOptions: props.compilerOptions || {},
         path: resolve(props.target || './storyblok-component-types.d.ts')
     }
