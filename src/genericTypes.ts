@@ -76,9 +76,6 @@ async function generateRichtextTypeIfNotYetGenerated(title: string, compilerOpti
             type: {
                 type: 'string'
             },
-            text: {
-                type: 'string'
-            },
             content: {
                 type: 'array',
                 items: {
@@ -90,6 +87,10 @@ async function generateRichtextTypeIfNotYetGenerated(title: string, compilerOpti
                 items: {
                     '$ref': '#'
                 }
+            },
+            attrs: {},
+            text: {
+                type: 'string'
             }
         }
     }

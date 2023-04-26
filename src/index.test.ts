@@ -148,9 +148,10 @@ describe("storyblokToTypescript", () => {
 
         const richtextTypeExpect = prepareString(`export interface RichtextStoryblok {
             type: string;
-            text?: string;
             content?: RichtextStoryblok[];
             marks?: RichtextStoryblok[];
+            attrs?: any;
+            text?: string;
             [k: string]: any;
         }`);
 
