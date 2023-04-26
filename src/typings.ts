@@ -16,7 +16,7 @@ export type GenericType =
     | 'datetime'
     | 'asset' | 'multiasset' | 'multilink' | 'table'
 
-export type BasicType = 'asset' | 'multiasset' | 'multilink' | 'table'
+export type BasicType = 'asset' | 'multiasset' | 'multilink' | 'table' | 'richtext'
 
 export type CompilerOptions = Partial<Options>;
 
