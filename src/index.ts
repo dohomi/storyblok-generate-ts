@@ -277,8 +277,6 @@ export default async function storyblokToTypescript({
                 return {type: 'string'}
             case 'markdown':
                 return {type: 'string'}
-            case 'richtext':
-                return {type: "any"}
             case 'datetime':
                 return {type: 'string'}
             default:

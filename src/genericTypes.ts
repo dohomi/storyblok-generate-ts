@@ -10,6 +10,7 @@ const typeFuncs: {
     'multiasset': generateMultiAssetTypeIfNotYetGenerated,
     'multilink': generateMultiLinkTypeIfNotYetGenerated,
     'table': generateTableTypeIfNotYetGenerated,
+    'richtext': generateRichtextTypeIfNotYetGenerated,
 }
 const toGenerateWhitelist = Object.keys(typeFuncs)
 
@@ -59,6 +60,42 @@ async function generateAssetTypeIfNotYetGenerated(title: string, compilerOptions
     }
     try {
         return await compileType(obj, "asset", compilerOptions)
+    } catch (e) {
+        console.log('ERROR', e)
+    }
+}
+
+async function generateRichtextTypeIfNotYetGenerated(title: string, compilerOptions: CompilerOptions) {
+    if (!toGenerateWhitelist.includes("richtext")) return;
+    const obj: JSONSchema4 = {
+        '$id': '#/richtext',
+        title: title,
+        type: 'object',
+        required: ['type'],
+        properties: {
+            type: {
+                type: 'string'
+            },
+            content: {
+                type: 'array',
+                items: {
+                    '$ref': '#'
+                }
+            },
+            marks: {
+                type: 'array',
+                items: {
+                    '$ref': '#'
+                }
+            },
+            attrs: {},
+            text: {
+                type: 'string'
+            }
+        }
+    }
+    try {
+        return await compileType(obj, "richtext", compilerOptions)
     } catch (e) {
         console.log('ERROR', e)
     }

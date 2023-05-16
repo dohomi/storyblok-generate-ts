@@ -142,13 +142,26 @@ describe("storyblokToTypescript", () => {
                 myRequiredField: { type: "richtext", required: true },
             }),
         });
-        const mainType = prepareString(types[2]);
-        const expectation = makeExpectString(`
-            myField?:any;
-            myRequiredField:any;
+
+        const richtextType = prepareString(types[2])
+        const mainType =  prepareString(types[3]);
+
+        const richtextTypeExpect = prepareString(`export interface RichtextStoryblok {
+            type: string;
+            content?: RichtextStoryblok[];
+            marks?: RichtextStoryblok[];
+            attrs?: any;
+            text?: string;
+            [k: string]: any;
+        }`);
+
+        const mainTypeExpect = makeExpectString(`
+            myField?: RichtextStoryblok;
+            myRequiredField: RichtextStoryblok;
         `);
 
-        expect(mainType).toBe(expectation);
+        expect(richtextType).toBe(richtextTypeExpect);
+        expect(mainType).toBe(mainTypeExpect);
     });
 
     test("Should parse datetime fields", async () => {
