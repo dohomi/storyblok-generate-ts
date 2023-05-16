@@ -1,6 +1,6 @@
 {
   "name": "storyblok-generate-ts",
-  "version": "1.13.2",
+  "version": "1.14.0",
   "description": "Generates TypeScript types based on component file",
   "main": "dist/index.js",
   "repository": {

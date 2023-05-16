@@ -149,3 +149,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.13.0 Merged multilink story fieldtype and single options (credits to @juanpasolano and @markus-gx)
 * 1.13.1 Added tests and fix minor typing error (credits to @juanpasolano)
 * 1.13.2 Fixed types
+* 1.14.0 Enable multi-file support and add RichText typings (thanks to @VictorWinberg & @mattcrn)
