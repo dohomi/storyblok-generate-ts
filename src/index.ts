@@ -268,7 +268,7 @@ export default async function storyblokToTypescript({
             case 'bloks':
                 return {type: 'array'}
             case 'number':
-                return {type: 'number'}
+                return {type: 'string'}
             case 'image':
                 return {type: 'string'}
             case 'boolean':
