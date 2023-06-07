@@ -150,3 +150,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.13.1 Added tests and fix minor typing error (credits to @juanpasolano)
 * 1.13.2 Fixed types
 * 1.14.0 Enable multi-file support and add RichText typings (thanks to @VictorWinberg & @mattcrn)
+* 1.15.0 Change Storyblok number type to "string" as the API does not return a number type (thanks to @davidhoeck)
