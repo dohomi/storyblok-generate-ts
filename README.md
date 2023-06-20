@@ -34,6 +34,22 @@ You can also provide multiple files as source in case you used the `--separate-f
 - compilerOptions.[property] *optional
 - customTypeParser *optional - path to a custom parser NodeJS file
 ```
+#### Compiler options:
+| property | type | default | description |
+|-|-|-|-|
+| unknownAny | boolean | `false` | Type `any` will be replaced with `unknown` where possible if `true` |
+| bannerComment | string | '' | Disclaimer comment prepended to the top of each generated file |
+| unreachableDefinitions | boolean | `true` | Generates code for `$defs` that aren't referenced by the schema. |
+| additionalProperties | boolean | `true` | Adding `[k: string]: any` (`[k: string]: unknown` if `unknownAny:true`) to all object types (to nested ones too) when set to `true` |
+| enableConstEnums | boolean | `true` | Prepend enums with [`const`](https://www.typescriptlang.org/docs/handbook/enums.html#computed-and-constant-members)? |
+| format | boolean | `true` | Format code? Set this to `false` to improve performance. |
+| ignoreMinAndMaxItems | boolean | `false` | Ignore maxItems and minItems for `array` types, preventing tuples being generated. |
+| maxItems | number | `20` | Maximum number of unioned tuples to emit when representing bounded-size array types, before falling back to emitting unbounded arrays. Increase this to improve precision of emitted types, decrease it to improve performance, or set it to `-1` to ignore `maxItems`.
+| strictIndexSignatures | boolean | `false` | Append all index signatures with `\| undefined` so that they are strictly typed. |
+| style | object | `{ bracketSpacing: false,  printWidth: 120,  semi: true,  singleQuote: false,  tabWidth: 2,  trailingComma: 'none',  useTabs: false }` | A [Prettier](https://prettier.io/docs/en/options.html) configuration |
+| cwd | string | `process.cwd()` | Root directory for resolving [`$ref`](https://tools.ietf.org/id/draft-pbryan-zyp-json-ref-03.html)s |
+| declareExternallyReferenced | boolean | `true` | Declare external schemas referenced via `$ref`? |
+| $refOptions | object | `{}` | [$RefParser](https://github.com/BigstickCarpet/json-schema-ref-parser) Options, used when resolving `$ref`s |
 
 ### Alternative to CLI script: create a NodeJS javascript file
 
