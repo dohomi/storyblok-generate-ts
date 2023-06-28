@@ -8,6 +8,10 @@ You can install and run it as a CLI script
 # Make sure storyblok is installed (npm i storyblok -g)
 $ storyblok pull-components --space=[SPACE_ID]
 ```
+Example:
+```sh
+$ storyblok pull-components --space=12345
+```
 
 #### b) Install this library as devDependency
 ```
