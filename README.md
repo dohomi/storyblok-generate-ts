@@ -10,7 +10,7 @@ $ storyblok pull-components --space=[SPACE_ID]
 ```
 Example:
 ```sh
-$ storyblok pull-components --space=12345
+$ storyblok pull-components --space=123456
 ```
 
 #### b) Install this library as devDependency
@@ -22,11 +22,19 @@ $ npm install -D storyblok-generate-ts
 ```
 "generate-sb-types": "storyblok-generate-ts source=./components.[SPACE_ID].json target=./component-types-sb"
 ```
+Example:
+```
+"generate-sb-types": "storyblok-generate-ts source=./components.123456.json target=./component-types-sb"
+```
 
 You can also provide multiple files as source in case you used the `--separate-files` flag with the `pull-components` command:
 
 ```
 "generate-sb-types": "storyblok-generate-ts source=string hero-[SPACE_ID].json,footer-[SPACE_ID].json target=./component-types-sb"
+```
+Example:
+```
+"generate-sb-types": "storyblok-generate-ts source=string hero-123456.json,footer-123456.json target=./component-types-sb"
 ```
 
 #### Properties of CLI
@@ -64,7 +72,7 @@ const storyblokToTypescript = require('src/index')
 
 storyblokToTypescript({
     // required
-    componentsJson: require('./components.xxx.json'), // pull components with storyblok
+    componentsJson: require('./components.xxxxxx.json'), // pull components with storyblok
     // required
     path: __dirname + '/src/typings/generated/components-schema.ts', // make sure path exists
     // optional type prefix (default: none)
