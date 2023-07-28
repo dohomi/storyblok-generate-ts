@@ -84,11 +84,11 @@ getDataFromPath(props.source).then((rawComponents) => {
         path: resolve(props.target || './storyblok-component-types.d.ts')
     }
     
-    if (props.titlePrefix) {
+    if (props.titlePrefix !== undefined) {
         options.titlePrefix = props.titlePrefix
     }
     
-    if (props.titleSuffix) {
+    if (props.titleSuffix !== undefined) {
         options.titleSuffix = props.titleSuffix
     }
     
