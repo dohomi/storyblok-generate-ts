@@ -266,7 +266,18 @@ export default async function storyblokToTypescript({
             case 'text':
                 return {type: 'string'}
             case 'bloks':
-                return {type: 'array'}
+                return {
+                    type: 'array',
+                    items: {
+                        type: 'object',
+                        required: ['_uid'],
+                        properties: {
+                            _uid: {
+                                type: 'string'
+                            }
+                        }
+                    }
+                }
             case 'number':
                 return {type: 'string'}
             case 'image':

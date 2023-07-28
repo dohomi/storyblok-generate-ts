@@ -15,7 +15,7 @@ const makeSBComponent = (schema: Record<string, any>) => ({
 const prepareString = (str: string) => str.replace(/\s/g, "").trim();
 
 const makeExpectString = (str: string) =>
-    prepareString(`export interface ResourceNameStoryblok { 
+    prepareString(`export interface ResourceNameStoryblok {
   ${str}
   _uid: string;
   component: "ResourceName";
@@ -80,8 +80,8 @@ describe("storyblokToTypescript", () => {
         });
         const mainType = prepareString(types[2]);
         const expectation = makeExpectString(`
-            myField?:any[];
-            myRequiredField:any[];
+            myField?:{_uid:string;[k:string]:any;}[];
+            myRequiredField:{_uid:string;[k:string]:any;}[];
         `);
 
         expect(mainType).toBe(expectation);
@@ -96,8 +96,8 @@ describe("storyblokToTypescript", () => {
         });
         const mainType = prepareString(types[2]);
         const expectation = makeExpectString(`
-            myField?:number;
-            myRequiredField:number;
+            myField?:string;
+            myRequiredField:string;
         `);
 
         expect(mainType).toBe(expectation);
@@ -144,7 +144,7 @@ describe("storyblokToTypescript", () => {
         });
 
         const richtextType = prepareString(types[2])
-        const mainType =  prepareString(types[3]);
+        const mainType = prepareString(types[3]);
 
         const richtextTypeExpect = prepareString(`export interface RichtextStoryblok {
             type: string;
@@ -192,7 +192,7 @@ describe("storyblokToTypescript", () => {
             }),
         });
         const assetType = prepareString(types[2])
-        const mainType =  prepareString(types[3]);
+        const mainType = prepareString(types[3]);
 
         const assetTypeExpect = prepareString(`export interface AssetStoryblok {
             alt?: string;
@@ -299,8 +299,8 @@ describe("storyblokToTypescript", () => {
             }),
         });
 
-        const assetType =  prepareString(types[2]);
-        const mainType =  prepareString(types[3]);
+        const assetType = prepareString(types[2]);
+        const mainType = prepareString(types[3]);
 
         const assetTypeExpect =
             prepareString(`export type MultiassetStoryblok = {
@@ -329,8 +329,8 @@ describe("storyblokToTypescript", () => {
             }),
         });
 
-        const tableType =  prepareString(types[2]);
-        const mainType =  prepareString(types[3]);
+        const tableType = prepareString(types[2]);
+        const mainType = prepareString(types[3]);
 
         const tableTypeExpect = prepareString(`export interface TableStoryblok {
       thead: {
