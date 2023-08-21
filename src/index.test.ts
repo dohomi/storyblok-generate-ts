@@ -96,8 +96,8 @@ describe("storyblokToTypescript", () => {
         });
         const mainType = prepareString(types[2]);
         const expectation = makeExpectString(`
-            myField?:number;
-            myRequiredField:number;
+            myField?:string;
+            myRequiredField:string;
         `);
 
         expect(mainType).toBe(expectation);
@@ -363,5 +363,26 @@ describe("storyblokToTypescript", () => {
     }`);
         expect(tableType).toBe(tableTypeExpect);
         expect(mainType).toBe(mainTypeExpect);
+    });
+
+    test("Should allow empty suffix", async () => {
+        const types = await storyblokToTypescript({
+            componentsJson: makeSBComponent({
+                title: { type: "text" },
+                requiredTitle: { type: "text", required: true },
+            }),
+            titleSuffix: "",
+        });
+        const mainType = prepareString(types[2]);
+
+        const expectation = prepareString(`export interface ResourceName {
+            title?: string;
+            requiredTitle: string;
+            _uid: string;
+            component: "ResourceName";
+            [k: string]: any;
+          }`);
+
+        expect(mainType).toBe(expectation);
     });
 });
