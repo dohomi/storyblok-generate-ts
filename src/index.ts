@@ -31,16 +31,20 @@ export default async function storyblokToTypescript({
     const getStoryTypeTitle = (t: string) => `StoryblokStory<${camelcase(getTitle(t), {pascalCase: true})}>`
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
+    const allComponents: string[] = []
 
     componentsJson.components.forEach(value => {
+        const componentName = camelcase(getTitle(value.name), {
+            pascalCase: true
+        })
         if (value.component_group_uuid) {
             if (!groupUuids[value.component_group_uuid]) {
                 groupUuids[value.component_group_uuid] = []
             }
-            groupUuids[value.component_group_uuid].push(camelcase(getTitle(value.name), {
-                pascalCase: true
-            }))
+            groupUuids[value.component_group_uuid].push(componentName)
         }
+
+        allComponents.push(componentName)
     })
 
     async function genTsSchema() {
@@ -167,6 +171,7 @@ export default async function storyblokToTypescript({
                     }
                 } else {
                     console.log('Type: bloks array but not whitelisted (will result in all elements):', title)
+                    obj[key].tsType = `(${allComponents.join(' | ')})[]`
                 }
             }
             Object.assign(parseObj, obj)
