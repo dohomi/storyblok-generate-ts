@@ -118,7 +118,22 @@ export default async function storyblokToTypescript({
 
             obj[key] = element
 
-            if (TYPES.includes(type)) {
+            if (type === 'multilink') {
+                const excludedLinktypes = [];
+                const baseType = camelcase(getTitle(type), {
+                    pascalCase: true
+                })
+
+                if (!schemaElement.email_link_type) {
+                    excludedLinktypes.push('{ linktype?: "email" }');
+                }
+                if (!schemaElement.asset_link_type) {
+                    excludedLinktypes.push('{ linktype?: "asset" }');
+                }
+
+                obj[key].tsType = excludedLinktypes.length ?
+                    `Exclude<${baseType}, ${excludedLinktypes.join(' | ')}>` : baseType
+            } else if (TYPES.includes(type)) {
                 obj[key].tsType = camelcase(getTitle(type), {
                     pascalCase: true
                 })
