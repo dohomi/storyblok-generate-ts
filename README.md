@@ -179,3 +179,4 @@ type PageWithRelations = PageStoryblok & {
 * 1.13.2 Fixed types
 * 1.14.0 Enable multi-file support and add RichText typings (thanks to @VictorWinberg & @mattcrn)
 * 1.15.0 Change Storyblok number type to "string" as the API does not return a number type (thanks to @davidhoeck)
+* 2.0.0 Change of use of camelcase: now every title is used with camelcase which potentially breaks existing type names but fixes inconsistency 

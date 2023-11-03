@@ -27,16 +27,14 @@ export default async function storyblokToTypescript({
     }
 
     const tsString: string[] = [`import {StoryblokStory} from 'storyblok-generate-ts'`, ``]
-    const getTitle = (t: string) => titlePrefix + t + titleSuffix
-    const getStoryTypeTitle = (t: string) => `StoryblokStory<${camelcase(getTitle(t), {pascalCase: true})}>`
+    const getTitle = (t: string) => camelcase(titlePrefix + t + titleSuffix,{pascalCase: true})
+    const getStoryTypeTitle = (t: string) => `StoryblokStory<${getTitle(t)}>`
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
     const allComponents: string[] = []
 
     componentsJson.components.forEach(value => {
-        const componentName = camelcase(getTitle(value.name), {
-            pascalCase: true
-        })
+        const componentName = getTitle(value.name)
         if (value.component_group_uuid) {
             if (!groupUuids[value.component_group_uuid]) {
                 groupUuids[value.component_group_uuid] = []
@@ -124,9 +122,7 @@ export default async function storyblokToTypescript({
 
             if (type === 'multilink') {
                 const excludedLinktypes = [];
-                const baseType = camelcase(getTitle(type), {
-                    pascalCase: true
-                })
+                const baseType = getTitle(type)
 
                 if (!schemaElement.email_link_type) {
                     excludedLinktypes.push('{ linktype?: "email" }');
@@ -138,9 +134,7 @@ export default async function storyblokToTypescript({
                 obj[key].tsType = excludedLinktypes.length ?
                     `Exclude<${baseType}, ${excludedLinktypes.join(' | ')}>` : baseType
             } else if (TYPES.includes(type)) {
-                obj[key].tsType = camelcase(getTitle(type), {
-                    pascalCase: true
-                })
+                obj[key].tsType = getTitle(type)
             } else if (type === 'bloks') {
                 if (schemaElement.restrict_components) {
                     if (schemaElement.restrict_type === 'groups') {
@@ -162,9 +156,7 @@ export default async function storyblokToTypescript({
                         }
                     } else {
                         if (Array.isArray(schemaElement.component_whitelist) && schemaElement.component_whitelist.length) {
-                            obj[key].tsType = `(${schemaElement.component_whitelist.map((i: string) => camelcase(getTitle(i), {
-                                pascalCase: true
-                            })).join(' | ')})[]`
+                            obj[key].tsType = `(${schemaElement.component_whitelist.map((i: string) => getTitle(i)).join(' | ')})[]`
                         } else {
                             console.log('No whitelisted component found')
                         }
