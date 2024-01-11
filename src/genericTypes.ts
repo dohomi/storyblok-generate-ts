@@ -161,6 +161,10 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                         type: 'string',
                         enum: ['story']
                     },
+                    target: {
+                        type: 'string',
+                        enum: ['_self', '_blank'],
+                    },
                     story: {
                         type: 'object',
                         required: ['name', 'id', 'uuid', 'slug', 'full_slug'],
@@ -259,7 +263,11 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                     linktype: {
                         type: 'string',
                         enum: ['asset', 'url']
-                    }
+                    },
+                    target: {
+                        type: 'string',
+                        enum: ['_self', '_blank'],
+                    },
                 }
             },
             {
@@ -271,7 +279,11 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                     linktype: {
                         type: 'string',
                         enum: ['email']
-                    }
+                    },
+                    target: {
+                        type: 'string',
+                        enum: ['_self', '_blank'],
+                    },
                 }
             }
         ]
