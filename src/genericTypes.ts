@@ -1,7 +1,7 @@
-import {compile} from "json-schema-to-typescript"
-import {JSONSchema4} from "json-schema";
-import {BasicType, CompilerOptions} from "./typings";
+import { JSONSchema4 } from 'json-schema';
+import { compile } from 'json-schema-to-typescript';
 
+import { BasicType, CompilerOptions } from './typings';
 
 const typeFuncs: {
     [k in BasicType]: (name: string, options: CompilerOptions) => Promise<string | undefined>
@@ -35,27 +35,42 @@ async function generateAssetTypeIfNotYetGenerated(title: string, compilerOptions
         type: 'object',
         required: ['id', 'filename', 'name'],
         properties: {
-            alt: {
-                type: 'string'
-            },
-            copyright: {
+            _uid: {
                 type: 'string'
             },
             id: {
                 type: 'number'
             },
-            filename: {
+            alt: {
                 type: 'string'
             },
             name: {
                 type: 'string'
             },
+            focus: {
+                type: 'string'
+            },
+            source: {
+                type: 'string'
+            },
             title: {
                 type: 'string'
             },
-            focus: {
+            filename: {
                 type: 'string'
-            }
+            },
+            copyright: {
+                type: 'string'
+            },
+            fieldtype: {
+                type: 'string'
+            },
+            meta_data: {
+                type: ["null", "object"]
+            },
+            is_external_url: {
+                type: 'boolean'
+            },
         }
     }
     try {
