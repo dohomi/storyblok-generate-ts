@@ -195,13 +195,18 @@ describe("storyblokToTypescript", () => {
         const mainType =  prepareString(types[3]);
 
         const assetTypeExpect = prepareString(`export interface AssetStoryblok {
-            alt?: string;
-            copyright?: string;
+            _uid?: string;
             id: number;
-            filename: string;
+            alt?: string;
             name: string;
-            title?: string;
             focus?: string;
+            source?: string;
+            title?: string;
+            filename: string;
+            copyright?: string;
+            fieldtype?: string;
+            meta_data?: null|{[k:string]:any;};
+            is_external_url?:boolean;
             [k: string]: any;
         }`);
 
