@@ -20,7 +20,11 @@ export type BasicType = 'asset' | 'multiasset' | 'multilink' | 'table' | 'richte
 
 export type CompilerOptions = Partial<Options>;
 
-export interface StoryblokTsOptions {
+export interface StoryblokResolveOptions {
+    resolveLinks?: "url" | "link" | "story"
+}
+
+export interface StoryblokTsOptions extends StoryblokResolveOptions {
     componentsJson: {
         components: JSONSchema4[]
     },

@@ -16,9 +16,11 @@ export default async function storyblokToTypescript({
                                                         customTypeParser,
                                                         path = 'src/typings/generated/components-schema.ts',
                                                         titleSuffix = '_storyblok',
-                                                        titlePrefix = ''
+                                                        titlePrefix = '',
+                                                        resolveLinks = "story"
                                                     }: StoryblokTsOptions) {
 
+    const storyblokResolveOptions = { resolveLinks };
     compilerOptions = {
         unknownAny: false,
         bannerComment: '',
@@ -97,7 +99,7 @@ export default async function storyblokToTypescript({
             const type = schemaElement.type
 
             if (TYPES.includes(type)) {
-                const ts = await generate(type, getTitle(type), compilerOptions)
+                const ts = await generate(type, getTitle(type), compilerOptions, storyblokResolveOptions)
 
                 if (ts) {
                     tsString.push(ts)

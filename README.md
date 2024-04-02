@@ -43,6 +43,7 @@ Example:
 - target *optional default: storyblok-component-types.d.ts
 - titlePrefix *optional default: '_storyblok' 
 - titleSuffix *optional
+- resolveLinks *optional 
 - compilerOptions.[property] *optional
 - customTypeParser *optional - path to a custom parser NodeJS file
 ```
@@ -79,6 +80,8 @@ storyblokToTypescript({
     titlePrefix: '',
     // optional type name suffix (default: [Name]_Storyblok)
     titleSuffix: '_storyblok',
+    // optional resolveLinks (default: story)
+    resolveLinks: "url",
     // optional compilerOptions which get passed through to json-schema-to-typescript
     compilerOptions: {
         unknownAny: false,
