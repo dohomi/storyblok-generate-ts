@@ -17,7 +17,7 @@ export default async function storyblokToTypescript({
                                                         path = 'src/typings/generated/components-schema.ts',
                                                         titleSuffix = '_storyblok',
                                                         titlePrefix = '',
-                                                        resolveLinks = "story"
+                                                        resolveLinks = []
                                                     }: StoryblokTsOptions) {
 
     const storyblokResolveOptions = { resolveLinks };

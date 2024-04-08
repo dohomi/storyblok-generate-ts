@@ -1,7 +1,7 @@
 import { JSONSchema4 } from 'json-schema';
 import { compile } from 'json-schema-to-typescript';
 
-import { BasicType, CompilerOptions, StoryblokResolveOptions } from './typings';
+import { BasicType, CompilerOptions, ResolveLinkOption, StoryblokResolveOptions } from './typings';
 
 const typeFuncs: {
     [k in BasicType]: (name: string, options: CompilerOptions, storyblokResolve: StoryblokResolveOptions) => Promise<string | undefined>
@@ -154,7 +154,7 @@ async function generateMultiAssetTypeIfNotYetGenerated(title: string, compilerOp
     }
 }
 
-function getStoryLinkTypeByResolveLink(resolveLinkOption?: "url" | "link" | "story"): JSONSchema4 {
+function getStoryLinkTypeByResolveLink(resolveLinkOption: ResolveLinkOption): JSONSchema4 {
     switch (resolveLinkOption) {
         case "url":
             return {
@@ -334,7 +334,9 @@ async function generateMultiLinkTypeIfNotYetGenerated(title: string, compilerOpt
                         type: 'string',
                         enum: ['_self', '_blank'],
                     },
-                    story: getStoryLinkTypeByResolveLink(storyblokResolve.resolveLinks)
+                    ...(storyblokResolve.resolveLinks.length
+                        ? { story: { oneOf: storyblokResolve.resolveLinks.map(getStoryLinkTypeByResolveLink) } }
+                        : {}),
                 }
             },
             {
