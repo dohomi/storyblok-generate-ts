@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import storyblokToTypescript from './index'
 import {resolve} from 'path'
-import {CliOptions, StoryblokTsOptions} from "./typings";
+import {CliOptions, ResolveLinkOption, StoryblokTsOptions} from "./typings";
 import * as fs from 'fs';
 import {JSONSchema4} from "json-schema";
 
@@ -13,6 +13,9 @@ const parseValue = (value: string) => {
     }
     if (value.match(/^[\d.]+$/)) {
         return Number(value)
+    }
+    if (value.includes(',')) {
+        return value.split(',')
     }
     return value
 }
@@ -70,6 +73,21 @@ if (!props.source) {
     process.exit()
 }
 
+const isResolveLinkOption = (param: string): param is ResolveLinkOption =>
+    ["url", "link", "story"].includes(param)
+
+const isValidResolveLinkOption = (
+    param?: string | string[]
+): param is ResolveLinkOption | ResolveLinkOption[] =>
+    (typeof param === "string" && isResolveLinkOption(param)) ||
+    (Array.isArray(param) && param.every(isResolveLinkOption))
+
+const resolveLinks = props.resolveLinks
+if (resolveLinks !== undefined && !isValidResolveLinkOption(resolveLinks)) {
+    console.log('resolveLinks must be a string with values "url", "link" or "story" separated by commas')
+    process.exit()
+}
+
 if (props.target && !props.target.endsWith('.ts')) {
     props.target += '.d.ts'
 }
@@ -82,6 +100,10 @@ getDataFromPath(props.source).then((rawComponents) => {
         componentsJson: {components},
         compilerOptions: props.compilerOptions || {},
         path: resolve(props.target || './storyblok-component-types.d.ts')
+    }
+
+    if (resolveLinks) {
+        options.resolveLinks = Array.isArray(resolveLinks) ? resolveLinks : [resolveLinks]
     }
     
     if (props.titlePrefix !== undefined) {

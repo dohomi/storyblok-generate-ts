@@ -20,6 +20,12 @@ export type BasicType = 'asset' | 'multiasset' | 'multilink' | 'table' | 'richte
 
 export type CompilerOptions = Partial<Options>;
 
+export type ResolveLinkOption = "url" | "link" | "story"
+
+export interface StoryblokResolveOptions {
+    resolveLinks: ResolveLinkOption[]
+}
+
 export interface StoryblokTsOptions {
     componentsJson: {
         components: JSONSchema4[]
@@ -27,6 +33,7 @@ export interface StoryblokTsOptions {
     customTypeParser?: (key: string, options: JSONSchema4) => void
     compilerOptions?: CompilerOptions
     path?: string
+    resolveLinks?: ResolveLinkOption[]
     titleSuffix?: string
     titlePrefix?: string
 }
@@ -34,6 +41,7 @@ export interface StoryblokTsOptions {
 export interface CliOptions {
     source: string
     target?: string
+    resolveLinks?: string | string[]
     titleSuffix?: string
     titlePrefix?: string
     customTypeParser?: string
