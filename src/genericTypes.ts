@@ -226,7 +226,7 @@ function getStoryLinkTypeByResolveLink(resolveLinkOption: ResolveLinkOption): JS
         default:
             return {
                 type: 'object',
-                required: ['name', 'id', 'uuid', 'slug', 'url', 'full_slug'],
+                required: ['name', 'id', 'uuid', 'slug', 'url', 'full_slug', 'published_at'],
                 properties: {
                     name: {
                         type: "string"
@@ -236,7 +236,7 @@ function getStoryLinkTypeByResolveLink(resolveLinkOption: ResolveLinkOption): JS
                         format: "date-time"
                     },
                     published_at: {
-                        type: "string",
+                        type: ["string", "null"],
                         format: "date-time"
                     },
                     id: {
