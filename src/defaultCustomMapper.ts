@@ -2,6 +2,26 @@ import {JSONSchema4} from "json-schema";
 
 export default function defaultCustomMapper (key: string, obj: JSONSchema4) {
   switch (obj.field_type) {
+    case 'meta-fields':
+      return {
+        [key]: {
+          type: 'object',
+          properties: {
+            _uid: {
+              type: 'string'
+            },
+            title: {
+              type: 'string'
+            },
+            plugin: {
+              type: 'string'
+            },
+            description: {
+              type: 'string'
+            }
+          }
+        }
+      }
     case 'seo-metatags':
       return {
         [key]: {
