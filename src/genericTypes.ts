@@ -33,40 +33,40 @@ async function generateAssetTypeIfNotYetGenerated(title: string, compilerOptions
         '$id': '#/asset',
         title: title,
         type: 'object',
-        required: ['id', 'filename', 'name'],
+        required: ['id', 'alt', 'name', 'focus', 'source', 'title', 'filename', 'copyright'],
         properties: {
             _uid: {
                 type: 'string'
             },
             id: {
-                type: 'number'
+                type: ['number', 'null'],
             },
             alt: {
-                type: 'string'
+                type: ['string', 'null']
             },
             name: {
                 type: 'string'
             },
             focus: {
-                type: 'string'
+                type: ['string', 'null']
             },
             source: {
-                type: 'string'
+                type: ['string', 'null']
             },
             title: {
-                type: 'string'
+                type: ['string', 'null']
             },
             filename: {
                 type: 'string'
             },
             copyright: {
-                type: 'string'
+                type: ['string', 'null']
             },
             fieldtype: {
                 type: 'string'
             },
             meta_data: {
-                type: ["null", "object"]
+                type: ['null', 'object']
             },
             is_external_url: {
                 type: 'boolean'
@@ -454,6 +454,3 @@ async function generateTableTypeIfNotYetGenerated(title: string, compilerOptions
         console.log('ERROR', e)
     }
 }
-
-
-
