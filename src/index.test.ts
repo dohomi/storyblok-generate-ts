@@ -43,13 +43,11 @@ describe("storyblokToTypescript", () => {
         const types = await storyblokToTypescript({
             componentsJson: makeSBComponent({
                 myField: { type: "boolean" },
-                myRequiredField: { type: "boolean", required: true },
             }),
         });
         const mainType = prepareString(types[2]);
         const expectation = makeExpectString(`
-            myField?: boolean;
-            myRequiredField: boolean;
+            myField: boolean;
         `);
 
         expect(mainType).toBe(expectation);
@@ -206,7 +204,7 @@ describe("storyblokToTypescript", () => {
             copyright?: string;
             fieldtype?: string;
             meta_data?: null|{[k:string]:any;};
-            is_external_url?:boolean;
+            is_external_url: boolean;
             [k: string]: any;
         }`);
 
