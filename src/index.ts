@@ -69,7 +69,10 @@ export default async function storyblokToTypescript({
             }
             const requiredFields = ['_uid', 'component']
             Object.keys(values.schema).forEach(key => {
-                if (values.schema[key].required) {
+                if (
+                    values.schema[key].required ||
+                    values.schema[key].type === "boolean"
+                ) {
                     requiredFields.push(key)
                 }
             })
