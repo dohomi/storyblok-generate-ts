@@ -33,6 +33,7 @@ export default async function storyblokToTypescript({
     const getStoryTypeTitle = (t: string) => `StoryblokStory<${getTitle(t)}>`
 
     const groupUuids: { [k: string]: JSONSchema4 } = {}
+    const tagComponents = new Map<Number, Set<string>>()
     const allComponents: string[] = []
 
     componentsJson.components.forEach(value => {
@@ -42,6 +43,16 @@ export default async function storyblokToTypescript({
                 groupUuids[value.component_group_uuid] = []
             }
             groupUuids[value.component_group_uuid].push(componentName)
+        }
+
+        if (value.internal_tags_list) {
+            value.internal_tags_list.forEach((tag: { id: number, name: string }) => {
+                if (!tagComponents.has(tag.id)) {
+                    tagComponents.set(tag.id, new Set())
+                }
+
+                tagComponents.get(tag.id)!.add(componentName)
+            })
         }
 
         allComponents.push(componentName)
@@ -154,6 +165,22 @@ export default async function storyblokToTypescript({
                                 obj[key].tsType = `never[]`
                             } else {
                                 obj[key].tsType = `(${currentGroupElements.join(' | ')})[]`
+                            }
+                        }
+                    } else if (schemaElement.restrict_type === 'tags') {
+                        if (Array.isArray(schemaElement.component_tag_whitelist) && schemaElement.component_tag_whitelist.length) {
+                            let currentTagElements: string[] = []
+                            schemaElement.component_tag_whitelist.forEach((tagId: number) => {
+                                if (tagComponents.has(tagId)) {
+                                    currentTagElements = [...tagComponents.get(tagId)!]
+                                } else {
+                                    console.log('Tag has no members: ', tagId)
+                                }
+                            })
+                            if (currentTagElements.length == 0) {
+                                obj[key].tsType = `never[]`
+                            } else {
+                                obj[key].tsType = `(${currentTagElements.join(' | ')})[]`
                             }
                         }
                     } else {
