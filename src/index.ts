@@ -222,8 +222,8 @@ export default async function storyblokToTypescript({
             options = element.options.map(item => item.value);
         }
 
-        if (options.length && element.exclude_empty_option !== true) {
-            options.unshift('')
+        if (options.length && element.exclude_empty_option === true) {
+            options = options.filter(option => option !== "")
         }
 
         // option types with source self do not have a source field but the options as array
