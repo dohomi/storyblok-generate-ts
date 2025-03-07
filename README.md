@@ -1,3 +1,12 @@
+# Important announcement
+The dev team of Storyblok have seen the importance to have a working CLI as part of their infrastructure. So please check out following resources:
+
+* https://github.com/storyblok/storyblok-cli?tab=readme-ov-file#generate-typescript-typedefs
+* https://www.storyblok.com/faq/how-can-i-utilize-typescript-in-my-storyblok-project
+* https://dev.to/storyblok/generate-types-for-your-components-with-the-storyblok-cli-14b7 
+
+On newer projects its probably better on the long run using the official CLI.
+
 # storyblok-generate-ts
 This plugin uses [json-schema-to-typescript](https://github.com/bcherny/json-schema-to-typescript) to generate TS types based on `Storyblok` components. 
 You can install and run it as a CLI script
