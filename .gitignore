@@ -109,3 +109,5 @@ dist
 example/components.*.json
 example/presets.*.json
 example/component-types-sb-backup.d.ts
+
+.yarn
