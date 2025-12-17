@@ -1,3 +1,13 @@
+# Pricing increase warning
+
+Storyblok has introduced a significant change to its pricing: 
+
+2,001 to 2,500 assets: $99/month
+
+2,501+ assets: $349/month
+
+In light of these changes, I recommend considering alternative headless CMS platforms that offer more transparent and flexible asset policies. After many years I will discontinue my involvement contributing into the echo system of Storyblok.
+
 # Important announcement
 The dev team of Storyblok have seen the importance to have a working CLI as part of their infrastructure. So please check out following resources:
 
